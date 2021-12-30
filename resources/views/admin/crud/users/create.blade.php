@@ -13,13 +13,16 @@
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">
     </div>
 
+
     <div class="card card-default col-md-8 ml-4 p-0">
-        @include('components.error-box.errors')
+
         <div class="card-header">
             <h5 class="m-0">Create User</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('user.store') }}" multipart="true" enctype="multipart/form-data"class="d-flex flex-wrap flex-column">
+            @include('components.error-box.errors')
+            <form method="POST" action="{{ route('user.store') }}" multipart="true" enctype="multipart/form-data"
+                class="d-flex flex-wrap flex-column">
                 @csrf
                 <div class="form-group col-md-6">
                     <label for="image" class="form-label">File</label>
@@ -28,9 +31,6 @@
                 <div class="form-group col-md-6">
                     <label for="name">Name</label>
                     <input class="form-control form-control-sm" id="name" type="text" name="name" placeholder="Name">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
                 </div>
                 <div class="form-group col-md-6">
                     <label for="role_id">Select Role</label>
@@ -80,5 +80,7 @@
         <div class="card-footer pt-5">
         </div>
     </div>
-
+    @push('scripts')
+        <script type="text/javascript" src="{{ mix('js/messages.js') }}"> </script>
+    @endpush
 @endsection

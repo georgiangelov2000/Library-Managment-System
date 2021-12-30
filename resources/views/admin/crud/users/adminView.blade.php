@@ -10,26 +10,10 @@
 
 @section('content')
     <div class="row m-auto pt-2">
-        <div class="col-12 p-4">
+        <div>
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <i class="fas fa-user-shield"></i>
-                    </h3>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
+                <div class="card-body table-responsive p-2">
+                    <table class="table table-hover" id="user-roles">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -67,4 +51,7 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script type="text/javascript" src="{{ mix('js/user-roles.js') }}"></script>
+    @endpush
 @stop

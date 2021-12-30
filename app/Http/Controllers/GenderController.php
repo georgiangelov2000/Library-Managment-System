@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gender;
+use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class GenderController extends Controller
@@ -14,8 +16,8 @@ class GenderController extends Controller
      */
     public function index()
     {
-        $data = Gender::all();
-        return view('admin.crud.genders.index',['data'=>$data]);
+        $data['allData'] = Gender::all();
+        return view('admin.crud.genders.index',$data);
     }
 
     /**
@@ -43,7 +45,7 @@ class GenderController extends Controller
         $data->name=$request->name;
         $data->save();
 
-        return redirect()->route('gender.index');
+        return redirect()->route('gender.index')->with('message', 'Successfully created data!');
     }
 
     /**
@@ -81,7 +83,7 @@ class GenderController extends Controller
         $data=Gender::find($id);
         $data->name=$request->name;
         $data->save();
-        return redirect()->route('gender.index');
+        return redirect()->route('gender.index')->with('message', 'Successfully updated data!');
     }
 
     /**
@@ -95,5 +97,10 @@ class GenderController extends Controller
         $data=Gender::find($id);
         $data->delete();
         return redirect()->route('gender.index');
+    }
+
+    public function userGender($id){
+        $data['allData'] = User::select('name','dob','image',)->where('gender_id', $id)->get();
+        return view('admin.crud.genders.assigned-users',$data);
     }
 }

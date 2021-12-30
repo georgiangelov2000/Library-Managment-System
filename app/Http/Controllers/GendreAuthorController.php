@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\GendreAuthor;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class GendreAuthorController extends Controller
@@ -14,8 +16,8 @@ class GendreAuthorController extends Controller
      */
     public function index()
     {
-        $data = GendreAuthor::all();
-        return view('admin.crud.gendre-authors.index',['data'=>$data]);
+        $data['allData'] = GendreAuthor::all();
+        return view('admin.crud.gendre-authors.index',$data);
     }
 
     /**
@@ -43,7 +45,7 @@ class GendreAuthorController extends Controller
         $data->name=$request->name;
         $data->save();
 
-        return redirect()->route('gendre.author.index');
+        return redirect()->route('gendre.author.index')->with('message', 'Successfully created data!');
     }
 
     /**
@@ -81,7 +83,7 @@ class GendreAuthorController extends Controller
         $data=GendreAuthor::find($id);
         $data->name=$request->name;
         $data->save();
-        return redirect()->route('gendre.author.index');
+        return redirect()->route('gendre.author.index')->with('message', 'Successfully updated data!');
     }
 
     /**
@@ -96,4 +98,10 @@ class GendreAuthorController extends Controller
         $data->delete();
         return redirect()->route('gendre.book.index');
     }
+
+    public function genreAuthors($id){
+        $data['allData'] = Author::select('name',)->where('genre_id', $id)->get();
+        return view('admin.crud.authors.assigned-authors', $data);
+    }
+
 }

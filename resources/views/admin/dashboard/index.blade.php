@@ -36,17 +36,6 @@
                                 <h3>{{ count($users) }}</h3>
                                 <p>Users</p>
                             </div>
-                            <div class="col-md-4">
-                                <small style="position: relative; top: 0px;">
-                                    <strong>Visitors: {{ count($visitor) }}
-                                    </strong>
-                                </small>
-                                <small style="margin-top: 16%;
-                                            top: 2px;
-                                            position: relative;">
-                                    <strong>Admins: {{ count($admin) }} </strong>
-                                </small>
-                            </div>
                         </div>
                         <div class="icon">
                             <i class="fas fa-users-cog"></i>
@@ -91,19 +80,6 @@
                                 <h3>{{ count($roles) }}</h3>
                                 <p>Roles</p>
                             </div>
-                            <div class="col-md-4">
-                                <small>
-                                    @foreach ($roles as $role)
-                                        <strong style="padding-bottom: 0% !important; padding-bottom: 5% !important;
-                                            display: flex;
-                                            align-items: center;
-                                            text-align: center;
-                                            justify-content: center;" class="p-1">
-                                            {{ $role->name }}<br>
-                                        </strong>
-                                    @endforeach
-                                </small>
-                            </div>
                         </div>
                         <div class="icon">
                             <i class="fas fa-user-tag"></i>
@@ -114,4 +90,4 @@
             </div>
         </div>
     </section>
-@stop
+@endsection

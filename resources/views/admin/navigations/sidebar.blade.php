@@ -1,9 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{route('home')}}" class="brand-link">
+    <a href="#" class="brand-link">
         <img src="/assets/bookshelf.png" alt="AdminPANEL Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">AdminPANEL</span>
-    <br>
+        <br>
     </a>
     @if (Auth::user()->role_id == '2')
         <div class="sidebar">
@@ -32,6 +32,32 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link ">
+                            <i class="fas fa-id-card"></i>
+                            <p>
+                                Profile
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="{{ route('admin.profile') }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        My profile
+                                    </p>
+                                </a>
+                                <a class="nav-link" href="{{ route('edit.profile', Auth::id()) }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Edit profile
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
                             <i class="fas fa-users-cog"></i>
 
                             <p>
@@ -51,7 +77,7 @@
                                 <a class="nav-link" href="{{ route('user.index') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Users
+                                        View Users
                                     </p>
                                 </a>
                             </li>
@@ -191,7 +217,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fab fa-hubspot"></i>
                             <p>
-                                Genres (Book)
+                                Genres (Books)
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -207,7 +233,7 @@
                                 <a class="nav-link" href="{{ route('gendre.book.index') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        View Genre
+                                        View Genres
                                     </p>
                                 </a>
                             </li>
@@ -240,25 +266,30 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link ">
-                            <i class="fa fa-transgender" aria-hidden="true"></i>
+                            <i class="fab fa-hubspot"></i>
                             <p>
-                                Assign Users to book
+                                Assigned Books
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
-
-                                <a class="nav-link" href="{{ route('assign.user.index') }}">
+                                <a class="nav-link" href="{{ route('assign.book.index') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Assign User to book
+                                        View Assigned Books
+                                    </p>
+                                </a>
+                                <a class="nav-link" href="{{ route('assign.book.create') }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Assign Books
                                     </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                </ul>>
+                </ul>
             </nav>
         </div>
     @elseif (Auth::user()->role_id == '1')
@@ -288,18 +319,18 @@
                                         Profile
                                     </p>
                                 </a>
+                                <a class="nav-link" href="{{ route('edit.profile', Auth::id()) }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Edit Profile
+                                    </p>
+                                </a>
                                 <a class="nav-link" href="{{ route('visitors.books') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
                                         My books
                                     </p>
                                 </a>
-                                {{-- <a class="nav-link" href="{{ route('user.index') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        My favourite books
-                                    </p>
-                                </a> --}}
                             </li>
                         </ul>
                     </li>
@@ -307,5 +338,4 @@
             </nav>
         </div>
     @endif
-    <!-- /.sidebar -->
 </aside>

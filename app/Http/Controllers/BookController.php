@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssignBook;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\GendreBook;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -64,7 +66,7 @@ class BookController extends Controller
             $book['image']=$filename;
         }
         $book->save();
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('message', 'Successfully created data!');
     }
 
     /**
@@ -105,16 +107,17 @@ class BookController extends Controller
         $book->name = $request->name;
         $book->content = $request->content;
         $book->year = $request->year;
+        $book->author_id = $request->author_id;
+        $book->genre_id = $request->genre_id;
         if($request->file('image')){
             $file=$request->file('image');
             $filename=date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('upload/images'),$filename);
             $book['image']=$filename;
         }
-        $book->author_id = $request->author_id;
-        $book->genre_id = $request->genre_id;
+
         $book->save();
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('message', 'Successfully updated data!');
     }
 
     /**
@@ -128,5 +131,11 @@ class BookController extends Controller
         $data=Book::find($id);
         $data->delete();
         return redirect()->route('book.index');
+    }
+
+    public function visitorBook($id)
+    {
+        $data['allData'] = AssignBook::select('user_id',)->where('book_id', $id)->get();
+        return view('admin.crud.users.assigned-users',$data);
     }
 }

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -21,18 +25,30 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    protected function authenticated()
+    {
+        if (Auth::user()->role_id == '2') { // do your magic here
+            return redirect()->route('dashboard.index');
+        }else if (Auth::user()->role_id == '1'){
+            return redirect()->route('visitors.index');
+        }
+
+    }
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

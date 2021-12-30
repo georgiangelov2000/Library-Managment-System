@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\GendreBook;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class GendreBookController extends Controller
@@ -14,8 +16,8 @@ class GendreBookController extends Controller
      */
     public function index()
     {
-        $data = GendreBook::all();
-        return view('admin.crud.gendre-books.index',['data'=>$data]);
+        $data['allData'] = GendreBook::all();
+        return view('admin.crud.gendre-books.index',$data);
     }
 
     /**
@@ -43,7 +45,7 @@ class GendreBookController extends Controller
         $data->name=$request->name;
         $data->save();
 
-        return redirect()->route('gendre.book.index');
+        return redirect()->route('gendre.book.index')->with('message', 'Successfully created data!');
     }
 
     /**
@@ -81,7 +83,7 @@ class GendreBookController extends Controller
         $data=GendreBook::find($id);
         $data->name=$request->name;
         $data->save();
-        return redirect()->route('gendre.book.index');
+        return redirect()->route('gendre.book.index')->with('message', 'Successfully updated data!');
     }
 
     /**
@@ -95,5 +97,10 @@ class GendreBookController extends Controller
         $data=GendreBook::find($id);
         $data->delete();
         return redirect()->route('gendre.book.index');
+    }
+
+    public function genreBooks ($id){
+        $data['allData'] = Book::select('name', 'image','book_no','year')->where('genre_id', $id)->get();
+        return view('admin.crud.gendre-books.assigned-books', $data);
     }
 }

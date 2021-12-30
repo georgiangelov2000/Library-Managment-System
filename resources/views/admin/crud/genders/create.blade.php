@@ -13,11 +13,11 @@
     </div>
 
     <div class="card card-default col-md-8 ml-4 p-0">
-        @include('components.error-box.errors')
         <div class="card-header">
             <h5 class="m-0">Create Gender</h5>
         </div>
         <div class="card-body">
+            @include('components.error-box.errors')
             <form method="POST" action="{{ route('gender.store') }}" class="d-flex flex-column flex-wrap">
                 @csrf
                 <div class="form-group col-md-6">
@@ -36,5 +36,7 @@
         <div class="card-footer pt-5">
         </div>
     </div>
-
+    @push('scripts')
+        <script type="text/javascript" src="{{mix('js/messages.js')}}"> </script>
+    @endpush
 @endsection

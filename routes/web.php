@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignBooksController;
 use App\Http\Controllers\AssignUserController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard/index', function () {
+    return view('admin.dashboard.index');
+})->middleware(['auth'])->name('dashboard.index');
+
+
 Route::prefix('users')->group(function () {
     Route::get('/index',[UserController::class,'index'])->name('user.index');
     Route::get('/create',[UserController::class,'create'])->name('user.create');
@@ -35,6 +41,10 @@ Route::prefix('users')->group(function () {
     Route::get('/edit/{id}',[UserController::class,'edit'])->name('user.edit');
     Route::post('/update/{id}',[UserController::class,'update'])->name('user.update');
     Route::get('/delete/{id}',[UserController::class,'delete'])->name('user.delete');
+    Route::get('/assigned/books/{id}',[UserController::class,'visitorBook'])->name('user.assigned.book');
+    Route::get('/admin/profile/',[UserController::class,'adminProfile'])->name('admin.profile');
+    Route::get('/edit/profile/{id}',[UserController::class,'editAdminProfile'])->name('edit.profile');
+    Route::post('/update/admin/profile/{id}',[UserController::class,'updateAdminProfile'])->name('update.admin.profile');
 });
 
 Route::prefix('books')->group(function () {
@@ -44,6 +54,7 @@ Route::prefix('books')->group(function () {
     Route::get('/edit/{id}',[BookController::class,'edit'])->name('book.edit');
     Route::post('/update/{id}',[BookController::class,'update'])->name('book.update');
     Route::get('/delete/{id}',[BookController::class,'delete'])->name('book.delete');
+    Route::get('/assigned/users/{id}',[BookController::class,'visitorBook'])->name('user.assigned.user');
 });
 
 Route::prefix('authors')->group(function () {
@@ -62,6 +73,8 @@ Route::prefix('gendrebooks')->group(function () {
     Route::get('/edit/{id}',[GendreBookController::class,'edit'])->name('gendre.book.edit');
     Route::post('/update/{id}',[GendreBookController::class,'update'])->name('gendre.book.update');
     Route::get('/delete/{id}',[GendreBookController::class,'delete'])->name('gendre.book.delete');
+    Route::get('/assigned/books/{id}',[GendreBookController::class,'genreBooks'])->name('genre.assigned.book');
+
 });
 
 Route::prefix('gendreauthors')->group(function () {
@@ -71,6 +84,8 @@ Route::prefix('gendreauthors')->group(function () {
     Route::get('/edit/{id}',[GendreAuthorController::class,'edit'])->name('gendre.author.edit');
     Route::post('/update/{id}',[GendreAuthorController::class,'update'])->name('gendre.author.update');
     Route::get('/delete/{id}',[GendreAuthorController::class,'delete'])->name('gendre.author.delete');
+    Route::get('/assigned/authors/{id}',[GendreAuthorController::class,'genreAuthors'])->name('genre.assigned.author');
+
 });
 
 Route::prefix('roles')->group(function () {
@@ -80,6 +95,8 @@ Route::prefix('roles')->group(function () {
     Route::get('/edit/{id}',[RoleController::class,'edit'])->name('role.edit');
     Route::post('/update/{id}',[RoleController::class,'update'])->name('role.update');
     Route::get('/delete/{id}',[RoleController::class,'delete'])->name('role.delete');
+    Route::get('/assigned/users/{id}',[RoleController::class,'userRole'])->name('assigned.users');
+
 });
 
 Route::prefix('genders')->group(function () {
@@ -89,6 +106,7 @@ Route::prefix('genders')->group(function () {
     Route::get('/edit/{id}',[GenderController::class,'edit'])->name('gender.edit');
     Route::post('/update/{id}',[GenderController::class,'update'])->name('gender.update');
     Route::get('/delete/{id}',[GenderController::class,'delete'])->name('gender.delete');
+    Route::get('/assigned/users/{id}',[GenderController::class,'userGender'])->name('assigned.users');
 });
 
 Route::prefix('assignuser')->group(function () {
@@ -100,10 +118,20 @@ Route::prefix('assignuser')->group(function () {
     Route::get('/delete/{id}',[AssignUserController::class,'delete'])->name('assign.user.delete');
 });
 
+Route::prefix('assignbooks')->group(function () {
+    Route::get('/index',[AssignBooksController::class,'index'])->name('assign.book.index');
+    Route::get('/create',[AssignBooksController::class,'create'])->name('assign.book.create');
+    Route::post('/store',[AssignBooksController::class,'store'])->name('assign.book.store');
+    Route::get('/delete/{id}',[AssignBooksController::class,'delete'])->name('assign.book.delete');
+});
+
+
 Route::prefix('profile')->group(function () {
     Route::get('/myprofile',[VisitorProfileController::class,'profile'])->name('profile.index');
     Route::get('/visitors/books',[VisitorProfileController::class,'visitorBooks'])->name('visitors.books');
     Route::get('/visitors/index',[VisitorProfileController::class,'index'])->name('visitors.index');
+    Route::get('/edit/profile/{id}',[VisitorProfileController::class,'getEditProfile'])->name('edit.profile');
+    Route::post('/update/profile/{id}',[VisitorProfileController::class,'postUpdateProfile'])->name('update.profile');
 });
 
 Route::prefix('dashboard')->group(function () {
@@ -119,18 +147,6 @@ Route::prefix('visitors')->group(function () {
     Route::get('/visitor/index',[UserController::class,'visitorIndex'])->name('visitor.view.index');
 });
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

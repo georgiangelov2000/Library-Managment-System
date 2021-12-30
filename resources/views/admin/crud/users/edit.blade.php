@@ -23,7 +23,7 @@
                 @csrf
 
                 <div class="col-md-6 d-flex justify-content-left">
-                    <img src="{{ !empty($editData['0']->image) ? url('upload/images/'.$editData['0']->image) :  url('upload/images/noimage.png') }}  " class="img-thumbnail rounded mb-1" style="width:100px" alt="...">
+                    <img src="{{ !empty($editData['0']->image) ? url('upload/images/'.$editData['0']->image) :  url('upload/images/noimage.png') }}  " class="img-thumbnail rounded mb-1" style="width:50px" alt="...">
                 </div>
 
                 <div class="form-group col-md-6">

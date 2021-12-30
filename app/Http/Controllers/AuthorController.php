@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Models\Gender;
 use App\Models\GendreAuthor;
-
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -51,7 +51,7 @@ class AuthorController extends Controller
         $author->gender_id = $request->gender_id;
         $author->genre_id = $request->genre_id;
         $author->save();
-        return redirect()->route('author.index');
+        return redirect()->route('author.index')->with('message', 'Successfully created data!');
     }
 
     /**
@@ -93,7 +93,7 @@ class AuthorController extends Controller
         $data->gender_id = $request->gender_id;
         $data->genre_id = $request->genre_id;
         $data->save();
-        return redirect()->route('author.index');
+        return redirect()->route('author.index')->with('message', 'Successfully updated data!');
     }
 
     /**

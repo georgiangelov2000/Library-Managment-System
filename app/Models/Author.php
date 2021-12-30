@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
+    use HasFactory;
+    public $timestamps = true;
+    protected $table = 'authors';
+    protected $fillable = ['name','gender_id','genre_id','image','created_at','updated_at'];
 
     public function genres(){
         return $this->belongsTo(GendreAuthor::class,'genre_id','id');
@@ -16,7 +20,5 @@ class Author extends Model
         return $this->belongsTo(Gender::class,'gender_id','id');
     }
 
-    public $timestamps = true;
-    protected $table = 'authors';
-    use HasFactory;
+
 }

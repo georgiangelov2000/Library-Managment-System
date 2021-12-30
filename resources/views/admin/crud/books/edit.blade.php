@@ -15,16 +15,18 @@
             <h5 class="m-0">Edit Book</h5>
         </div>
         <div class="card-body">
-            <form method="POST" multipart="true" enctype="multipart/form-data" action="{{ route('book.update', $editData['0']->id) }}" class="d-flex flex-wrap flex-column">
+            <form method="POST" multipart="true" enctype="multipart/form-data"
+                action="{{ route('book.update', $editData['0']->id) }}" class="d-flex flex-wrap flex-column">
                 @csrf
 
                 <div class="col-md-6 d-flex justify-content-left">
-                    <img src="{{ !empty($editData['0']->image) ? url('upload/images/'.$editData['0']->image) :  url('upload/images/noimage.png') }}  " class="img-thumbnail rounded mb-1" style="width:100px" alt="...">
+                    <img src="{{ !empty($editData['0']->image) ? url('upload/images/' . $editData['0']->image) : url('upload/images/noimage.png') }}  "
+                        class="img-thumbnail rounded mb-1" style="width:50px" alt="...">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="image" class="form-label">File</label>
-                    <input class="form-control form-control-sm"  name="image" type="file" id="image">
+                    <input class="form-control form-control-sm" name="image" type="file" id="image">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -38,15 +40,15 @@
                 <div class="form-group col-md-6">
                     <label for="content">Content</label>
                     <input class="form-control form-control-sm" id="content" value="{{ $editData['0']->content }}"
-                        type="text" name="content" placeholder="Content">
+                        type="text" name="content">
                     @error('name')
                         <span class="text-danger"> </span>
                     @enderror
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="year">Year</label>
-                    <input class="form-control form-control-sm" id="content" value="{{ $editData['0']->content }}"
-                        type="text" name="content" placeholder="Content">
+                    <label for="year">Year </label>
+                    <input class="form-control form-control-sm" type="date" id="year" value="{{ $editData['0']->year }}"
+                        type="text" name="year" placeholder="Year">
                     @error('name')
                         <span class="text-danger"> </span>
                     @enderror

@@ -9,5 +9,6 @@ class Gender extends Model
 {
     public $timestamps = true;
     protected $table = 'genders';
+    protected $fillable = ['name','created_at','updated_at'];
     use HasFactory;
 }

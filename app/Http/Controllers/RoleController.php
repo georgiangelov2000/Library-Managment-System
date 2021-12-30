@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -14,8 +17,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $data = Role::all();
-        return view('admin.crud.roles.index',['data'=>$data]);
+        $data['allData'] = Role::all();
+        return view('admin.crud.roles.index',$data);
     }
 
     /**
@@ -43,7 +46,7 @@ class RoleController extends Controller
         $data->name=$request->name;
         $data->save();
 
-        return redirect()->route('role.index');
+        return redirect()->route('role.index')->with('message', 'Successfully created data!');
     }
 
     /**
@@ -81,7 +84,7 @@ class RoleController extends Controller
         $data=Role::find($id);
         $data->name=$request->name;
         $data->save();
-        return redirect()->route('role.index');
+        return redirect()->route('role.index')->with('message', 'Successfully updated data!');
     }
 
     /**
@@ -95,5 +98,10 @@ class RoleController extends Controller
         $data=Role::find($id);
         $data->delete();
         return redirect()->route('role.index');
+    }
+
+    public function userRole($id){
+        $data['allData'] = User::select('name','dob','image',)->where('role_id', $id)->get();
+        return view('admin.crud.roles.assigned-users',$data);
     }
 }

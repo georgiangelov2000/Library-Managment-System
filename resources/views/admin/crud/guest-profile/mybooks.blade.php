@@ -9,27 +9,14 @@
 @endsection
 
 @section('content')
+
     <div class="row m-auto">
         <div class="col-12 m-auto pt-4">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-book"></i> My Books</h3>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
+                <div class="card-body table-responsive p-2">
+                    <table class="table table-striped table-hover table-bordered dataTable" id="mybooks">
                         <thead>
-                            <tr style="font-size:.85rem">
+                            <tr>
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
@@ -45,41 +32,37 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>
-                                        <img src="{{ !empty($value->image) ? url('upload/images/' . $value->image) : url('upload/images/noimage.png') }}  "
-                                            class="img-thumbnail rounded" style="width:100px" alt="...">
+                                        <img src="{{ !empty($book['books']['image']) ? url('upload/images/' . $book['books']['image']) : url('upload/images/noimage.png') }}  "
+                                            class="img-thumbnail rounded" style="width:50px" alt="...">
                                     </td>
                                     <td>
                                         <span class="badge badge-light text-dark">
-                                        {{ $book->name }}
-                                    </span>
+                                            {{ $book['books']['name'] }}
+                                        </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-success">
-                                            {{ $book['genres']['name'] }}
+                                            {{ $book['books']['authors']['name'] }}
                                         </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-primary">
-                                            {{ $book['genres']['name'] }}
+                                            {{ $book['books']['genres']['name'] }}
                                         </span>
                                     </td>
                                     <td>
                                         <div class="overflow-auto p-3 mb-3 mb-md-0 me-md-3 bg-light" style="font-size:.8rem">
-                                            {{ $book->content }}
+                                            {{ $book['books']['content'] }}
                                         </div>
                                     </td>
                                     <td>
-                                        @if ($book->year === null)
-
-                                        @elseif ($book->year)
-                                            <span class="badge badge-dark">
-                                                {{ $book->year }}
-                                            </span>
-                                        @endif
+                                        <span class="badge badge-dark">
+                                            {{ $book['books']['year'] }}
+                                        </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-warning">
-                                            {{ $book->book_no }}
+                                            {{ $book['books']['book_no'] }}
                                         </span>
                                     </td>
                                 </tr>
@@ -90,5 +73,7 @@
             </div>
         </div>
     </div>
-
+    @push('scripts')
+        <script type="text/javascript" src="{{ mix('js/mybooks.js') }}"></script>
+    @endpush
 @endsection
