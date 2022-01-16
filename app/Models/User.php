@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -23,7 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'image'
+        'image',
+        'role_id',
+        'last_seen'
     ];
 
     /**
@@ -55,6 +57,15 @@ class User extends Authenticatable
 
     public function books(){
         return $this->belongsTo(Book::class,'book_id','id');
+    }
+
+    public function comments(){
+        return $this->hasMany(AssignComment::class,'user_id','id');
+    }
+
+    public function visitorBooks()
+    {
+        return $this->belongsToMany(Book::class,'assign_books', 'user_id', 'book_id');
     }
 
 }

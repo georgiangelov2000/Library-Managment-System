@@ -15,7 +15,7 @@
   \***********************************************************/
 /***/ (() => {
 
-eval("$(document).ready(function () {\n  $('#assigned-authors').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXNzaWduZWQtYXV0aG9ycy9hc3NpZ25lZC1hdXRob3JzLmpzPzU4YzIiXSwibmFtZXMiOlsiJCIsImRvY3VtZW50IiwicmVhZHkiLCJEYXRhVGFibGUiXSwibWFwcGluZ3MiOiJBQUFBQSxDQUFDLENBQUNDLFFBQUQsQ0FBRCxDQUFZQyxLQUFaLENBQWtCLFlBQVc7QUFDekJGLEVBQUFBLENBQUMsQ0FBQyxtQkFBRCxDQUFELENBQXVCRyxTQUF2QjtBQUNILENBRkQiLCJzb3VyY2VzQ29udGVudCI6WyIkKGRvY3VtZW50KS5yZWFkeShmdW5jdGlvbigpIHtcclxuICAgICQoJyNhc3NpZ25lZC1hdXRob3JzJykuRGF0YVRhYmxlKCk7XHJcbn0pIl0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9hc3NpZ25lZC1hdXRob3JzL2Fzc2lnbmVkLWF1dGhvcnMuanMuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/assigned-authors/assigned-authors.js\n");
+eval("$(function ($) {\n  $('#assigned-authors').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXNzaWduZWQtYXV0aG9ycy9hc3NpZ25lZC1hdXRob3JzLmpzPzU4YzIiXSwibmFtZXMiOlsiJCIsIkRhdGFUYWJsZSJdLCJtYXBwaW5ncyI6IkFBQUFBLENBQUMsQ0FBQyxVQUFTQSxDQUFULEVBQVk7QUFDVkEsRUFBQUEsQ0FBQyxDQUFDLG1CQUFELENBQUQsQ0FBdUJDLFNBQXZCO0FBQ0gsQ0FGQSxDQUFEIiwic291cmNlc0NvbnRlbnQiOlsiJChmdW5jdGlvbigkKSB7XHJcbiAgICAkKCcjYXNzaWduZWQtYXV0aG9ycycpLkRhdGFUYWJsZSgpO1xyXG59KSJdLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvYXNzaWduZWQtYXV0aG9ycy9hc3NpZ25lZC1hdXRob3JzLmpzLmpzIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/assigned-authors/assigned-authors.js\n");
 
 /***/ })
 

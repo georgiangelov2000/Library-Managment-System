@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Create Genre Authors')
 
 @section('header-navigation')
     @parent

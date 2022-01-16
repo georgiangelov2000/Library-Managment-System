@@ -1,5 +1,5 @@
-
 @extends('admin.home')
+@section('title', 'Managment System - Assigned Books')
 
 @section('header-navigation')
     @parent
@@ -12,7 +12,7 @@
 @section('content')
     <div class="row m-auto pt-2">
         <div class="col-12 p-4">
-            <div class="card">
+            <div class="card shadow-none">
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-book-open"></i>
@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
+                <div class="card-body table-responsive p-2">
+                    <table class="table table-hover" id="assigned-books">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -48,7 +48,7 @@
                                     <td> {{ $value['books']['name'] }}
                                     <td>
                                         <img src="{{ !empty($value['books']['image']) ? url('upload/images/' . $value['books']['image']) : url('upload/images/noimage.png') }}  "
-                                            class="img-thumbnail rounded " style="width:50px" alt="...">
+                                            class=" rounded " style="width:50px" alt="...">
                                     </td>
                                     <td> {{ $value['books']['book_no'] }}
                                     </td>
@@ -62,4 +62,7 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script type="text/javascript" src="{{ mix('js/assigned_books.js') }}"></script>
+    @endpush
 @stop

@@ -26,6 +26,9 @@ class CreateBooksTable extends Migration
              $table->integer('author_id')->nullable();
             // $table->foreign('author_id')->references('id')->on('authors');
 
+            $table->integer('flag_id')->nullable();
+            // $table->foreign('flag_id')->references('id')->on('books_flags');
+
               // FOREIGN KEYS
             $table->integer('genre_id')->nullable();
             // $table->foreign('gendre_id')->references('id')->on('gendre_books');

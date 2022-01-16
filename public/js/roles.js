@@ -15,7 +15,7 @@
   \*************************************/
 /***/ (() => {
 
-eval("$(document).ready(function () {\n  $('#roles').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvcm9sZXMvcm9sZXMuanM/ODg5NyJdLCJuYW1lcyI6WyIkIiwiZG9jdW1lbnQiLCJyZWFkeSIsIkRhdGFUYWJsZSJdLCJtYXBwaW5ncyI6IkFBQUFBLENBQUMsQ0FBQ0MsUUFBRCxDQUFELENBQVlDLEtBQVosQ0FBa0IsWUFBVztBQUN6QkYsRUFBQUEsQ0FBQyxDQUFDLFFBQUQsQ0FBRCxDQUFZRyxTQUFaO0FBQ0gsQ0FGRCIsInNvdXJjZXNDb250ZW50IjpbIiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkge1xyXG4gICAgJCgnI3JvbGVzJykuRGF0YVRhYmxlKCk7XHJcbn0pIl0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9yb2xlcy9yb2xlcy5qcy5qcyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/roles/roles.js\n");
+eval("$(function ($) {\n  $('#roles').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvcm9sZXMvcm9sZXMuanM/ODg5NyJdLCJuYW1lcyI6WyIkIiwiRGF0YVRhYmxlIl0sIm1hcHBpbmdzIjoiQUFBQUEsQ0FBQyxDQUFDLFVBQVNBLENBQVQsRUFBWTtBQUNWQSxFQUFBQSxDQUFDLENBQUMsUUFBRCxDQUFELENBQVlDLFNBQVo7QUFDSCxDQUZBLENBQUQiLCJzb3VyY2VzQ29udGVudCI6WyIkKGZ1bmN0aW9uKCQpIHtcclxuICAgICQoJyNyb2xlcycpLkRhdGFUYWJsZSgpO1xyXG59KSJdLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvcm9sZXMvcm9sZXMuanMuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/roles/roles.js\n");
 
 /***/ })
 

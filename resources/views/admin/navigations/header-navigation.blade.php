@@ -1,70 +1,68 @@
-{{-- <nav class="navbar navbar-dark sticky-top bg-dark  flex-md-nowrap p-0 pb-1 pt-1">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Library Managment System</a>
-    <ul class="navbar-nav px-3 flex-row d-flex align-items-center text-white">
-        <h6 class="mb-0">
-            <li class="nav-item text-nowrap bg-white text-dark rounded p-1">
-                <i class="fas fa-user-shield"></i> {{ Auth::user()->name }}
-            </li>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </div>
-        </h6>
-
-    </ul>
-</nav> --}}
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        <li class="nav-item clicking">
+            <a id="toggleBtn" class="nav-link clicking" data-widget="pushmenu" href="#"><i class="clicking fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
         <li class="nav-link text-dark">Library managment system</li>
         </li>
     </ul>
-    <ul class="navbar-nav ml-auto" style="align-items: center; margin-right:2rem">
-        <li class="nav-item ">
-            <a class="nav-link" data-toggle="dropdown">
-                <i class="fas fa-user-shield"></i>
-                <span class="badge badge-danger navbar-badge" style="
-                    font-size: .6rem;
-                    font-weight: 300;
-                    padding: 2px 4px;
-                    position: absolute;
-                    right: -5px;
-                    font-weight:bold;
-                    top: -5px;">
-                    {{ Auth::user()->name }}
-                </span>
+    <ul class="navbar-nav ml-auto" style="align-items: center; margin-right:1rem">
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fas fa-th-large"></i>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="dropdown-item text-secondary" href="{{ route('logout') }}" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-                <span id="logout" class="badge badge-warning navbar-badge" style="
-             font-size: .6rem;
-             font-weight: 300;
-             padding: 2px 4px;
-             position: absolute;
-             right: 30px;
-             font-weight:bold;
-             color:black;
-             top: 3px;">
-                    Logout
-                </span>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" style="left: inherit; right: 0px;" id="header-dropdown">
+                <p class="dropdown-item dropdown-header text-sm d-flex justify-content-evenly align-items-center">
+                    <i style="color:#000" class="fas fa-user mr-1"></i><span style="color:#000;">Name:</span>
+                    <span class="text-muted text-sm">
+                        {{ Auth::user()->name }}
+                    </span>
+                </p>
+                <div class="dropdown-divider"></div>
+                <p href="#" class="dropdown-item d-flex justify-content-evenly align-items-center">
+                    <i class="fas fa-user-tag mr-1"></i><span class="text-dark">Role:</span>
+                    <span class="text-muted text-sm">
+                        @if (Auth::user()->role_id == '2')
+                            ADMIN
+                        @else
+                            VISITOR
+                        @endif
+                    </span>
+                </p>
+                <div class="dropdown-divider"></div>
+                <p href="#" class="dropdown-item d-flex justify-content-evenly align-items-center">
+                    <span class="text-dark mr-2">Status: </span>
+                    @if (Cache::has('user-is-online-' . Auth::user()->id))
+                        <a href="#" class="d-flex align-items-center"
+                            style="margin-top:0.05rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
+                                class=" mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i> Online</a>
+                    @else
+                        <a href="#" class="d-flex align-items-center"
+                            style="margin-top:0.05rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
+                                class=" mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i> Offline</a>
+                    @endif
+                </p>
+                <div class="dropdown-divider"></div>
+                <p href="#" class="dropdown-item d-flex justify-content-evenly align-items-center pb-0 pt-0">
+                    <a class="nav-link text-danger d-flex justify-content-start align-items-center col-md-12"
+                        href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <span id="logout">
+                            Logout
+                        </span>
+                        <i class="fa fa-sign-out text-danger ml-1" aria-hidden="true"></i>
+                    </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                </p>
+            </div>
         </li>
     </ul>
+
+    @push('scripts')
+        <script type="text/javascript" src="{{ mix('js/sidebar.js') }}"> </script>
+    @endpush
 </nav>

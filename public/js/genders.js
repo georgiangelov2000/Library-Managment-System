@@ -15,7 +15,7 @@
   \*****************************************/
 /***/ (() => {
 
-eval("$(document).ready(function () {\n  $('#genders').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvZ2VuZGVycy9nZW5kZXJzLmpzP2RkZWIiXSwibmFtZXMiOlsiJCIsImRvY3VtZW50IiwicmVhZHkiLCJEYXRhVGFibGUiXSwibWFwcGluZ3MiOiJBQUFBQSxDQUFDLENBQUNDLFFBQUQsQ0FBRCxDQUFZQyxLQUFaLENBQWtCLFlBQVc7QUFDekJGLEVBQUFBLENBQUMsQ0FBQyxVQUFELENBQUQsQ0FBY0csU0FBZDtBQUNILENBRkQiLCJzb3VyY2VzQ29udGVudCI6WyIkKGRvY3VtZW50KS5yZWFkeShmdW5jdGlvbigpIHtcclxuICAgICQoJyNnZW5kZXJzJykuRGF0YVRhYmxlKCk7XHJcbn0pIl0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9nZW5kZXJzL2dlbmRlcnMuanMuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/genders/genders.js\n");
+eval("$(function ($) {\n  $('#genders').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvZ2VuZGVycy9nZW5kZXJzLmpzP2RkZWIiXSwibmFtZXMiOlsiJCIsIkRhdGFUYWJsZSJdLCJtYXBwaW5ncyI6IkFBQUFBLENBQUMsQ0FBQyxVQUFTQSxDQUFULEVBQVk7QUFDVkEsRUFBQUEsQ0FBQyxDQUFDLFVBQUQsQ0FBRCxDQUFjQyxTQUFkO0FBQ0gsQ0FGQSxDQUFEIiwic291cmNlc0NvbnRlbnQiOlsiJChmdW5jdGlvbigkKSB7XHJcbiAgICAkKCcjZ2VuZGVycycpLkRhdGFUYWJsZSgpO1xyXG59KSJdLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvZ2VuZGVycy9nZW5kZXJzLmpzLmpzIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/genders/genders.js\n");
 
 /***/ })
 

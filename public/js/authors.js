@@ -15,7 +15,7 @@
   \*****************************************/
 /***/ (() => {
 
-eval("$(document).ready(function () {\n  $('#authors').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXV0aG9ycy9hdXRob3JzLmpzPzIyMDciXSwibmFtZXMiOlsiJCIsImRvY3VtZW50IiwicmVhZHkiLCJEYXRhVGFibGUiXSwibWFwcGluZ3MiOiJBQUFBQSxDQUFDLENBQUNDLFFBQUQsQ0FBRCxDQUFZQyxLQUFaLENBQWtCLFlBQVc7QUFDekJGLEVBQUFBLENBQUMsQ0FBQyxVQUFELENBQUQsQ0FBY0csU0FBZDtBQUNILENBRkQiLCJzb3VyY2VzQ29udGVudCI6WyIkKGRvY3VtZW50KS5yZWFkeShmdW5jdGlvbigpIHtcclxuICAgICQoJyNhdXRob3JzJykuRGF0YVRhYmxlKCk7XHJcbn0pIl0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9hdXRob3JzL2F1dGhvcnMuanMuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/authors/authors.js\n");
+eval("$(function ($) {\n  $('#authors').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXV0aG9ycy9hdXRob3JzLmpzPzIyMDciXSwibmFtZXMiOlsiJCIsIkRhdGFUYWJsZSJdLCJtYXBwaW5ncyI6IkFBQUFBLENBQUMsQ0FBQyxVQUFTQSxDQUFULEVBQVk7QUFDVkEsRUFBQUEsQ0FBQyxDQUFDLFVBQUQsQ0FBRCxDQUFjQyxTQUFkO0FBQ0gsQ0FGQSxDQUFEIiwic291cmNlc0NvbnRlbnQiOlsiJChmdW5jdGlvbigkKSB7XHJcbiAgICAkKCcjYXV0aG9ycycpLkRhdGFUYWJsZSgpO1xyXG59KSJdLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvYXV0aG9ycy9hdXRob3JzLmpzLmpzIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/authors/authors.js\n");
 
 /***/ })
 

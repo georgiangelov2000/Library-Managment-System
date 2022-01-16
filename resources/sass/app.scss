@@ -6,3 +6,47 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+body {
+    background: linear-gradient(to bottom, #fefefe 0, #e9eef3 100%);
+    font-size: 0.8rem;
+}
+
+#header-dropdown span{
+    font-size: 0.8rem !important;
+}
+
+.dropdown-item.active, .dropdown-item:active{
+    text-decoration: none;
+    background-color: #e9ecef !important;
+}
+
+
+#waiting-users-wrapper{
+    background:linear-gradient(to right, rgb(242, 153, 74), rgb(242, 201, 76));
+}
+
+#approved-users-wrapper{
+    background:linear-gradient(to right, rgb(178, 254, 250), rgb(14, 210, 247))
+}
+
+#assigned-books-wrapper{
+    background:linear-gradient(to right, rgb(52, 232, 158), rgb(15, 52, 67))
+}
+
+#genders-wrapper{
+    background:linear-gradient(to right, rgb(67, 198, 172), rgb(248, 255, 174))
+}
+#genres-books-wrapper{
+    background:linear-gradient(to right, rgb(103, 178, 111), rgb(76, 162, 205))
+}
+#genres-authors-wrapper{
+    background:linear-gradient(to right, rgb(192, 36, 37), rgb(240, 203, 53))
+}
+#comments-wrapper{
+    background:linear-gradient(to right, rgb(228, 58, 21), rgb(230, 82, 69));
+}
+#readers-wrapper{
+    background:linear-gradient(to right, rgb(255, 78, 80), rgb(249, 212, 35))
+}

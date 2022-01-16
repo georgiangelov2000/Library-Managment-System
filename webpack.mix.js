@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix
+ mix.sass('resources/sass/app.scss', 'public/css')
 .js('resources/js/app.js', 'public/js')
 .js('resources/js/rows.js', 'public/js')
 .js('resources/js/authors/authors.js', 'public/js')
@@ -26,5 +26,5 @@ mix
 .js('resources/js/user-roles/user-roles.js', 'public/js')
 .js('resources/js/mybooks/mybooks.js', 'public/js')
 .js('resources/js/messages.js', 'public/js')
-.sass('resources/sass/app.scss', 'public/css')
+.js('resources/js/sidebar.js', 'public/js')
 .sourceMaps();

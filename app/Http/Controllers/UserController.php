@@ -8,7 +8,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,10 +20,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['allData'] = User::all();
+        $data['allData'] = User::whereNotNull('last_seen')
+            ->orderBy('last_seen', 'asc')
+            ->get();
         return view('admin.crud.users.index', $data);
     }
- 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,16 +44,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'role_id' => 'required',
-            'gender_id' => 'required',
-            'image' => 'required',
-            'password' => 'required',
-        ]);
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -81,7 +75,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+ * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -113,7 +107,7 @@ class UserController extends Controller
             $file = $request->file('image');
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/images'), $filename);
-            $user['image'] = $filename;
+        $user['image'] = $filename;
         }
         $user->password = bcrypt($request->password);
         $user->save();
@@ -137,6 +131,8 @@ class UserController extends Controller
     {
         $data['allData'] = DB::table('users')
             ->where('role_id', '=', 2)
+            ->whereNotNull('last_seen')
+            ->orderBy('last_seen', 'DESC')
             ->get();
 
         return view('admin.crud.users.adminView', $data);
@@ -146,6 +142,8 @@ class UserController extends Controller
     {
         $data['allData'] = DB::table('users')
             ->where('role_id', '=', 1)
+            ->whereNotNull('last_seen')
+            ->orderBy('last_seen', 'DESC')
             ->get();
         return view('admin.crud.users.visitorView', $data);
     }
@@ -156,32 +154,39 @@ class UserController extends Controller
         return view('admin.crud.books.assigned-books', $data);
     }
 
-    public function adminProfile(){
-        $data['user']= Auth::user();
-        return view('admin.crud.admin-profile.profile',$data);
+    public function adminProfile()
+    {
+        $data['user'] = Auth::user();
+        return view('admin.crud.admin-profile.profile', $data);
     }
 
-    public function editAdminProfile($id){
-        $data['user'] = User::where('id',$id)->get();
+    public function editAdminProfile($id)
+    {
+        $data['user'] = User::where('id', $id)->get();
         $data['genders'] = Gender::all();
-        return view('admin.crud.admin-profile.edit-profile',$data);
+        return view('admin.crud.admin-profile.edit-profile', $data);
     }
 
-    public function updateAdminProfile(Request $request,$id){
-        $user = User::where('id',$id)->first();
+    public function updateAdminProfile(Request $request, $id)
+    {
+        $user = User::where('id', $id)->first();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->dob = $request->dob;
         $user->gender_id = $request->gender_id;
-        if($request->file('image')){
-            $file=$request->file('image');
-            $filename=date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/images'),$filename);
-            $user['image']=$filename;
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/images'), $filename);
+            $user['image'] = $filename;
         }
         $user->save();
         return redirect()->route('profile.index')->with('message', 'Successfully updated data!');
     }
 
-
+    public function comments($id)
+    {
+        $data['comments'] = User::find($id)->comments;
+        return view('admin.crud.users.comments.comments', $data);
+    }
 }

@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Assigned Authors')
 
 @section('header-navigation')
     @parent
@@ -11,9 +12,9 @@
 @section('content')
     <div class="row m-auto pt-2">
         <div class="col-12 p-4">
-            <div class="card">
+            <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover table table-striped table-hover table-bordered dataTable" id="assigned-authors">
+                    <table class="table table-hover" id="assigned-authors">
                         <thead>
                             <tr>
                                 <th>#</th>

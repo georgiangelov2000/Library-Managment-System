@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Assigned Users')
 
 @section('header-navigation')
     @parent
@@ -11,9 +12,9 @@
 @section('content')
     <div class="row m-auto pt-2">
         <div class="col-12 p-4">
-            <div class="card">
+            <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-striped table-hover table-bordered dataTable" id="assigned-users">
+                    <table class="table table-hover" id="assigned-users">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -28,7 +29,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>
                                         <img src="{{ !empty($value['users']['image']) ? url('upload/images/' . $value['users']['image']) : url('upload/images/noimage.png') }}  "
-                                            class="img-thumbnail rounded " style="width:50px" alt="...">
+                                            class=" rounded " style="width:50px" alt="...">
                                     </td>
                                     <td> {{ $value['users']['name'] }}</td>
                                     <td>

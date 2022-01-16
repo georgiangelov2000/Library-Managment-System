@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Edit Author')
 
 @section('header-navigation')
     @parent

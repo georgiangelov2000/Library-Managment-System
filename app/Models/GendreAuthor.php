@@ -10,5 +10,16 @@ class GendreAuthor extends Model
     public $timestamps = true;
     protected $table = 'gendre_authors';
     protected $fillable = ['name','created_at','updated_at'];
+    
+    public function authors(){
+        return $this->hasMany(Author::class,'genre_id','id');
+    }
+
     use HasFactory;
+
+    // public function authors(){
+    //     return $this->hasOne(Author::class,'genre_id','id');
+    // }
+    
+
 }

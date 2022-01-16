@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Roles')
 
 @section('header-navigation')
     @parent
@@ -10,53 +11,44 @@
 
 @section('content')
     <div class="row m-auto pt-2">
-        @if (count($allData) == 0)
-            <div class="alert alert-danger alert-dismissible col-md-10 m-auto">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h5><i class="icon fas fa-ban"></i> Alert!</h5>
-                The table is empty please <a href="{{ route('role.create') }}" class="alert-link">
-                    Create Data </a>
-            </div>
-        @else
-            @include('components.success-box.successfullly-message')
-            <div>
-                <div class="card">
-                    <div class="card-body table-responsive p-2">
-                        <table class="table table-striped table-hover table-bordered dataTable" id="roles">
-                            <thead>
+        @include('components.success-box.successfullly-message')
+        <div>
+            <div class="card shadow-none">
+                <div class="card-body table-responsive p-2">
+                    <table class="table table-hover" id="roles">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($allData as $key => $role)
                                 <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Created</th>
-                                    <th>Updated</th>
-                                    <th>Actions</th>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $role->name }}</td>
+                                    <td>{{ $role->created_at }}</td>
+                                    <td>{{ $role->updated_at }}</td>
+                                    <td>
+                                        <a href="{{ route('role.edit', $role->id) }}" title="edit" id="edit"
+                                            class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('role.delete', $role->id) }}" title="delete" id="delete"
+                                            class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                        <a title="assigned-users" id="assigned Users"
+                                            href={{ route('roles.assigned.users', $role->id) }}
+                                            class="btn btn-sm btn-warning"><i class="far fa-users"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($allData as $key => $role)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $role->name }}</td>
-                                        <td>{{ $role->created_at }}</td>
-                                        <td>{{ $role->updated_at }}</td>
-                                        <td>
-                                            <a href="{{ route('role.edit', $role->id) }}" title="edit" id="edit"
-                                                class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('role.delete', $role->id) }}" title="delete" id="delete"
-                                                class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                                            <a title="assigned-users" id="assigned Users"
-                                                href={{ route('assigned.users', $role->id) }}
-                                                class="btn btn-sm btn-warning"><i class="far fa-users"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        @endif
+        </div>
     </div>
     @push('scripts')
         <script type="text/javascript" src="{{ mix('js/roles.js') }}"></script>

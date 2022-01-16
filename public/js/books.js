@@ -15,7 +15,7 @@
   \*************************************/
 /***/ (() => {
 
-eval("$(document).ready(function () {\n  $('#books').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYm9va3MvYm9va3MuanM/ZGJmMCJdLCJuYW1lcyI6WyIkIiwiZG9jdW1lbnQiLCJyZWFkeSIsIkRhdGFUYWJsZSJdLCJtYXBwaW5ncyI6IkFBQUFBLENBQUMsQ0FBQ0MsUUFBRCxDQUFELENBQVlDLEtBQVosQ0FBa0IsWUFBVztBQUN6QkYsRUFBQUEsQ0FBQyxDQUFDLFFBQUQsQ0FBRCxDQUFZRyxTQUFaO0FBQ0gsQ0FGRCIsInNvdXJjZXNDb250ZW50IjpbIiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkge1xyXG4gICAgJCgnI2Jvb2tzJykuRGF0YVRhYmxlKCk7XHJcbn0pIl0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9ib29rcy9ib29rcy5qcy5qcyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/books/books.js\n");
+eval("$(function ($) {\n  $('#books').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYm9va3MvYm9va3MuanM/ZGJmMCJdLCJuYW1lcyI6WyIkIiwiRGF0YVRhYmxlIl0sIm1hcHBpbmdzIjoiQUFBQUEsQ0FBQyxDQUFDLFVBQVNBLENBQVQsRUFBWTtBQUNWQSxFQUFBQSxDQUFDLENBQUMsUUFBRCxDQUFELENBQVlDLFNBQVo7QUFDSCxDQUZBLENBQUQiLCJzb3VyY2VzQ29udGVudCI6WyIkKGZ1bmN0aW9uKCQpIHtcclxuICAgICQoJyNib29rcycpLkRhdGFUYWJsZSgpO1xyXG59KVxyXG4iXSwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL2Jvb2tzL2Jvb2tzLmpzLmpzIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/books/books.js\n");
 
 /***/ })
 

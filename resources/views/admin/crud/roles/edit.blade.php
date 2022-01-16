@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Edit Role')
 
 @section('header-navigation')
     @parent

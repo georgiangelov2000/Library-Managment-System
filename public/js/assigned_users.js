@@ -15,7 +15,7 @@
   \*******************************************************/
 /***/ (() => {
 
-eval("$(document).ready(function () {\n  $('#assigned-users').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXNzaWduZWRfdXNlcnMvYXNzaWduZWRfdXNlcnMuanM/MWZmYyJdLCJuYW1lcyI6WyIkIiwiZG9jdW1lbnQiLCJyZWFkeSIsIkRhdGFUYWJsZSJdLCJtYXBwaW5ncyI6IkFBQUFBLENBQUMsQ0FBQ0MsUUFBRCxDQUFELENBQVlDLEtBQVosQ0FBa0IsWUFBVztBQUN6QkYsRUFBQUEsQ0FBQyxDQUFDLGlCQUFELENBQUQsQ0FBcUJHLFNBQXJCO0FBQ0gsQ0FGRCIsInNvdXJjZXNDb250ZW50IjpbIiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkge1xyXG4gICAgJCgnI2Fzc2lnbmVkLXVzZXJzJykuRGF0YVRhYmxlKCk7XHJcbn0pIl0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy9hc3NpZ25lZF91c2Vycy9hc3NpZ25lZF91c2Vycy5qcy5qcyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/assigned_users/assigned_users.js\n");
+eval("$(function ($) {\n  $('#assigned-users').DataTable();\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXNzaWduZWRfdXNlcnMvYXNzaWduZWRfdXNlcnMuanM/MWZmYyJdLCJuYW1lcyI6WyIkIiwiRGF0YVRhYmxlIl0sIm1hcHBpbmdzIjoiQUFBQUEsQ0FBQyxDQUFDLFVBQVNBLENBQVQsRUFBWTtBQUNWQSxFQUFBQSxDQUFDLENBQUMsaUJBQUQsQ0FBRCxDQUFxQkMsU0FBckI7QUFDSCxDQUZBLENBQUQiLCJzb3VyY2VzQ29udGVudCI6WyIkKGZ1bmN0aW9uKCQpIHtcclxuICAgICQoJyNhc3NpZ25lZC11c2VycycpLkRhdGFUYWJsZSgpO1xyXG59KSJdLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvYXNzaWduZWRfdXNlcnMvYXNzaWduZWRfdXNlcnMuanMuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/assigned_users/assigned_users.js\n");
 
 /***/ })
 

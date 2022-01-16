@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Admins')
 
 @section('header-navigation')
     @parent
@@ -21,6 +22,8 @@
                                 <th>E-mail</th>
                                 <th>Genders</th>
                                 <th>Date of birth</th>
+                                <th>Last Seen</th>
+                                <th>Status</th>
                                 <th>Created</th>
                                 <th>Updated</th>
                             </tr>
@@ -41,6 +44,16 @@
                                         </td>
                                     @endif
                                     <td>{{ $value->dob }}</td>
+                                    <td>
+                                        {{ Carbon\Carbon::parse($value->last_seen)->diffForHumans() }}
+                                    </td>
+                                    <td>
+                                        @if (Cache::has('user-is-online-' . $value->id))
+                                            <span class="text-success">Online</span>
+                                        @else
+                                            <span class="text-danger">Offline</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $value->created_at }}</td>
                                     <td>{{ $value->updated_at }}</td>
                                 </tr>

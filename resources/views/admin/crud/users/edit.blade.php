@@ -1,4 +1,5 @@
 @extends('admin.home')
+@section('title', 'Managment System - Edit User')
 
 @section('header-navigation')
     @parent
@@ -18,17 +19,18 @@
             <h5 class="m-0">Edit User</h5>
         </div>
         <div class="card-body">
-            <form method="POST"  multipart="true" enctype="multipart/form-data" action="{{ route('user.update', $editData['0']->id) }}"
-                class="d-flex flex-wrap flex-column">
+            <form method="POST" multipart="true" enctype="multipart/form-data"
+                action="{{ route('user.update', $editData['0']->id) }}" class="d-flex flex-wrap flex-column">
                 @csrf
 
                 <div class="col-md-6 d-flex justify-content-left">
-                    <img src="{{ !empty($editData['0']->image) ? url('upload/images/'.$editData['0']->image) :  url('upload/images/noimage.png') }}  " class="img-thumbnail rounded mb-1" style="width:50px" alt="...">
+                    <img src="{{ !empty($editData['0']->image) ? url('upload/images/' . $editData['0']->image) : url('upload/images/noimage.png') }}  "
+                        class="img-thumbnail rounded mb-1" style="width:50px" alt="...">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="image" class="form-label">File</label>
-                    <input class="form-control form-control-sm"  name="image" type="file" id="image">
+                    <input class="form-control form-control-sm" name="image" type="file" id="image">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -69,27 +71,20 @@
                     <label for="email">Email</label>
                     <input class="form-control form-control-sm" id="email" value="{{ $editData['0']->email }}"
                         type="email" name="email" placeholder="email">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
+
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="dob">Date of Birth</label>
-                    <input class="form-control form-control-sm" id="dob" value="{{ $editData['0']->dob }}" type="dob"
+                    <input class="form-control form-control-sm" id="dob" value="{{ $editData['0']->dob }}" type="date"
                         name="dob" placeholder="dob">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
+
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
                     <input class="form-control form-control-sm" id="password" value="" type="password" name="password"
                         placeholder="password">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
                 </div>
 
                 <div class="form-group col-md-6">
