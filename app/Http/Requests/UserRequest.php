@@ -28,10 +28,23 @@ class UserRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email',
             'role_id' => 'required',
-            'gender_id' => 'required',
-            'image' => 'required',
+            'gender_id' => '',
+            'dob' => '',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password' => 'required',
         ];
-        
     }
+
+    public function message(){
+        return [
+            'name.required' => 'required',
+            'email.required.email' => 'required',
+            'role_id.required' => 'required',
+            'gender_id.required' => 'required',
+            'dob' => 'date|required',
+            'image.required' => 'required|file|image',
+            'password.required' => 'required',
+        ];
+    }
+
 }

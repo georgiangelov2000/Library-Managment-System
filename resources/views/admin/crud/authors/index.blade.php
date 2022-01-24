@@ -11,14 +11,13 @@
 
 @section('content')
     <div class="row m-auto pt-2">
-        @include('components.success-box.successfullly-message')
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover" id="authors">
+                    <table class="table table-hover dataTable" id="authors">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Name</th>
                                 <th>Genres</th>
                                 <th>Genders</th>

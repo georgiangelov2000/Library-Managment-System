@@ -10,31 +10,37 @@
 @endsection
 
 @section('content')
-    <div class="col-md-11  m-auto mt-3">
-        <div class="card card-primary card-outline">
-
-            <div class="card-header bg-white">
-                <h3 class="card-title mb-0">Comments</h3>
-            </div>
-
-            <div class="card-body p-0">
-                <div class="table-responsive comment-messages">
-                    <table class="table table-hover table-striped m-0">
+    <div class="row m-auto pt-2">
+        <div>
+            <div class="card shadow-none">
+                <div class="card-body table-responsive p-2">
+                    <table class="table table-hover dataTable" id="commentsTable">
+                        <thead>
+                            <tr>
+                                <th>Comment</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             @foreach ($assignComments as $key => $comment)
                                 <tr>
-                                    <td class="comment-name" style="width:64%">
-                                        <small><strong>Comment:</strong> {{ $comment->name }}</small>
-                                    </td>
-                                    <td class="comment-created-at">
-                                        <small>
-                                            <strong>Created:</strong>
-                                            {{ $comment->created_at }}
-                                        </small>
+                                    <td>
+                                        <div class="scrollable">
+                                            {{$comment->name}}
+                                        </div>
                                     </td>
                                     <td>
-                                        <a  title="delete" id="delete"
-                                            class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                        {{ $comment->created_at }}
+                                    </td>
+                                    <td>
+
+                                        {{ $comment->updated_at }}
+                                    </td>
+                                    <td>
+                                        <a title="edit" id="edit" href={{ route('comment.edit', $comment->user_id) }}
+                                            class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -44,4 +50,8 @@
             </div>
         </div>
     </div>
-@stop
+
+    @push('scripts')
+        <script type="text/javascript" src="{{ mix('js/comments.js') }}"></script>
+    @endpush
+@endsection

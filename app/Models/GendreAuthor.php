@@ -17,9 +17,4 @@ class GendreAuthor extends Model
 
     use HasFactory;
 
-    // public function authors(){
-    //     return $this->hasOne(Author::class,'genre_id','id');
-    // }
-    
-
 }

@@ -11,7 +11,7 @@
 @section('content')
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">
     </div>
-    <div class="card card-default col-md-8 ml-4 p-0">
+    <div class="card card-form card-default col-md-8 ml-4 p-0">
         <div class="card-header">
             <h5 class="m-0">Edit Book</h5>
         </div>
@@ -22,7 +22,7 @@
 
                 <div class="col-md-6 d-flex justify-content-left">
                     <img src="{{ !empty($editData['0']->image) ? url('upload/images/' . $editData['0']->image) : url('upload/images/noimage.png') }}  "
-                        class="img-thumbnail rounded mb-1" style="width:50px" alt="...">
+                        class="mb-1"  alt="...">
                 </div>
 
                 <div class="form-group col-md-6">

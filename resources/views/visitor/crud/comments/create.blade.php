@@ -8,7 +8,7 @@
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">
     </div>
 
-    <div class="card card-default p-0 col-md-8 ml-4">
+    <div class="card card-form card-default p-0 col-md-8 ml-4">
         <div class="card-header">
             <h5 class="m-0">Create Comment</h5>
         </div>

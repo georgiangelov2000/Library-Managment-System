@@ -10,16 +10,14 @@
 @endsection
 
 @section('content')
-
     <div class="row m-auto pt-2">
-        @include('components.success-box.successfullly-message')
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover" id="userTable">
+                    <table class="table table-hover dataTable" id="userTable">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>E-mail</th>
@@ -39,28 +37,28 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>
                                         <img src="{{ !empty($value->image) ? url('upload/images/' . $value->image) : url('upload/images/noimage.png') }}  "
-                                            class="rounded d-block" style="width:50px" alt="...">
+                                            alt="...">
                                     </td>
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->email }}</td>
-                                    @if ($value->role_id == 2)
+                                    @if ($value['roles']['name'] == 'admin')
                                         <td class="text-center">
-                                            <i class="fas fa-user-lock"></i>
+                                            <i class="fas fa-user-lock" title="{{ $value['roles']['name'] }}"></i>
                                         </td>
-                                    @elseif($value->role_id == 1)
+                                    @elseif($value['roles']['name'] == 'visitor')
                                         <td class="text-center">
-                                            <i class="fas fa-user-tie"></i>
+                                            <i class="fas fa-user-tie" title="{{ $value['roles']['name'] }}"></i>
                                         </td>
                                     @else
 
                                     @endif
-                                    @if ($value->gender_id == 1)
+                                    @if ($value['genders']['name'] == 'm')
                                         <td class="text-center">
-                                            <i style="font-size:2rem" class="fas fa-male text-primary"></i>
+                                            <i class="fa fa-mars text-primary"></i>
                                         </td>
-                                    @elseif($value->gender_id == 2)
+                                    @elseif($value['genders']['name'] == 'f')
                                         <td class="text-center">
-                                            <i style="font-size:2rem" class="fas fa-female text-danger"></i>
+                                            <i class="fa fa-mercury text-danger"></i>
                                         </td>
                                     @else
                                         <td class="text-center">
@@ -73,9 +71,9 @@
                                     </td>
                                     <td>
                                         @if (Cache::has('user-is-online-' . $value->id))
-                                            <span class="text-success">Online</span>
+                                            <i class=" ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i>
                                         @else
-                                            <span class="text-danger">Offline</span>
+                                            <i class=" ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i>
                                         @endif
                                     </td>
                                     <td>{{ $value->created_at }}</td>

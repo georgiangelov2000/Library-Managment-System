@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Visitor\Book;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StatusRequest;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\BooksFlags;
@@ -18,14 +19,6 @@ class BookController extends Controller
         $id = Auth::id();
         $allBooks=User::find($id)->visitorBooks()->get();
         return view('visitor.crud.books.index', ['books'=>$allBooks,'flags' => $flags]);
-    }
-
-    public function updateStatus(Request $request, $id)
-    {
-        $book = Book::where('id', $id)->first();
-        $book->flag_id = $request->flag_id;
-        $book->save();
-        return redirect()->back()->with('message', 'Successfully updated book status!');
     }
 
     public function favouriteStatusPage()

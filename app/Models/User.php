@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -25,7 +24,9 @@ class User extends Authenticatable
         'password',
         'image',
         'role_id',
-        'last_seen'
+        'last_seen',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -53,6 +54,10 @@ class User extends Authenticatable
 
     public function genders(){
         return $this->belongsTo(Gender::class,'gender_id','id');
+    }
+
+    public function user_flags(){
+        return $this->belongsTo(UserFlags::class,'flag_id','id');
     }
 
     public function books(){

@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('comments')->group(function(){
     Route::get('/create/comment',[AssignCommentController::class,'create'])->name('comment.create');
     Route::post('/store/comment/',[AssignCommentController::class,'store'])->name('comment.store');
-    Route::get('/show/comment/{id}',[AssignCommentController::class,'show'])->name('comment.show');
+    Route::get('/book/comment/{id}',[AssignCommentController::class,'show'])->name('comment.show');
+    Route::get('/comment/edit/{id}',[AssignCommentController::class,'edit'])->name('comment.edit');
+    Route::post('/comment/update/{id}',[AssignCommentController::class,'update'])->name('comment.update');
 });
 
 // dashboard
@@ -21,7 +23,6 @@ Route::prefix('visitors')->group(function () {
 // books
 Route::prefix('books')->group(function () {
     Route::get('/',[BookController::class,'books'])->name('visitors.books');
-    Route::get('/book/{id}',[BookController::class,'show'])->name('show.book');
     Route::get('/favourites',[BookController::class,'favouriteStatusPage'])->name('favourites.page');
     Route::get('/incomigs',[BookController::class,'incomingsStatusPage'])->name('incomings.page');
     Route::get('/readed',[BookController::class,'readedStatusPage'])->name('readed.page');
@@ -31,6 +32,6 @@ Route::prefix('books')->group(function () {
 // profile
 Route::prefix('profile')->group(function () {
     Route::get('/myprofile',[VisitorProfileController::class,'profile'])->name('profile.index');
-    Route::get('/edit/profile/{id}',[VisitorProfileController::class,'getEditProfile'])->name('edit.profile');
+    Route::get('/edit/profile/{user}',[VisitorProfileController::class,'getEditProfile'])->name('edit.profile');
     Route::post('/update/profile/{id}',[VisitorProfileController::class,'postUpdateProfile'])->name('update.profile');
 });

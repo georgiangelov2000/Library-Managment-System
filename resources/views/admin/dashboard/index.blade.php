@@ -24,11 +24,11 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h2 class="m-0">Dashboard</h2>
+                            <h2 class="m-0 dashboard-title">Dashboard</h2>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="library-cms">Library CMS</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
@@ -36,12 +36,13 @@
                     <hr>
                 </div>
             </div>
+            
             <div class="row w-100 m-auto mb-3">
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-warning">
                         <div class="inner d-flex">
                             <div>
-                                <h3>{{ count($users) }}</h3>
+                                <h3>{{ $users }}</h3>
                                 <p>Users</p>
                             </div>
                         </div>
@@ -56,7 +57,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
 
-                            <h3>{{ count($authors) }}</h3>
+                            <h3>{{ $authors }}</h3>
 
                             <p>Authors</p>
                         </div>
@@ -70,7 +71,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{ count($books) }}</h3>
+                            <h3>{{ $books }}</h3>
 
                             <p>Books</p>
                         </div>
@@ -85,7 +86,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner d-flex">
                             <div>
-                                <h3>{{ count($roles) }}</h3>
+                                <h3>{{ $roles }}</h3>
                                 <p>Roles</p>
                             </div>
                         </div>
@@ -99,7 +100,7 @@
 
             <div class="content-header mt-0 pt-0">
                 <div class="col-sm-6">
-                    <h2>Additional information</h2>
+                    <h2 class="dashboard-title">Additional information</h2>
                 </div>
                 <div class="container-fluid">
                     <hr style="height:1.5px">
@@ -114,8 +115,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Waiting Users</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                {{ $waitingUsers }}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -131,8 +131,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Approved Users</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                {{ $approvedUsers }}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -148,9 +147,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Assigned Books</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
-                            </span>
+                               {{$assignedBooks}}
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -165,8 +162,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Genders</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                {{ $genders }}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -181,8 +177,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Genres Books</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                {{$genreBooks}}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -197,8 +192,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Genres Authors</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                {{$genreAuthors}}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -213,8 +207,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Comments</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                {{$comments}}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -230,18 +223,14 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Readers</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                {{$readers}}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                 </div>
-
-
             </div>
-
         </div>
 
     </section>

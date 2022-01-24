@@ -12,7 +12,7 @@
 @section('content')
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">
     </div>
-    <div class="card card-default col-md-8 ml-4 p-0">
+    <div class="card card-form card-default col-md-8 ml-4 p-0">
         <div class="card-header">
             <h5 class="m-0">Create Role</h5>
         </div>

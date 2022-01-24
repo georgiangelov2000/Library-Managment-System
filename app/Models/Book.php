@@ -27,9 +27,4 @@ class Book extends Model
     public function flags(){
         return $this->belongsTo(BooksFlags::class,'flag_id','id');
     }
-
-    public function testUsers()
-    {
-        return $this->belongsToMany(User::class,'assign_books', 'book_id', 'user_id');
-    }
 }

@@ -14,18 +14,18 @@
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">
     </div>
 
-    <div class="card card-default col-md-8 ml-4 p-0">
+    <div class="card card-form card-default col-md-8 ml-4 p-0">
         <div class="card-header">
             <h5 class="m-0">Edit User</h5>
         </div>
         <div class="card-body">
             <form method="POST" multipart="true" enctype="multipart/form-data"
-                action="{{ route('user.update', $editData['0']->id) }}" class="d-flex flex-wrap flex-column">
+                action="{{ route('user.update', $user->id) }}" class="d-flex flex-wrap flex-column">
                 @csrf
 
                 <div class="col-md-6 d-flex justify-content-left">
-                    <img src="{{ !empty($editData['0']->image) ? url('upload/images/' . $editData['0']->image) : url('upload/images/noimage.png') }}  "
-                        class="img-thumbnail rounded mb-1" style="width:50px" alt="...">
+                    <img src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
+                        class="mb-1" alt="...">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -35,7 +35,7 @@
 
                 <div class="form-group col-md-6">
                     <label for="name">Name</label>
-                    <input class="form-control form-control-sm" id="name" value="{{ $editData['0']->name }}" type="text"
+                    <input class="form-control form-control-sm" id="name" value="{{ $user->name }}" type="text"
                         name="name" placeholder="Name">
                     @error('name')
                         <span class="text-danger"> </span>
@@ -47,7 +47,7 @@
                     <select class="form-control form-control-sm" name="role_id" id="role_id" aria-invalid="false">
                         @foreach ($roles as $role)
                             <option value="{{ $role->id }} "
-                                {{ $editData['0']->role_id == $role->id ? 'selected' : '' }}>
+                                {{ $user->role_id == $role->id ? 'selected' : '' }}>
                                 {{ $role->name }}
                             </option>
                         @endforeach
@@ -60,7 +60,7 @@
                     <select class="form-control form-control-sm" name="gender_id" id="gender_id" aria-invalid="false">
                         @foreach ($genders as $gender)
                             <option value="{{ $gender->id }} "
-                                {{ $editData['0']->gender_id == $gender->id ? 'selected' : '' }}>
+                                {{ $user->gender_id == $gender->id ? 'selected' : '' }}>
                                 {{ $gender->name }}
                             </option>
                         @endforeach
@@ -69,14 +69,14 @@
 
                 <div class="form-group col-md-6">
                     <label for="email">Email</label>
-                    <input class="form-control form-control-sm" id="email" value="{{ $editData['0']->email }}"
+                    <input class="form-control form-control-sm" id="email" value="{{ $user->email }}"
                         type="email" name="email" placeholder="email">
 
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="dob">Date of Birth</label>
-                    <input class="form-control form-control-sm" id="dob" value="{{ $editData['0']->dob }}" type="date"
+                    <input class="form-control form-control-sm" id="dob" value="{{ $user->dob }}" type="date"
                         name="dob" placeholder="dob">
 
                 </div>

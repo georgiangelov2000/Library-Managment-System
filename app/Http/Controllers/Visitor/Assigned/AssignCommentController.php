@@ -6,21 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AssignedCommentRequest;
 use App\Models\AssignBook;
 use App\Models\AssignComment;
+use App\Models\Book;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 
 
 class AssignCommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +43,7 @@ class AssignCommentController extends Controller
         $comment->user_id=$user;
         $comment->book_id=$request->book_id;
         $comment->save();
-        return redirect()->route('comments.index')->with('message', 'Successfully created data!');
+        return redirect()->route('comment.show',$user)->with('message', 'Successfully created data!');
     }
 
     /**
@@ -59,7 +54,8 @@ class AssignCommentController extends Controller
      */
     public function show($id)
     {
-      $assignComments=AssignComment::select('name','created_at','updated_at','book_id')->where('book_id','=',$id)->get();
+      $id=Auth::id($id);
+      $assignComments=AssignComment::where('user_id', '=', $id)->get();
       return view('visitor.crud.comments.inbox',['assignComments'=>$assignComments]);
     }
 
@@ -71,7 +67,9 @@ class AssignCommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=Auth::id();
+        $comment = User::find($user)->comments()->where(['id' => $id])->first(); 
+        return view('visitor.crud.comments.edit',compact('comment'));
     }
 
     /**
@@ -83,7 +81,11 @@ class AssignCommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=Auth::id();
+        $comment=User::find($user)->comments()->where(['id' => $id])->first();
+        $comment->name=$request->name;
+        $comment->save();
+        return redirect()->route('comment.show',$user)->with('message', 'Successfully created data!');
     }
 
     /**
@@ -92,8 +94,10 @@ class AssignCommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $comment=AssignComment::find($id);
+        $comment->delete();
+        return redirect()->back();
     }
 }

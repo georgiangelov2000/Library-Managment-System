@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Genre;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GenreBookRequest;
-use App\Models\Book;
 use App\Models\GendreBook;
 use Illuminate\Http\Request;
 
@@ -39,22 +38,10 @@ class GendreBookController extends Controller
      */
     public function store(GenreBookRequest $request)
     {
-        $data = new GendreBook();
-        $data->name=$request->name;
-        $data->save();
-
+        $validated=$request->validated();
+        $genre = GendreBook::create($validated);
+        $genre->save();
         return redirect()->route('gendre.book.index')->with('message', 'Successfully created data!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -62,11 +49,10 @@ class GendreBookController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    */
+    public function edit(GendreBook $genre)
     {
-        $gendre=GendreBook::find($id);
-        return view('admin.crud.gendre-books.edit', compact('gendre'));
+        return view('admin.crud.gendre-books.edit', compact('genre'));
     }
 
     /**
@@ -76,11 +62,10 @@ class GendreBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenreBookRequest $request, GendreBook $genre)
     {
-        $data=GendreBook::find($id);
-        $data->name=$request->name;
-        $data->save();
+        $validated = $request->validated();
+        $genre->update($validated);
         return redirect()->route('gendre.book.index')->with('message', 'Successfully updated data!');
     }
 
@@ -90,16 +75,14 @@ class GendreBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(GendreBook $genre)
     {
-        $data=GendreBook::find($id);
-        $data->delete();
-        return redirect()->route('gendre.book.index');
+        $genre->delete();
+        return redirect()->back();
     }
 
-    public function genreBooks ($id){
-        $data['allData'] = GendreBook::find($id)->books;
-        // $data['allData'] = Book::select('name', 'image','book_no','year')->where('genre_id', $id)->get();
-        return view('admin.crud.gendre-books.assigned-books', $data);
+    public function genreBooks (GendreBook $genre){
+        $books = $genre->books()->get();
+        return view('admin.crud.gendre-books.assigned-books',['books'=>$books]);
     }
 }

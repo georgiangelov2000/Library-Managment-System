@@ -18,7 +18,6 @@ class GendreAuthorController extends Controller
      */
     public function index()
     {   
-        // return GendreAuthor::find(4)->authors;   
         $data['allData'] = GendreAuthor::all();
         return view('admin.crud.gendre-authors.index',$data);
     }
@@ -41,9 +40,9 @@ class GendreAuthorController extends Controller
      */
     public function store(GenreAuthorRequest $request)
     {
-        $data = new GendreAuthor();
-        $data->name=$request->name;
-        $data->save();
+        $validated=$request->validated();
+        $genre = GendreAuthor::create($validated);
+        $genre->save();
 
         return redirect()->route('gendre.author.index')->with('message', 'Successfully created data!');
     }
@@ -65,10 +64,9 @@ class GendreAuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(GendreAuthor $genre)
     {
-        $gendre=GendreAuthor::find($id);
-        return view('admin.crud.gendre-authors.edit', compact('gendre'));
+        return view('admin.crud.gendre-authors.edit', compact('genre'));
     }
 
     /**
@@ -78,11 +76,10 @@ class GendreAuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenreAuthorRequest $request, GendreAuthor $genre)
     {
-        $data=GendreAuthor::find($id);
-        $data->name=$request->name;
-        $data->save();
+        $validated = $request->validated();
+        $genre->update($validated);
         return redirect()->route('gendre.author.index')->with('message', 'Successfully updated data!');
     }
 
@@ -92,17 +89,15 @@ class GendreAuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(GendreAuthor $genre)
     {
-        $data=GendreAuthor::find($id);
-        $data->delete();
+        $genre->delete();
         return redirect()->route('gendre.book.index');
     }
 
-    public function genreAuthors($id){
-        $data['allData'] = GendreAuthor::find($id)->authors;
-        // $data['allData'] = Author::select('name',)->where('genre_id', $id)->get();
-        return view('admin.crud.authors.assigned-authors', $data);
+    public function genreAuthors(GendreAuthor $genre){
+        $authors = $genre->authors()->get();
+        return view('admin.crud.authors.assigned-authors',['authors'=>$authors]);
     }
 
 }

@@ -15,16 +15,5 @@ class GendreBook extends Model
         return $this->hasMany(Book::class,'genre_id','id');
     }
 
-    // public function assignOwner(){
-    //     return $this->hasOneThrough(
-    //         AssignBook::class,
-    //         Book::class,
-    //         'genre_id',
-    //         'book_id',
-    //         'id',
-    //         'id'
-    //     );
-    // }
-
     use HasFactory;
 }

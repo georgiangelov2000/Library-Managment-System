@@ -14,22 +14,22 @@
         <div class="col-12 p-4">
             <div class="card">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover" id="assigned-authors">
+                    <table class="table table-hover dataTable " id="assigned-authors">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Name</th>
+                                <th>Genre</th>
                                 <th>Gender</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key => $value)
+                            @foreach ($authors as $key => $author)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td> {{ $value->name}}</td>
-                                    <td>
-                                        {{ $value->gender_id }}
-                                    </td>
+                                    <td> {{ $author->name}}</td>
+                                    <td> {{ $author['genres']['name']}}</td>
+                                    <td>{{ $author['genders']['name'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -6,7 +6,7 @@
     <div class="register-box d-flex flex-column align-items-center m-auto">
         <div class="card card-outline card-primary w-100 mt-3">
             <div class="card-body login-card-body">
-                <p class="login-box-msg"> {{ __('Register') }} </p>
+                <h3 class="login-box-msg"> {{ __('Register') }} </h3>
                 @include('components.error-box.error-auth')
                 <form method="post" action="{{ route('register') }}">
                     @csrf
@@ -19,7 +19,6 @@
                     <div class="form-group mb-3">
                         <input id="email" type="email" class="form-control form-control-sm" name="email"
                             value="{{ old('email') }}" autocomplete="email" placeholder="Email">
-
                     </div>
 
                     <div class="form-group mb-3">

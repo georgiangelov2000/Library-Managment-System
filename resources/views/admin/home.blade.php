@@ -13,8 +13,9 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -41,25 +42,10 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
-    {{-- <style>
-        table img {
-            transition: transform .2s;
-        }
-
-        table img:hover {
-            -ms-transform: scale(1.5);
-            /* IE 9 */
-            -webkit-transform: scale(1.5);
-            /* Safari 3-8 */
-            transform: scale(1.5);
-        }
-
-    </style> --}}
-
 </head>
 
 <body class="sidebar-mini layout-fixed">
-<div class="wrapper" style="display: none;">
+    <div class="wrapper" style="display: none;">
 
         @section('header-navigation')
             @include('admin.navigations.header-navigation')
@@ -115,24 +101,35 @@
     {{-- Bootstrap Bundle --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
+    @push('scripts')
+        <script type="text/javascript" src="{{ mix('js/sidebar.js') }}"> </script>
+    @endpush
+
     @stack('scripts')
     <script>
         $(function() {
 
-            const toastr=Swal.mixin({
-                toast:true,
-                position:'top-end',
-                showConfirmButton:true,
-                timer:5000
+            // remove # after reload
+            window.location.replace("#");
+
+            if (typeof window.history.replaceState == 'function') {
+                history.replaceState({}, '', window.location.href.slice(0, -1));
+            }
+
+            const toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000
             })
 
-            @if(session('message'))
-                setTimeout(function() { 
-                    toastr['success'](
-                        "{{session('message')}}"
-                    )
-                },200);
-            }@endif
+            @if (session('message'))
+                setTimeout(function () {
+                toastr['success'](
+                "{{ session('message') }}"
+                )
+                }, 200);
+            @endif
 
             if ($('.dataTables_length select').hasClass('form-control-sm')) {
                 $('.form-control-sm').css('padding', '0.15rem 0.95rem')

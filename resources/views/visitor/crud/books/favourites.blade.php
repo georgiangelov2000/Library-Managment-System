@@ -14,12 +14,11 @@
     <div class="row m-auto">
         <div class="col-12 m-auto pt-4">
             <div class="card shadow-none">
-                @include('components.success-box.successfullly-message')
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover" id="mybooks">
+                    <table class="table table-hover dataTable" id="mybooks">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Genre</th>
@@ -33,7 +32,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>
                                         <img src="{{ !empty($book->image) ? url('upload/images/' . $book->image) : url('upload/images/noimage.png') }}  "
-                                            class="rounded" style="width:50px" alt="...">
+                                             alt="...">
                                     </td>
                                     <td>
                                         {{ $book->name }}

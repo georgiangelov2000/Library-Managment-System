@@ -27,4 +27,12 @@ class GenderRequest extends FormRequest
             'name' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Name is required!',
+        ];
+    }
+
 }

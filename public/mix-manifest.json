@@ -14,5 +14,6 @@
     "/js/mybooks.js": "/js/mybooks.js",
     "/js/messages.js": "/js/messages.js",
     "/js/sidebar.js": "/js/sidebar.js",
+    "/js/comments.js": "/js/comments.js",
     "/css/app.css": "/css/app.css"
 }

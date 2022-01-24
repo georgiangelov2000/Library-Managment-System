@@ -15,11 +15,11 @@
                     style="color:#c2c7d0; text-decoration:none; font-size:1rem">{{ Auth::user()->name }}</a>
                 @if (Cache::has('user-is-online-' . Auth::user()->id))
                     <span href="#" class="d-flex align-items-center"
-                        style="margin-top:0.05rem;  font-size:.7rem; color:#c2c7d0;"><i
+                        style="margin-top:.3rem;  font-size:.7rem; color:#c2c7d0;"><i
                             class=" ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i> Online</a>
                     @else
                         <span href="#" class="d-flex align-items-center"
-                            style="margin-top:0.05rem;  font-size:.7rem; color:#c2c7d0;"><i
+                            style="margin-top:.3rem;  font-size:.7rem; color:#c2c7d0;"><i
                                 class=" ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i> Offline</a>
                 @endif
             </div>
@@ -66,7 +66,7 @@
                                         My profile
                                     </p>
                                 </a>
-                                <a class="nav-link" href="{{ route('edit.profile', Auth::id()) }}">
+                                <a class="nav-link" href="{{ route('edit.admin.profile', Auth::id()) }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
                                         Edit profile
@@ -79,8 +79,8 @@
                         <a href="#" class="nav-link">
                             <i class="fas fa-users-cog"></i>
                             <p>
-                                Users <span style="margin-left:33.5%"
-                                    class="badge badge-warning text-dark">{{ count($usersCount) }}</span>
+                                Users <span style="margin-left:33.8%"
+                                    class="badge badge-warning text-dark">{{ $usersCount }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -103,38 +103,33 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="fas fa-user-tag"></i>
+                        <a class="nav-link pl-3" href="{{ route('admin.view.index') }}">
+                            <i class="fas fa-user-lock"></i>
                             <p>
-                                Users Roles <span style="margin-left:16%"
-                                    class="badge badge-warning text-dark">{{ count($usersRolesCount) }}</span>
-                                <i class="right fas fa-angle-left"></i>
+                                Admins
                             </p>
+                            <span style="margin-left:28%" class="badge badge-warning text-dark">
+                                {{ $adminsCount }}
+                            </span>
                         </a>
-                        <ul class="nav nav-treeview" style="display: none;">
-                            <li class="nav-item">
-
-                                <a class="nav-link" href="{{ route('admin.view.index') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Admins
-                                    </p>
-                                </a>
-                                <a class="nav-link" href="{{ route('visitor.view.index') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Visitors
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('visitor.view.index') }}">
+                            <i class="fas fa-user"></i>
+                            <p>
+                                Users
+                            </p>
+                            <span style="margin-left:36%" class="badge badge-warning text-dark">
+                                {{ $visitorsCount }}
+                            </span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link ">
                             <i class="fas fa-user-edit"></i>
                             <p>
                                 Authors <span style="margin-left:27%"
-                                    class="badge badge-warning text-dark">{{ count($authorsCount) }}</span>
+                                    class="badge badge-warning text-dark">{{ $authorsCount }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -160,7 +155,7 @@
                             <i class="fas fa-book"></i>
                             <p>
                                 Books <span style="margin-left:35%"
-                                    class="badge badge-warning text-dark">{{ count($booksCount) }}</span>
+                                    class="badge badge-warning text-dark">{{ $booksCount }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -188,7 +183,7 @@
                             <i class="fas fa-star"></i>
                             <p>
                                 Roles <span style="margin-left:35%"
-                                    class="badge badge-warning text-dark">{{ count($rolesCount) }}</span>
+                                    class="badge badge-warning text-dark">{{ $rolesCount }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -214,8 +209,8 @@
                         <a href="#" class="nav-link ">
                             <i class="fa fa-transgender" aria-hidden="true"></i>
                             <p>
-                                Genders <span style="margin-left:30%"
-                                    class="badge badge-warning text-dark">{{ count($gendersCount) }}</span>
+                                Genders <span style="margin-left:29%"
+                                    class="badge badge-warning text-dark">{{ $gendersCount }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -242,7 +237,7 @@
                             <i class="fab fa-hubspot"></i>
                             <p>
                                 Genres (Books) <span style="margin-left:9%"
-                                    class="badge badge-warning text-dark">{{ count($genresBooks) }}</span>
+                                    class="badge badge-warning text-dark">{{ $genresBooks }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -268,7 +263,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fab fa-hubspot"></i>
                             <p>Genres (Authors) <span style="margin-left:4%" class="badge badge-warning text-dark">
-                                    {{ count($genresAuthors) }}</span>
+                                    {{ $genresAuthors }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -294,18 +289,12 @@
                             <i class="fas fa-tasks"></i>
                             <p>
                                 Assigned Books <span style="margin-left:7%"
-                                    class="badge badge-warning text-dark">{{ count($assigned_booksCount) }}</span>
+                                    class="badge badge-warning text-dark">{{ $assigned_booksCount }}</span>
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('assign.book.index') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        View Assigned Books
-                                    </p>
-                                </a>
                                 <a class="nav-link" href="{{ route('assign.book.create') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
@@ -316,18 +305,18 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('assign.book.index') }}">
+                        <a class="nav-link" href="{{ route('status.approved.users') }}">
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            <p>
-                                Approved Users
+                            <p>Approved Users <span style="margin-left:7%" class="badge badge-warning text-dark">
+                                    {{ $approvedUsersCount }}</span>
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('assign.book.create') }}">
+                        <a class="nav-link" href="{{ route('status.waiting.users') }}">
                             <i class="fa fa-spinner" aria-hidden="true"></i>
-                            <p>
-                                Waiting Users
+                            <p>Waiting Users <span style="margin-left:13%" class="badge badge-warning text-dark">
+                                    {{ $waitingUsersCount }}</span>
                             </p>
                         </a>
                     </li>
@@ -335,146 +324,146 @@
             </nav>
         </div>
     @elseif (Auth::user()->role_id == '1')
-
         <a href="#" class="brand-link d-flex align-items-center justify-content-center">
             <span class="brand-text font-weight-light">Managment System</span>
             <br>
         </a>
-        <div class="user-panel mt-1 pb-1 mb-1 d-flex">
-            <div class="image col-md-2 p-0 ml-4">
-                <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }}  "
-                    class="img-circle elevation-2 w-100" alt="{{ Auth::user()->name }}">
+        @if (Auth::user()->flag_id == '1')
+            <div class="user-panel mt-1 pb-1 mb-1 d-flex">
+                <div class="image col-md-2 p-0 ml-4">
+                    <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }}  "
+                        class="img-circle elevation-2 w-100" alt="{{ Auth::user()->name }}">
+                </div>
+                <div class="info d-flex align-items-center">
+                    <a href="#" class="d-block"
+                        style="color:#c2c7d0; text-decoration:none; font-size:1rem">{{ Auth::user()->name }}</a>
+                    @if (Cache::has('user-is-online-' . Auth::user()->id))
+                        <a href="#" class="d-flex align-items-center"
+                            style="margin-top:0.3rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
+                                class=" ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i> Online</a>
+                    @else
+                        <a href="#" class="d-flex align-items-center"
+                            style="margin-top:0.05rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
+                                class=" ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i> Offline</a>
+                    @endif
+                </div>
             </div>
-            <div class="info d-flex align-items-center">
-                <a href="#" class="d-block"
-                    style="color:#c2c7d0; text-decoration:none; font-size:1rem">{{ Auth::user()->name }}</a>
-                @if (Cache::has('user-is-online-' . Auth::user()->id))
-                    <a href="#" class="d-flex align-items-center"
-                        style="margin-top:0.05rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
-                            class=" ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i> Online</a>
-                @else
-                    <a href="#" class="d-flex align-items-center"
-                        style="margin-top:0.05rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
-                            class=" ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i> Offline</a>
-                @endif
-            </div>
-        </div>
-        <div class="sidebar">
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                    data-accordion="false">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="fas fa-chart-line"></i>
-                            <p>
-                                Dashboard <span class="badge badge-dark text-dark"></span>
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview" style="display: none;">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('visitor.view.dashboard') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Home
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="fas fa-id-card"></i>
-                            <p>
-                                Profile <span class="badge badge-dark text-dark"></span>
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview" style="display: none;">
-                            <li class="nav-item">
+            <div class="sidebar">
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="fas fa-chart-line"></i>
+                                <p>
+                                    Dashboard <span class="badge badge-dark text-dark"></span>
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('visitor.view.dashboard') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Home
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-id-card"></i>
+                                <p>
+                                    Profile <span class="badge badge-dark text-dark"></span>
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
 
-                                <a class="nav-link" href="{{ route('profile.index') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        My Profile
-                                    </p>
-                                </a>
-                                <a class="nav-link" href="{{ route('edit.profile', Auth::id()) }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Edit Profile
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="fas fa-book"></i>
-                            <p>
-                                Books <span class="badge badge-dark text-dark"></span>
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview" style="display: none;">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('visitors.books') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        My books
-                                    </p>
-                                </a>
-                                <a class="nav-link" href="{{ route('favourites.page') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Favourite Books
-                                    </p>
-                                </a>
-                                <a class="nav-link" href="{{ route('incomings.page') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Incoming Books
-                                    </p>
-                                </a>
-                                <a class="nav-link" href="{{ route('readed.page') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Readed Books
-                                    </p>
-                                </a>
-                                <a class="nav-link" href="{{ route('archived.page') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Archived Books
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="fas fa-comments"></i>
-                            <p>
-                                Comments <span class="badge badge-dark text-dark"></span>
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview" style="display: none;">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('comment.create') }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Create Comment
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-            </nav>
-        </div>
+                                    <a class="nav-link" href="{{ route('profile.index') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            My Profile
+                                        </p>
+                                    </a>
+                                    <a class="nav-link" href="{{ route('edit.profile', Auth::id()) }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Edit Profile
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-book"></i>
+                                <p>
+                                    Books <span class="badge badge-dark text-dark"></span>
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('visitors.books') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            My books
+                                        </p>
+                                    </a>
+                                    <a class="nav-link" href="{{ route('favourites.page') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Favourite Books
+                                        </p>
+                                    </a>
+                                    <a class="nav-link" href="{{ route('incomings.page') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Incoming Books
+                                        </p>
+                                    </a>
+                                    <a class="nav-link" href="{{ route('readed.page') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Readed Books
+                                        </p>
+                                    </a>
+                                    <a class="nav-link" href="{{ route('archived.page') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Archived Books
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-comments"></i>
+                                <p>
+                                    Comments <span class="badge badge-dark text-dark"></span>
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('comment.create') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Create Comment
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                </nav>
+            </div>
+        @else
+
+        @endif
+
     @endif
-
-    @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/sidebar.js') }}"></script>
-    @endpush
 </aside>

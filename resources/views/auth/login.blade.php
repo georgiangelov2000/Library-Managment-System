@@ -1,7 +1,7 @@
 <div class="login-box d-flex flex-column align-items-center m-auto">
     <div class="card card-outline card-primary w-100 mt-3">
         <div class="card-body login-card-body rounded ">
-            <p class="login-box-msg">{{ __('Login') }}</p>
+            <h3 class="login-box-msg">{{ __('Login') }}</h3>
             @include('components.error-box.error-auth')
             <form method="post" action="{{ route('login') }}">
                 @csrf

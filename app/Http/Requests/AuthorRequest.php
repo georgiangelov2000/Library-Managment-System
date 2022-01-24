@@ -29,4 +29,13 @@ class AuthorRequest extends FormRequest
             'genre_id' => 'required',
         ];
     }
+
+    public function messages(){
+        return [
+            'name.required' => 'required',
+            'gender.required' => 'required',
+            'genre_id.required' => 'required',
+        ];
+    }
+
 }

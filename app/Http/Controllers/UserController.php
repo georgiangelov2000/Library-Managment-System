@@ -6,10 +6,11 @@ use App\Models\AssignBook;
 use App\Models\Gender;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
+use App\Models\UserFlags;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -18,6 +19,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $data['allData'] = User::whereNotNull('last_seen')
@@ -44,7 +46,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         $user = new User();
         $user->name = $request->name;
@@ -63,6 +65,10 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('message', 'Successfully created data!');
     }
 
+    // $validated =$request->validated();
+
+    // User::create($validated);
+
     /**
      * Display the specified resource.
      *
@@ -80,12 +86,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $data['editData'] = User::where('id', $id)->orderBy('id', 'asc')->get();
-        $data['genders'] = Gender::all();
-        $data['roles'] = Role::all();
-        return view('admin.crud.users.edit', $data);
+        $genders = Gender::all();
+        $roles = Role::all();
+        return view('admin.crud.users.edit',compact('user'),[
+            'genders'=>$genders,
+            'roles'=>$roles
+        ]);
     }
 
     /**
@@ -140,12 +148,14 @@ class UserController extends Controller
 
     public function visitorIndex()
     {
-        $data['allData'] = DB::table('users')
+        $users = DB::table('users')
             ->where('role_id', '=', 1)
             ->whereNotNull('last_seen')
             ->orderBy('last_seen', 'DESC')
             ->get();
-        return view('admin.crud.users.visitorView', $data);
+            
+        $flags = UserFlags::all();
+        return view('admin.crud.users.visitorView', ['users'=>$users, 'flags'=>$flags]);
     }
 
     public function visitorBook($id)
@@ -154,39 +164,10 @@ class UserController extends Controller
         return view('admin.crud.books.assigned-books', $data);
     }
 
-    public function adminProfile()
-    {
-        $data['user'] = Auth::user();
-        return view('admin.crud.admin-profile.profile', $data);
-    }
-
-    public function editAdminProfile($id)
-    {
-        $data['user'] = User::where('id', $id)->get();
-        $data['genders'] = Gender::all();
-        return view('admin.crud.admin-profile.edit-profile', $data);
-    }
-
-    public function updateAdminProfile(Request $request, $id)
-    {
-        $user = User::where('id', $id)->first();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->dob = $request->dob;
-        $user->gender_id = $request->gender_id;
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/images'), $filename);
-            $user['image'] = $filename;
-        }
-        $user->save();
-        return redirect()->route('profile.index')->with('message', 'Successfully updated data!');
-    }
-
     public function comments($id)
     {
         $data['comments'] = User::find($id)->comments;
         return view('admin.crud.users.comments.comments', $data);
     }
+
 }

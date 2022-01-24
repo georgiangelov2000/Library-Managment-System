@@ -39,33 +39,20 @@ class GenderController extends Controller
      */
     public function store(GenderRequest $request)
     {
-        $data = new Gender();
-        $data->name=$request->name;
-        $data->save();
-
+        $validated = $request->validated();
+        $gender = Gender::create($validated);
+        $gender->save();
         return redirect()->route('gender.index')->with('message', 'Successfully created data!');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gender $gender)
     {
-        $gender=Gender::find($id);
         return view('admin.crud.genders.edit', compact('gender'));
     }
 
@@ -76,11 +63,10 @@ class GenderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenderRequest $request,Gender $gender)
     {
-        $data=Gender::find($id);
-        $data->name=$request->name;
-        $data->save();
+        $validated= $request->validated();
+        $gender->update($validated);
         return redirect()->route('gender.index')->with('message', 'Successfully updated data!');
     }
 
@@ -90,21 +76,19 @@ class GenderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Gender $gender)
     {
-        $data=Gender::find($id);
-        $data->delete();
-        return redirect()->route('gender.index');
+        $gender->delete();
+        return redirect()->back();
     }
 
-    public function userGender($id){
-        $data['allData'] = Gender::find($id)->users;
-        // $data['allData'] = User::select('name','dob','image',)->where('gender_id', $id)->get();
-        return view('admin.crud.genders.assigned-users',$data);
+    public function userGender(Gender $gender){
+        $users= $gender->users()->get();
+        return view('admin.crud.genders.assigned-users',['users'=>$users]);
     }
 
-    public function authorGender($id){
-        $data['allData'] = Gender::find($id)->authors;
-        return view('admin.crud.genders.assinged-authors',$data);
+    public function authorGender(Gender $gender) {
+        $authors= $gender->authors()->get();
+        return view('admin.crud.genders.assinged-authors',['authors'=>$authors]);
     }
 }

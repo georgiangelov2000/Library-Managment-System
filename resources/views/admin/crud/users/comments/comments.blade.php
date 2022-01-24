@@ -10,54 +10,55 @@
 @endsection
 
 @section('content')
-
-    <div class="col-md-11 m-auto mt-3">
-        <div class="card card-primary card-outline">
-
-            <div class="card-header bg-white">
-                <h3 class="card-title mb-0">Comments</h3>
-            </div>
-
-            <div class="card-body p-0">
-                <div class="table-responsive comment-messages">
-                    <table class="table table-hover table-striped m-0">
+    <div class="row m-auto pt-2">
+        <div>
+            <div class="card shadow-none">
+                <div class="card-body table-responsive p-2">
+                    <table class="table table-hover dataTable" id="commentsUsersTable">
+                        <thead>
+                            <tr>
+                                <th>Comment</th>
+                                <th>Book</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            @if (count($comments) <= 0)
+                            @foreach ($comments as $key => $comment)
                                 <tr>
-                                    <td class="text-center w-100">
-                                        Data Not Found
                                     <td>
-                                <tr>
-                                @else
-                                    @foreach ($comments as $key => $comment)
-                                <tr>
-                                    <td class="comment-name" style="width:64%">
-                                        <small><strong>Comment:</strong> {{ $comment->name }}</small>
+                                        <div class="scrollable">
+                                            {{ $comment->name }}
+                                        </div>
                                     </td>
+
                                     <td>
-                                        <small>
-                                            <strong>Book:</strong>
-                                            {{ $comment['books']['name'] }}
-                                        </small>
+                                        {{ $comment['books']['name'] }}
                                     </td>
+
                                     <td class="comment-created-at">
-                                        <small>
-                                            <strong>Created:</strong>
-                                            {{ $comment->created_at }}
-                                        </small>
+
+                                        {{ $comment->created_at }}
                                     </td>
+
+                                    <td class="comment-updated-at">
+
+                                        {{ $comment->updated_at }}
+                                    </td>
+
                                     <td>
-                                        <a  title="delete" id="delete"
+                                        <a title="delete" id="delete"
+                                            href="{{ route('delete.user.comment', $comment->id) }}"
                                             class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                     </td>
+
                                 </tr>
                             @endforeach
-                            @endif
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-@stop
+@endsection

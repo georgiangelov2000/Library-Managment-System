@@ -11,15 +11,13 @@
 
 @section('content')
     <div class="row m-auto pt-2">
-
-        @include('components.success-box.successfullly-message')
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
                     <table class="table table-hover" id="genders">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Name</th>
                                 <th>Created</th>
                                 <th>Updated</th>
@@ -32,11 +30,11 @@
                                     <td>{{ $key + 1 }}</td>
                                     @if ($gender->name === 'm')
                                         <td class="">
-                                            <i style="font-size:2rem" class="ml-4 fas fa-male text-primary"></i>
+                                            <i class="fa fa-mars text-primary"></i>
                                         </td>
                                     @elseif($gender->name === 'f')
                                         <td class="">
-                                            <i style="font-size:2rem" class="ml-4 fas fa-female text-danger"></i>
+                                            <i class="fa fa-mercury text-danger"></i>
                                         </td>
                                     @endif
                                     <td>{{ $gender->created_at }}</td>

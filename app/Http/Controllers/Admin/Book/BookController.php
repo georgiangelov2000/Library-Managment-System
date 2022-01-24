@@ -75,9 +75,11 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        //
+        $book = Book::where('id', $id)->first();
+        return view('visitor.crud.books.details', compact('book'));
     }
 
     /**

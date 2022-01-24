@@ -10,7 +10,7 @@
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">
     </div>
 
-    <div class="card card-default p-0 col-md-8 ml-4">
+    <div class="card card-form card-default p-0 col-md-8 ml-4">
         <div class="card-header">
             <h5 class="m-0">Create Book</h5>
         </div>
@@ -19,6 +19,7 @@
             <form method="POST" multipart="true" enctype="multipart/form-data" action="{{ route('book.store') }}"
                 class="d-flex flex-wrap flex-column">
                 @csrf
+                <div class="row justify-content-end">
                 <div class="form-group col-md-6">
                     <label for="image" class="form-label">File</label>
                     <input class="form-control form-control-sm" name="image" type="file" id="image">
@@ -53,9 +54,10 @@
                         rows="3"></textarea>
                 </div>
                 <div class="form-group col-md-6">
-                    <button style="margin-top: 2rem;" type="submit" name="submit" value="submit"
+                    <button type="submit" name="submit" value="submit"
                         class="btn btn-primary btn-sm col-md-12">Submit</button>
                 </div>
+            </div>
             </form>
         </div>
         <div class="card-footer pt-5">

@@ -17,7 +17,6 @@ class RoleController extends Controller
      */
     public function index()
     { 
-        //  return Role::find(2)->user;
         $data['allData'] = Role::all();
         return view('admin.crud.roles.index',$data);
     }
@@ -40,22 +39,11 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
-        $data = new Role();
-        $data->name=$request->name;
-        $data->save();
+        $validated = $request->validated();
+        $author = Role::create($validated);
+        $author->save();
 
         return redirect()->route('role.index')->with('message', 'Successfully created data!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -64,9 +52,8 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        $role=Role::find($id);
         return view('admin.crud.roles.edit', compact('role'));
     }
 
@@ -77,11 +64,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, Role $role )
     {
-        $data=Role::find($id);
-        $data->name=$request->name;
-        $data->save();
+        $validated = $request->validated();
+        $role->update($validated);
+        
         return redirect()->route('role.index')->with('message', 'Successfully updated data!');
     }
 
@@ -91,16 +78,14 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Role $role)
     {
-        $data=Role::find($id);
-        $data->delete();
-        return redirect()->route('role.index');
+        $role->delete();
+        return redirect()->back();
     }
 
-    public function userRole($id){
-        $data['allData'] = Role::find($id)->users;
-        // $data['allData'] = User::select('name','dob','image',)->where('role_id', $id)->get();
-        return view('admin.crud.roles.assigned-users',$data);
+    public function userRole(Role $role){
+        $users = $role->users()->get();
+        return view('admin.crud.roles.assigned-users',['users'=>$users]);
     }
 }

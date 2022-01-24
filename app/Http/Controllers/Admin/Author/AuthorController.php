@@ -42,23 +42,10 @@ class AuthorController extends Controller
      */
     public function store(AuthorRequest $request)
     {
-        $author = new Author();
-        $author->name = $request->name;
-        $author->gender_id = $request->gender_id;
-        $author->genre_id = $request->genre_id;
+        $validated = $request->validated();
+        $author = Author::create($validated);
         $author->save();
-        return redirect()->route('author.index')->with('message', 'Successfully created data!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->route('author.index')->with('message','Successfully created data!');
     }
 
     /**
@@ -67,28 +54,27 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Author $author)
     {
-        $data['editData'] = Author::where('id', $id)->orderBy('id', 'asc')->get();
-        $data['genres'] = GendreAuthor::all();
-        $data['genders'] = Gender::all();
-        return view('admin.crud.authors.edit', $data);
+        $genres = GendreAuthor::all();
+        $genders = Gender::all();
+        return view('admin.crud.authors.edit',compact('author'),
+        ['genres'=>$genres,'genders'=>$genders]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+    * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AuthorRequest $request, Author $author)
+
     {
-        $data = Author::where('id', $id)->first();
-        $data->name = $request->name;
-        $data->gender_id = $request->gender_id;
-        $data->genre_id = $request->genre_id;
-        $data->save();
+        $validated = $request->validated();
+        $author->update($validated);
+
         return redirect()->route('author.index')->with('message', 'Successfully updated data!');
     }
 
@@ -98,10 +84,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Author $author)
     {
-        $data = Author::find($id);
-        $data->delete();
-        return redirect()->route('author.index');
+        $author->delete();
+        return redirect()->back();
     }
 }

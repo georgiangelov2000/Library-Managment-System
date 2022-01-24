@@ -13,5 +13,15 @@ $(function () {
             $(".user-panel .image").removeClass("image col-md-7 p-0 ml-3").addClass("image col-md-2 p-0 ml-4");
             $(".brand-link").removeClass("d-none");
         }
-    });      
+    });  
+    
+    $("aside").hover(function() {
+        if($('body').hasClass("sidebar-collapse")) {
+        $(".brand-link").addClass("d-none");
+        $(".user-panel").addClass("d-none");
+        }
+    }, function() {
+        $(".user-panel").removeClass('d-none').addClass("d-block");
+    });
+    
 });

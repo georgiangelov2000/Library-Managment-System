@@ -15,18 +15,18 @@ class DashboardController extends Controller
         $id = Auth::id();
 
         $comments = AssignComment::where('user_id', '=', $id)->get();
-        $commentsCollection = collect($comments);
+        $commentsCollection = collect($comments)->count();
 
         //all books
-        $allBooks=User::find($id)->visitorBooks()->get();
+        $allBooks=User::find($id)->visitorBooks()->count();
         //favourites        
-        $bookFavCount=User::find($id)->visitorBooks()->where('flag_id',1 )->get();
+        $bookFavCount=User::find($id)->visitorBooks()->where('flag_id',1 )->count();
         //incomigs
-        $bookIncCount=User::find($id)->visitorBooks()->where('flag_id',2 )->get();
+        $bookIncCount=User::find($id)->visitorBooks()->where('flag_id',2 )->count();
         //readed
-        $bookReadedCount=User::find($id)->visitorBooks()->where('flag_id',3 )->get();
+        $bookReadedCount=User::find($id)->visitorBooks()->where('flag_id',3 )->count();
         //archived
-        $bookArchCount=User::find($id)->visitorBooks()->where('flag_id',4 )->get();
+        $bookArchCount=User::find($id)->visitorBooks()->where('flag_id',4 )->count();
 
         return view('visitor.dashboard.index',compact('commentsCollection','allBooks','bookFavCount','bookIncCount','bookReadedCount','bookArchCount'));
     }

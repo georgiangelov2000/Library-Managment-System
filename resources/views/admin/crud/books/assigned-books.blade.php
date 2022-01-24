@@ -11,29 +11,13 @@
 
 @section('content')
     <div class="row m-auto pt-2">
-        <div class="col-12 p-4">
+        <div>
             <div class="card shadow-none">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <i class="fas fa-book-open"></i>
-                    </h3>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-header -->
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover" id="assigned-books">
+                    <table class="table table-hover dataTable" id="assigned-books">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Book_no</th>
@@ -48,7 +32,7 @@
                                     <td> {{ $value['books']['name'] }}
                                     <td>
                                         <img src="{{ !empty($value['books']['image']) ? url('upload/images/' . $value['books']['image']) : url('upload/images/noimage.png') }}  "
-                                            class=" rounded " style="width:50px" alt="...">
+                                            alt="...">
                                     </td>
                                     <td> {{ $value['books']['book_no'] }}
                                     </td>
@@ -65,4 +49,4 @@
     @push('scripts')
         <script type="text/javascript" src="{{ mix('js/assigned_books.js') }}"></script>
     @endpush
-@stop
+@endsection

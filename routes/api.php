@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Visitor\Profile\VisitorProfileController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//visitior
-Route::post('/update/book/status/{id}',[VisitorProfileController::class,'updateStatus'])->name('book.update.status');
+//book flag
+Route::post('/update/book/status/{book}',[StatusController::class,'updateStatusBook'])->name('book.update.status');
+
+//user flag
+Route::post('/update/user/status/{user}',[StatusController::class,'updateStatusUser'])->name('user.update.status');
