@@ -34,7 +34,7 @@
                     <tbody>
                         <tr>
                             <td id="col0">
-                                <select class="form-control form-control-sm" name="user_id[]" id="user_id"
+                                <select class="form-control form-control-sm" name="user_id" id="user_id"
                                     aria-invalid="false">
                                     @foreach ($users as $user)
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -42,7 +42,7 @@
                                 </select>
                             </td>
                             <td id="col1">
-                                <select class="form-control form-control-sm" name="book_id[]" id="book_id"
+                                <select class="form-control form-control-sm" name="book_id" id="book_id"
                                     aria-invalid="false">
                                     @foreach ($books as $book)
                                         <option value="{{ $book->id }}">{{ $book->name }}</option>
@@ -50,7 +50,7 @@
                                 </select>
                             </td>
                             <td id="col2">
-                                <input type="date" class="form-control form-control-sm" name="date_of_receipt"
+                                <input type="date" class="form-control form-control-sm" disabled value={{\Carbon\Carbon::today()->format('Y-m-d')}} name="date_of_receipt"
                                     id="date_of_receipt">
                             </td>
                             <td id="col3">
@@ -63,8 +63,8 @@
                 <table>
                     <br>
                     <tr>
-                        <td><button type="button" id="addRow" class="btn btn-sm btn-info">Add</button></td>
-                        <td><button type="button" id="deleteRow" class="btn btn-sm btn-danger">Remove</button></td>
+                        {{-- <td><button type="button" id="addRow" class="btn btn-sm btn-info">Add</button></td>
+                        <td><button type="button" id="deleteRow" class="btn btn-sm btn-danger">Remove</button></td> --}}
                         <td><button type="submit" class="btn btn-sm btn-success">Save</button></td>
                     </tr>
                 </table>

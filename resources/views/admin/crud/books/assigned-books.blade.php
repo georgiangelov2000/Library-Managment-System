@@ -21,23 +21,34 @@
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Book_no</th>
+                                <th>Genre</th>
                                 <th>Date of receipt</th>
                                 <th>Date of return</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key => $value)
+                            @foreach ($allData as $key => $book)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td> {{ $value['books']['name'] }}
+                                    <td> {{ $book['books']['name'] }}
                                     <td>
-                                        <img src="{{ !empty($value['books']['image']) ? url('upload/images/' . $value['books']['image']) : url('upload/images/noimage.png') }}  "
+                                        <img src="{{ !empty($book['books']['image']) ? url('upload/images/' . $book['books']['image']) : url('upload/images/noimage.png') }}  "
                                             alt="...">
                                     </td>
-                                    <td> {{ $value['books']['book_no'] }}
+                                    <td> {{ $book['books']['book_no'] }}</td>
+                                    <td> {{ $book['books']['genres']['name'] }}</td>
+                                    <td>{{ $book->date_of_receipt }}</td>
+                                    <td>{{ $book->date_of_return }}</td>
+                                    <td>
+                                        <button 
+                                        id="delete" 
+                                        href="{{ route('delete.assign.book', $book->id ) }}"
+                                        title="Delete" 
+                                        class="btn btn-sm btn-danger">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
                                     </td>
-                                    <td>{{ $value->date_of_receipt }}</td>
-                                    <td>{{ $value->date_of_return }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

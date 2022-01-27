@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Assigned;
 use App\Http\Controllers\Controller;
 use App\Models\AssignBook;
 use App\Models\Book;
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -40,30 +41,29 @@ class AssignBooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, AssignBook $assignBook)
     {
-        foreach ($request->user_id as $key => $value) {
-            $saveRecord = [
-                'user_id' => $request->user_id[$key],
-                'book_id' => $request->book_id[$key],
-                'date_of_receipt' => $request->date_of_receipt,
-                'date_of_return' => $request->date_of_return,
-            ];
-            DB::table('assign_books')->insert($saveRecord);
-        }
-        return redirect()->route('assign.book.index')->with('message', 'Successfully created data!');
+
+        $assignBook::updateOrCreate(
+         [
+             'user_id'     => $request->get('user_id'),
+             'book_id' => $request->get('book_id'),
+             'date_of_receipt'    => Carbon::today()->format('Y-m-d'),
+             'date_of_return'   => $request->get('date_of_return'),
+         ]);
+    
+        
+       
+        // foreach ($request->user_id as $key => $value) {
+        //     $saveRecord = [
+        //         'user_id' => $request->user_id[$key],
+        //         'book_id' => $request->book_id[$key],
+        //         'date_of_receipt' => Carbon::today()->format('Y-m-d'),
+        //         'date_of_return' => $request->date_of_return,
+        //     ];
+        //     AssignBook::create($saveRecord);
+        // }
+        return redirect()->back()->with('message', 'Successfully created data!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function delete($id)
-    {
-        $data = AssignBook::find($id);
-        $data->delete();
-        return redirect()->route('assign.book.index');
-    }
 }

@@ -20,9 +20,10 @@
                                 <th></th>
                                 <th>Name</th>
                                 <th>Image</th>
+                                <th>Book_no</th>
+                                <th>Genre</th>
                                 <th>Year</th>
                                 <th>Author</th>
-                                <th>Book_no</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,9 +35,10 @@
                                         <img src="{{ !empty($book->image) ? url('upload/images/' . $book->image) : url('upload/images/noimage.png') }}  "
                                              alt="...">
                                     </td>
+                                    <td> {{ $book->book_no }}</td>
+                                    <td> {{ $book['genres']['name'] }}</td>
                                     <td> {{ $book->year }}</td>
                                     <td> {{ $book['authors']['name'] }}</td>
-                                    <td> {{ $book->book_no }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

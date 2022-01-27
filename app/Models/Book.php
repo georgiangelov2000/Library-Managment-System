@@ -27,4 +27,5 @@ class Book extends Model
     public function flags(){
         return $this->belongsTo(BooksFlags::class,'flag_id','id');
     }
+
 }

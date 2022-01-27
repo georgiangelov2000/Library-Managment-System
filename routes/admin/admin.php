@@ -61,6 +61,7 @@ Route::prefix('users')->group(function () {
         Route::get('/delete/{id}', [BookController::class, 'delete'])->name('book.delete');
         Route::get('/assigned/users/{id}', [BookController::class, 'visitorBook'])->name('user.assigned.user');
         Route::get('/show/comments/{id}', [BookController::class, 'comments'])->name('comment.show.users');
+        Route::get('/delete/assignbook/{assbook}',[BookController::class, 'deleteAssignBook'])->name('delete.assign.book');
     });
 
 // Authors

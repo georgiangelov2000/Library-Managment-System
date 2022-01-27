@@ -8,6 +8,8 @@ $(function($) {
                 { "width": "5%","targets": 3 },
                 { "width": "5%","targets": 4 },
                 { "width": "5%","targets": 5 },
+                { "width": "5%","targets": 6 },
+                { "width": "5%","targets": 7 },
               ]
         });    
 })

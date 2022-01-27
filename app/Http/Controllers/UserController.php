@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignBook;
+use App\Models\Book;
 use App\Models\Gender;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\UserRequest;
 use App\Models\UserFlags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +21,7 @@ class UserController extends Controller
      */
 
     public function index()
-    {
+    {   
         $data['allData'] = User::whereNotNull('last_seen')
             ->orderBy('last_seen', 'asc')
             ->get();
@@ -160,7 +160,7 @@ class UserController extends Controller
 
     public function visitorBook($id)
     {
-        $data['allData'] = AssignBook::select('book_id', 'date_of_receipt', 'date_of_return')->where('user_id', $id)->get();
+        $data['allData'] = AssignBook::all()->where('user_id', $id);
         return view('admin.crud.books.assigned-books', $data);
     }
 

@@ -71,9 +71,9 @@
                                     </td>
                                     <td>
                                         @if (Cache::has('user-is-online-' . $value->id))
-                                            <i class=" ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i>
+                                            <i class=" online-icon ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i>
                                         @else
-                                            <i class=" ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i>
+                                            <i class=" offline-icon ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i>
                                         @endif
                                     </td>
                                     <td>{{ $value->created_at }}</td>

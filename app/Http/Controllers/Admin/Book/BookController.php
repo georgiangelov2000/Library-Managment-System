@@ -7,6 +7,7 @@ use App\Models\AssignBook;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\GendreBook;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -16,6 +17,7 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $data['allData']=Book::all();
@@ -145,4 +147,9 @@ class BookController extends Controller
         $data['comments']=Book::find($id)->comments;
         return view('admin.crud.books.comments.comments',$data);
     }
+
+     public function deleteAssignBook(AssignBook $assbook){
+        $assbook->delete();
+        return redirect()->back();
+     }
 }
