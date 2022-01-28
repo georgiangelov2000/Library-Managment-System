@@ -31,6 +31,28 @@
                             name="password_confirmation" autocomplete="new-password" placeholder="Confirm Password">
                     </div>
 
+                    <div class="col-12 p-0">
+                        <div class="form-group">
+                            <label>User Role</label>
+                            <select class="form-control form-control-sm" name="role_id" id="role_id">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12 p-0">
+                        <div class="form-group">
+                            <label>User Flags</label>
+                            <select class="form-control form-control-sm" name="flag_id" id="flag_id">
+                                @foreach ($flags as $flag)
+                                    <option value="{{ $flag->id }}">{{ $flag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group mb-3">
                         <button type="submit" class="btn btn-sm btn-primary">
                             {{ __('Register') }}

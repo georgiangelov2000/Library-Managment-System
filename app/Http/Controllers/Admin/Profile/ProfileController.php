@@ -36,7 +36,7 @@ class ProfileController extends Controller
             $user['image'] = $filename;
         }
         $user->save();
-        return redirect()->route('profile.index')->with('message', 'Successfully updated data!');
+        return redirect()->route('admin.profile')->with('message', 'Successfully updated data!');
     }
 
 }

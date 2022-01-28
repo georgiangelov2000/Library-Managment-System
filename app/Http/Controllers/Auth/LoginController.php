@@ -23,9 +23,9 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        if (Auth::user()->role_id == '2') {
+        if (Auth::user()->role_id == '2' && Auth::user()->flag_id == '3') {
             return redirect()->route('dashboard.index');
-        } else if (Auth::user()->role_id == '1') {
+        } else if (Auth::user()->role_id == '1' && Auth::user()->flag_id == '2' || Auth::user()->flag_id == '1' ) {
             return redirect()->route('visitor.view.dashboard');
         }
     }
