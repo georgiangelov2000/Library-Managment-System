@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('comments')->group(function(){
     Route::get('/create/comment',[AssignCommentController::class,'create'])->name('comment.create');
     Route::post('/store/comment/',[AssignCommentController::class,'store'])->name('comment.store');
-    Route::get('/book/comment/{id}',[AssignCommentController::class,'show'])->name('comment.show');
+    Route::get('/book/{id}',[AssignCommentController::class,'show'])->name('comment.show');
     Route::get('/comment/edit/{id}',[AssignCommentController::class,'edit'])->name('comment.edit');
     Route::post('/comment/update/{id}',[AssignCommentController::class,'update'])->name('comment.update');
 });

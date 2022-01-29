@@ -17,7 +17,7 @@
                     <table class="table table-hover dataTable" id="assigned-books">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Book_no</th>
@@ -30,7 +30,7 @@
                         <tbody>
                             @foreach ($allData as $key => $book)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $book->id}}</td>
                                     <td> {{ $book['books']['name'] }}
                                     <td>
                                         <img src="{{ !empty($book['books']['image']) ? url('upload/images/' . $book['books']['image']) : url('upload/images/noimage.png') }}  "

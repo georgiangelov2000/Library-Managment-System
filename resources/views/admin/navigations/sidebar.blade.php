@@ -117,9 +117,9 @@
                         <a class="nav-link pl-3" href="{{ route('visitor.view.index') }}">
                             <i class="fas fa-user"></i>
                             <p>
-                                Users
+                                Readers
                             </p>
-                            <span style="margin-left:36%" class="badge badge-warning text-dark">
+                            <span style="margin-left:29.5%" class="badge badge-warning text-dark">
                                 {{ $visitorsCount }}
                             </span>
                         </a>

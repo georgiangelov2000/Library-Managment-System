@@ -14,12 +14,12 @@ class StatusController extends Controller
     {
         $validated= $request->validated();
         $book->update($validated);
-        return redirect()->back()->with('message', 'Successfully updated book status!');
+        // return redirect()->back()->with('message', 'Successfully updated book status!');
     }
 
     public function updateStatusUser(StatusRequest $request, User $user)
     {
-        $validated = $request -> validated();
+        $validated = $request->validated();
         $user->update($validated);
         return redirect()->back()->with('message', 'Successfully updated book status!');
     }

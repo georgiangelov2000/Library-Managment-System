@@ -67,8 +67,7 @@ class AssignCommentController extends Controller
      */
     public function edit($id)
     {
-        $user=Auth::id();
-        $comment = User::find($user)->comments()->where(['id' => $id])->first(); 
+        $comment = User::find(Auth::id())->comments()->where(['id' => $id])->first();
         return view('visitor.crud.comments.edit',compact('comment'));
     }
 
@@ -82,7 +81,7 @@ class AssignCommentController extends Controller
     public function update(Request $request, $id)
     {
         $user=Auth::id();
-        $comment=User::find($user)->comments()->where(['id' => $id])->first();
+        $comment= User::find(Auth::id())->comments()->where(['id' => $id])->first();
         $comment->name=$request->name;
         $comment->save();
         return redirect()->route('comment.show',$user)->with('message', 'Successfully created data!');

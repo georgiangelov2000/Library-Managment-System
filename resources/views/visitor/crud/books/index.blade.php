@@ -18,7 +18,7 @@
                     <table class="table table-hover dataTable" id="mybooks">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Genre</th>
@@ -29,7 +29,7 @@
                         <tbody>
                             @foreach ($books as $key => $book)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{$book->id}}</td>
                                     <td>
                                         <img src="{{ !empty($book->image) ? url('upload/images/' . $book->image) : url('upload/images/noimage.png') }}  "
                                              alt="...">
@@ -40,7 +40,7 @@
                                     <td>
                                         {{ $book['genres']['name'] }}
                                     </td>
-                                    <td style="width:18%">
+                                    <td>
                                         <div class="d-flex align-items-center">
                                             <a href="{{ route('comment.show', $book->id) }}" id="view-comment"
                                                 type="button" class="btn btn-sm btn-dark float-left mr-1"
@@ -61,8 +61,8 @@
                                             name="flag_id" id="flag_id" aria-invalid="false">
                                             @foreach ($flags as $flag)
                                                 <option value="{{ $flag->id }}"
-                                                    {{ $book->flag_id == $flag->id ? 'selected' : '' }}
-                                                    >{{ $flag->name }}</option>
+                                                    {{ $book->flag_id == $flag->id ? 'selected' : '' }}>
+                                                    {{ $flag->name }}</option>
                                             @endforeach
                                         </select>
                                     </td>

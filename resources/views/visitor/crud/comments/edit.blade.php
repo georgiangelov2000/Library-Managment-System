@@ -18,7 +18,7 @@
                 @csrf
                 <div class="form-group col-md-6">
                     <label for="name">Comment</label>
-                    <textarea placeholder="{{ $comment->name }}" class="form-control form-control-sm" value={{ $comment->name }} id="name" name="name" rows="3"></textarea>
+                    <textarea  class="form-control form-control-sm" id="name" name="name" rows="3">{{ $comment->name }}</textarea>
                 </div>
                 <div class="form-group col-md-6">
                     <button style="margin-top: 2rem;" type="submit" name="submit" value="submit"

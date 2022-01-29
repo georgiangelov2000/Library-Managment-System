@@ -6,6 +6,7 @@ $(function($) {
             { "width": "16%","targets": 1 },
             { "width": "35%","targets": 2 },
             { "width": "35%","targets": 3 },
+            { "width": "25%","targets": 4 },
           ]
     });
 })

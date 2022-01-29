@@ -27,6 +27,10 @@ const mix = require('laravel-mix');
  .js('resources/js/mybooks/mybooks.js', 'public/js')
  .js('resources/js/messages.js', 'public/js')
  .js('resources/js/sidebar.js', 'public/js')
+ .js('resources/js/mybooks/archived.js', 'public/js')
+ .js('resources/js/mybooks/favourite.js', 'public/js')
+ .js('resources/js/mybooks/incomings.js', 'public/js')
+ .js('resources/js/mybooks/readed.js', 'public/js')
  .js('resources/js/comments/comments.js', 'public/js')
  .sourceMaps();
 

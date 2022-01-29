@@ -17,6 +17,7 @@
                     <table class="table table-hover dataTable" id="commentsTable">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Comment</th>
                                 <th>Created</th>
                                 <th>Updated</th>
@@ -26,6 +27,9 @@
                         <tbody>
                             @foreach ($assignComments as $key => $comment)
                                 <tr>
+                                    <td>
+                                        {{$comment->id}}
+                                    </td>
                                     <td>
                                         <div class="scrollable">
                                             {{$comment->name}}
@@ -39,7 +43,7 @@
                                         {{ $comment->updated_at }}
                                     </td>
                                     <td>
-                                        <a title="edit" id="edit" href={{ route('comment.edit', $comment->user_id) }}
+                                        <a title="edit" id="edit" href={{ route('comment.edit', $comment->id) }}
                                             class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>

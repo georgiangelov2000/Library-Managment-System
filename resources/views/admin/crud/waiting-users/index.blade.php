@@ -18,7 +18,7 @@
                     <table class="table table-hover dataTable" id="waitingUsers">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>E-mail</th>
@@ -32,7 +32,7 @@
                         <tbody>
                             @foreach ($waitingUsers as $key => $user)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $user->id}}</td>
                                     <td>
                                         <img src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
                                             alt="...">

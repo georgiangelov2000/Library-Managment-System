@@ -17,7 +17,7 @@
                     <table class="table table-hover dataTable " id="assigned-authors">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Genre</th>
                                 <th>Gender</th>
@@ -26,7 +26,7 @@
                         <tbody>
                             @foreach ($authors as $key => $author)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $author->id}}</td>
                                     <td> {{ $author->name}}</td>
                                     <td> {{ $author['genres']['name']}}</td>
                                     <td>{{ $author['genders']['name'] }}</td>

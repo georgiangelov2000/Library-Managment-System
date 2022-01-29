@@ -17,7 +17,7 @@
                     <table class="table table-hover dataTable" id="userTable">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>E-mail</th>
@@ -32,31 +32,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key => $value)
+                            @foreach ($allData as $key => $user)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $user->id }}</td>
                                     <td>
-                                        <img src="{{ !empty($value->image) ? url('upload/images/' . $value->image) : url('upload/images/noimage.png') }}  "
+                                        <img src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
                                             alt="...">
                                     </td>
-                                    <td>{{ $value->name }}</td>
-                                    <td>{{ $value->email }}</td>
-                                    @if ($value['roles']['name'] == 'admin')
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    @if ($user['roles']['name'] == 'admin')
                                         <td class="text-center">
-                                            <i class="fas fa-user-lock" title="{{ $value['roles']['name'] }}"></i>
+                                            <i class="fas fa-user-lock" title="{{ $user['roles']['name'] }}"></i>
                                         </td>
-                                    @elseif($value['roles']['name'] == 'visitor')
+                                    @elseif($user['roles']['name'] == 'visitor')
                                         <td class="text-center">
-                                            <i class="fas fa-user-tie" title="{{ $value['roles']['name'] }}"></i>
+                                            <i class="fas fa-user-tie" title="{{ $user['roles']['name'] }}"></i>
                                         </td>
                                     @else
 
                                     @endif
-                                    @if ($value['genders']['name'] == 'm')
+                                    @if ($user['genders']['name'] == 'm')
                                         <td class="text-center">
                                             <i class="fa fa-mars text-primary"></i>
                                         </td>
-                                    @elseif($value['genders']['name'] == 'f')
+                                    @elseif($user['genders']['name'] == 'f')
                                         <td class="text-center">
                                             <i class="fa fa-mercury text-danger"></i>
                                         </td>
@@ -65,23 +65,23 @@
 
                                         </td>
                                     @endif
-                                    <td>{{ $value->dob }}</td>
+                                    <td>{{ $user->dob }}</td>
                                     <td>
-                                        {{ Carbon\Carbon::parse($value->last_seen)->diffForHumans() }}
+                                        {{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}
                                     </td>
                                     <td>
-                                        @if (Cache::has('user-is-online-' . $value->id))
+                                        @if (Cache::has('user-is-online-' . $user->id))
                                             <i class=" online-icon ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i>
                                         @else
                                             <i class=" offline-icon ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i>
                                         @endif
                                     </td>
-                                    <td>{{ $value->created_at }}</td>
-                                    <td>{{ $value->updated_at }}</td>
+                                    <td>{{ $user->created_at }}</td>
+                                    <td>{{ $user->updated_at }}</td>
                                     <td>
-                                        <a href="{{ route('user.edit', $value->id) }}" title="edit" id="edit"
+                                        <a href="{{ route('user.edit', $user->id) }}" title="edit" id="edit"
                                             class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ route('user.delete', $value->id) }}" id="delete" title="delete"
+                                        <a href="{{ route('user.delete', $user->id) }}" id="delete" title="delete"
                                             class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>

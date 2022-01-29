@@ -17,7 +17,7 @@
                     <table class="table table-hover dataTable" id="books">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Genre</th>
@@ -25,33 +25,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key => $value)
+                            @foreach ($allData as $key => $book)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{$book->id }}</td>
                                     <td>
-                                        <img src="{{ !empty($value->image) ? url('upload/images/' . $value->image) : url('upload/images/noimage.png') }}  "
+                                        <img src="{{ !empty($book->image) ? url('upload/images/' . $book->image) : url('upload/images/noimage.png') }}  "
                                           alt="...">
                                     </td>
                                     <td>
-                                        {{ $value->name }}
+                                        {{ $book->name }}
                                     </td>
-                                    <td>{{ $value['genres']['name'] }}</td>
+                                    <td>{{ $book['genres']['name'] }}</td>
                                     <td style="width:18%;">
-                                        <a href="{{ route('book.edit', $value->id) }}" title="Edit" id="edit"
+                                        <a href="{{ route('book.edit', $book->id) }}" title="Edit" id="edit"
                                             class="btn btn-sm btn-info float-left mr-1 "><i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('book.delete', $value->id) }}" title="delete" id="delete"
+                                        <a href="{{ route('book.delete', $book->id) }}" title="delete" id="delete"
                                             class="btn btn-sm btn-danger float-left mr-1"><i class="far fa-trash-alt"></i>
                                         </a>
-                                        <a href="{{ route('user.assigned.user', $value->id) }}" title="assigned-users"
+                                        <a href="{{ route('user.assigned.user', $book->id) }}" title="assigned-users"
                                             id="Assigned Users" class=" float-left mr-1 btn btn-sm btn-warning"><i
                                                 class="far fa-users"></i>
                                         </a>
-                                        <a href="{{ route('show.book', $value->id) }}" class="btn btn-sm btn-secondary"
+                                        <a href="{{ route('show.book', $book->id) }}" class="btn btn-sm btn-secondary"
                                             title="Details">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
-                                        <a href="{{ route('comment.show.users', $value->id) }}" id="view-comment"
+                                        <a href="{{ route('comment.show.users', $book->id) }}" id="view-comment"
                                             class="btn btn-sm btn-dark" title="View comments">
                                             <i class="fas fa-comments"></i>
                                         </a>

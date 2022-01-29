@@ -17,16 +17,20 @@
                     <table class="table table-hover dataTable" id="commentsUsersTable">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Comment</th>
                                 <th>Book</th>
                                 <th>Created</th>
                                 <th>Updated</th>
-                                <th>Action</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($comments as $key => $comment)
                                 <tr>
+                                    <td>
+                                        {{$comment->id}}
+                                    </td>
                                     <td>
                                         <div class="scrollable">
                                             {{ $comment->name }}
@@ -61,4 +65,7 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+    <script type="text/javascript" src="{{mix('js/comments.js')}}"></script>
+    @endpush
 @endsection

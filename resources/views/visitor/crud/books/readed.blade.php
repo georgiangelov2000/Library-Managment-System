@@ -1,5 +1,5 @@
 @extends('admin.home')
-@section('title', 'Managment System - Favoruites')
+@section('title', 'Managment System - Readed')
 
 @section('header-navigation')
     @parent
@@ -15,10 +15,10 @@
         <div class="col-12 m-auto pt-4">
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover dataTable" id="mybooks">
+                    <table class="table table-hover dataTable" id="readed-books">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Genre</th>
@@ -29,7 +29,7 @@
                         <tbody>
                             @foreach ($books as $key => $book)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $book->id }}</td>
                                     <td>
                                         <img src="{{ !empty($book->image) ? url('upload/images/' . $book->image) : url('upload/images/noimage.png') }}  "
                                               alt="...">
@@ -65,9 +65,7 @@
         </div>
     </div>
 </div>
-
-
     @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/mybooks.js') }}"></script>
+        <script type="text/javascript" src="{{ mix('js/readed.js') }}"></script>
     @endpush
 @endsection

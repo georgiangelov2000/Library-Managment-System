@@ -17,7 +17,7 @@
                     <table class="table table-hover dataTable" id="user-roles-admin">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>E-mail</th>
@@ -32,7 +32,7 @@
                         <tbody>
                             @foreach ($allData as $key => $user)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $user->id }}</td>
                                     <td>
                                         <img src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
                                             alt="...">
@@ -41,11 +41,11 @@
                                     <td>{{ $user->email }}</td>
                                     @if ($user->gender_id === 1)
                                         <td class="">
-                                            <i style="font-size:2rem" class=" ml-4 fas fa-male text-primary"></i>
+                                            <i class="fa fa-mars text-primary"></i>
                                         </td>
                                     @elseif($user->gender_id === 2)
                                         <td class="">
-                                            <i style="font-size:2rem" class=" ml-4 fas fa-female text-danger"></i>
+                                            <i class="fa fa-mercury text-danger"></i>
                                         </td>
                                     @endif
                                     <td>{{ $user->dob }}</td>

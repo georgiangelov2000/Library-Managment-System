@@ -14,6 +14,10 @@
     "/js/mybooks.js": "/js/mybooks.js",
     "/js/messages.js": "/js/messages.js",
     "/js/sidebar.js": "/js/sidebar.js",
+    "/js/archived.js": "/js/archived.js",
+    "/js/favourite.js": "/js/favourite.js",
+    "/js/incomings.js": "/js/incomings.js",
+    "/js/readed.js": "/js/readed.js",
     "/js/comments.js": "/js/comments.js",
     "/css/app.css": "/css/app.css"
 }

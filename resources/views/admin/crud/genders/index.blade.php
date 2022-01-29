@@ -17,7 +17,7 @@
                     <table class="table table-hover" id="genders">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Created</th>
                                 <th>Updated</th>
@@ -27,7 +27,7 @@
                         <tbody>
                             @foreach ($allData as $key => $gender)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $gender->id }}</td>
                                     @if ($gender->name === 'm')
                                         <td class="">
                                             <i class="fa fa-mars text-primary"></i>
