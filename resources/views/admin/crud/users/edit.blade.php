@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Edit User')
 
 @section('header-navigation')

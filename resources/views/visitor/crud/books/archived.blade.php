@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Archived')
 
 @section('header-navigation')
@@ -15,7 +15,7 @@
         <div class="col-12 m-auto pt-4">
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover dataTable" id="archived-books">
+                    <table class="table table-hover table-striped dataTable" id="archived-books">
                         <thead>
                             <tr>
                                 <th>ID</th>

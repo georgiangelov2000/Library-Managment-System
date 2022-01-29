@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Genders')
 
 @section('header-navigation')
@@ -14,7 +14,7 @@
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover" id="genders">
+                    <table class="table table-hover table-striped dataTable" id="genders">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -45,12 +45,12 @@
                                         <a href="{{ route('gender.delete', $gender->id) }}" title="delete" id="delete"
                                             class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                         <a title="Assigned-users" href="{{ route('assigned.users', $gender->id) }}"
-                                            id="assigned Users" class="btn btn-sm btn-warning"><i
-                                                class="far fa-users"></i>
+                                            id="assigned Users" class="btn btn-sm btn-warning">
+                                            <i class="far fa-users"></i>
                                         </a>
                                         <a title="Assigned-authors" href="{{ route('assigned.authors', $gender->id) }}"
-                                            id="Assigned Authors" class="btn btn-sm btn-warning"><i
-                                                class="fas fa-quote-right"></i>
+                                            id="Assigned Authors" class="btn btn-sm btn-warning">
+                                            <i class="far fa-users"></i>
                                         </a>
                                     </td>
                                 </tr>

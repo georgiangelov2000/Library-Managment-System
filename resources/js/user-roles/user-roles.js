@@ -25,7 +25,7 @@ $(function($) {
           { "width": "10%","targets": 2 },
           { "width": "0%","targets": 3 },
           { "width": "7%","targets": 4 },
-          { "width": "13%","targets": 5 },
+          { "width": "14%","targets": 5 },
           { "width": "11%","targets": 6 },
           { "width": "6%","targets": 7 },
           { "width": "12%","targets": 8 },

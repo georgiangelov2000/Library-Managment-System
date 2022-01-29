@@ -1,29 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     @if (Auth::user()->role_id == '2')
-
-        <a href="#" class="brand-link d-flex align-items-center justify-content-center">
+        <a href="#" class="brand-link">
+            <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }} "
+                alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8 height: 33px; width: 37px;">
             <span class="brand-text font-weight-light">Managment System</span>
-            <br>
         </a>
-        <div class="user-panel mt-1 pb-1 mb-1 d-flex">
-            <div class="image col-md-2 p-0 ml-4">
-                <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }}  "
-                    class="img-circle elevation-2 w-100" alt="{{ Auth::user()->name }}">
-            </div>
-            <div class="info d-flex align-items-center">
-                <a href="#" class="d-block"
-                    style="color:#c2c7d0; text-decoration:none; font-size:1rem">{{ Auth::user()->name }}</a>
-                @if (Cache::has('user-is-online-' . Auth::user()->id))
-                    <span href="#" class="d-flex align-items-center"
-                        style="margin-top:.3rem;  font-size:.7rem; color:#c2c7d0;"><i
-                            class=" ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i> Online</a>
-                    @else
-                        <span href="#" class="d-flex align-items-center"
-                            style="margin-top:.3rem;  font-size:.7rem; color:#c2c7d0;"><i
-                                class=" ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i> Offline</a>
-                @endif
-            </div>
-        </div>
         <div class="sidebar">
             <nav class="mt-2">
                 <ul id="left-sidebar" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -33,7 +14,7 @@
                         <a href="{{ route('dashboard.index') }}" class="nav-link active">
                             <i class="fas fa-chart-line"></i>
                             <p>
-                                Dashboard <span class="badge badge-dark text-dark"></span>
+                                Dashboard
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -53,7 +34,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fas fa-id-card"></i>
                             <p>
-                                Profile <span class="badge badge-dark text-dark"></span>
+                                Profile
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -79,8 +60,7 @@
                         <a href="#" class="nav-link">
                             <i class="fas fa-users-cog"></i>
                             <p>
-                                Users <span style="margin-left:33.8%"
-                                    class="badge badge-warning text-dark">{{ $usersCount }}</span>
+                                Users 
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -103,33 +83,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="{{ route('admin.view.index') }}">
-                            <i class="fas fa-user-lock"></i>
-                            <p>
-                                Admins
-                            </p>
-                            <span style="margin-left:28%" class="badge badge-warning text-dark">
-                                {{ $adminsCount }}
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="{{ route('visitor.view.index') }}">
-                            <i class="fas fa-user"></i>
-                            <p>
-                                Readers
-                            </p>
-                            <span style="margin-left:29.5%" class="badge badge-warning text-dark">
-                                {{ $visitorsCount }}
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#" class="nav-link ">
                             <i class="fas fa-user-edit"></i>
                             <p>
-                                Authors <span style="margin-left:27%"
-                                    class="badge badge-warning text-dark">{{ $authorsCount }}</span>
+                                Authors
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -154,8 +111,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fas fa-book"></i>
                             <p>
-                                Books <span style="margin-left:35%"
-                                    class="badge badge-warning text-dark">{{ $booksCount }}</span>
+                                Books
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -182,8 +138,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fas fa-star"></i>
                             <p>
-                                Roles <span style="margin-left:35%"
-                                    class="badge badge-warning text-dark">{{ $rolesCount }}</span>
+                                Roles
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -209,8 +164,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fa fa-transgender" aria-hidden="true"></i>
                             <p>
-                                Genders <span style="margin-left:29%"
-                                    class="badge badge-warning text-dark">{{ $gendersCount }}</span>
+                                Genders
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -236,8 +190,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fab fa-hubspot"></i>
                             <p>
-                                Genres (Books) <span style="margin-left:9%"
-                                    class="badge badge-warning text-dark">{{ $genresBooks }}</span>
+                                Genres (Books)
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -262,8 +215,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link ">
                             <i class="fab fa-hubspot"></i>
-                            <p>Genres (Authors) <span style="margin-left:4%" class="badge badge-warning text-dark">
-                                    {{ $genresAuthors }}</span>
+                            <p>Genres (Authors)
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -288,8 +240,7 @@
                         <a href="#" class="nav-link ">
                             <i class="fas fa-tasks"></i>
                             <p>
-                                Assigned Books <span style="margin-left:7%"
-                                    class="badge badge-warning text-dark">{{ $assigned_booksCount }}</span>
+                                Assigned Books
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -305,18 +256,32 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('admin.view.index') }}">
+                            <i class="fas fa-user-lock"></i>
+                            <p>
+                                Admins
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('visitor.view.index') }}">
+                            <i class="fas fa-user"></i>
+                            <p>
+                                Readers
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('status.approved.users') }}">
                             <i class="fa fa-check" aria-hidden="true"></i>
-                            <p>Approved Users <span style="margin-left:7%" class="badge badge-warning text-dark">
-                                    {{ $approvedUsersCount }}</span>
+                            <p>Approved Users
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('status.waiting.users') }}">
                             <i class="fa fa-spinner" aria-hidden="true"></i>
-                            <p>Waiting Users <span style="margin-left:13%" class="badge badge-warning text-dark">
-                                    {{ $waitingUsersCount }}</span>
+                            <p>Waiting Users
                             </p>
                         </a>
                     </li>
@@ -324,30 +289,12 @@
             </nav>
         </div>
     @elseif (Auth::user()->role_id == '1')
-        <a href="#" class="brand-link d-flex align-items-center justify-content-center">
+        <a href="#" class="brand-link">
+            <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }} "
+                alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; height: 33px; width: 37px;">
             <span class="brand-text font-weight-light">Managment System</span>
-            <br>
         </a>
         @if (Auth::user()->flag_id == '1')
-            <div class="user-panel mt-1 pb-1 mb-1 d-flex">
-                <div class="image col-md-2 p-0 ml-4">
-                    <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }}  "
-                        class="img-circle elevation-2 w-100" alt="{{ Auth::user()->name }}">
-                </div>
-                <div class="info d-flex align-items-center">
-                    <a href="#" class="d-block"
-                        style="color:#c2c7d0; text-decoration:none; font-size:1rem">{{ Auth::user()->name }}</a>
-                    @if (Cache::has('user-is-online-' . Auth::user()->id))
-                        <a href="#" class="d-flex align-items-center"
-                            style="margin-top:0.3rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
-                                class=" ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i> Online</a>
-                    @else
-                        <a href="#" class="d-flex align-items-center"
-                            style="margin-top:0.05rem; text-decoration:none; font-size:.7rem; color:#c2c7d0;"><i
-                                class=" ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i> Offline</a>
-                    @endif
-                </div>
-            </div>
             <div class="sidebar">
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -356,7 +303,7 @@
                             <a href="#" class="nav-link active">
                                 <i class="fas fa-chart-line"></i>
                                 <p>
-                                    Dashboard <span class="badge badge-dark text-dark"></span>
+                                    Dashboard
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -375,7 +322,7 @@
                             <a href="#" class="nav-link ">
                                 <i class="fas fa-id-card"></i>
                                 <p>
-                                    Profile <span class="badge badge-dark text-dark"></span>
+                                    Profile
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -401,7 +348,7 @@
                             <a href="#" class="nav-link ">
                                 <i class="fas fa-book"></i>
                                 <p>
-                                    Books <span class="badge badge-dark text-dark"></span>
+                                    Books 
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -425,12 +372,17 @@
                                             Incoming Books
                                         </p>
                                     </a>
-                                    <a class="nav-link" href="{{ route('readed.page') }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Readed Books
-                                        </p>
-                                    </a>
+                                    <li>
+                                        
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="{{ route('readed.page') }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>
+                                                Readed Books
+                                            </p>
+                                        </a>
+                                    </li>
                                     <a class="nav-link" href="{{ route('archived.page') }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -444,7 +396,7 @@
                             <a href="#" class="nav-link ">
                                 <i class="fas fa-comments"></i>
                                 <p>
-                                    Comments <span class="badge badge-dark text-dark"></span>
+                                    Comments
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>

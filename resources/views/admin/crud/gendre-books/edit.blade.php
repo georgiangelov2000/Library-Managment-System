@@ -1,5 +1,5 @@
-@extends('admin.home')
-@section('title', 'Managment System - Edit Genre Book')
+@extends('layouts.home')
+@section('title', 'Managment System - Edit Genre')
 
 @section('header-navigation')
     @parent

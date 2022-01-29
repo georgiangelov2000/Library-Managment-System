@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Visitors')
 
 @section('header-navigation')
@@ -14,7 +14,7 @@
         <div>
             <div class="card">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover dataTable" id="userRoles">
+                    <table class="table table-hover dataTable table-striped" id="userRoles">
                         <thead>
                             <tr>
                                 <th>ID</th>

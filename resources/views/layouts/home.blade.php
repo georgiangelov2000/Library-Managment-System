@@ -48,11 +48,11 @@
     <div class="wrapper" style="display: none;">
 
         @section('header-navigation')
-            @include('admin.navigations.header-navigation')
+            @include('layouts.header-navigation')
         @show
 
         @section('sidebar')
-            @include('admin.navigations.sidebar')
+            @include('layouts.sidebar')
         @show
 
         <div class="content-wrapper" style="background:none;">
@@ -100,10 +100,6 @@
 
     {{-- Bootstrap Bundle --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/sidebar.js') }}"> </script>
-    @endpush
 
     @stack('scripts')
     <script>

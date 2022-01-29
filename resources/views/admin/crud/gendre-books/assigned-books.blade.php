@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Assigned Books')
 
 @section('header-navigation')
@@ -14,7 +14,7 @@
         <div class="col-12 p-4">
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover  dataTable" id="assigned-books">
+                    <table class="table table-hover table-striped dataTable" id="assigned-books">
                         <thead>
                             <tr>
                                 <th></th>

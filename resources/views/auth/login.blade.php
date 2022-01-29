@@ -6,10 +6,12 @@
             <form method="post" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group mb-3">
+                    <label>Email</label>
                     <input id="email" type="email" placeholder="Email" class="form-control form-control-sm" name="email"
                         value="{{ old('email') }}" required autocomplete="email" autofocus>
                 </div>
                 <div class="form-group mb-3">
+                    <label>Password</label>
                     <input id="password" type="password" placeholder="Password" class="form-control form-control-sm" name="password" required
                         autocomplete="current-password">
                 </div>

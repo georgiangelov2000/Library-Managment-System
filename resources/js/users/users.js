@@ -11,12 +11,12 @@ $(function ($) {
                 { "width": "5%","targets": 3 },
                 { "width": "5%","targets": 4 },
                 { "width": "5%","targets": 5 },
-                { "width": "10%","targets": 6 },
-                { "width": "8%","targets": 7 },
-                { "width": "8%","targets": 8 },
-                { "width": "8%","targets": 9 },
-                { "width": "8%","targets": 10 },
-                { "width": "8%","targets": 11 },
+                { "width": "12%","targets": 6 },
+                { "width": "11%","targets": 7 },
+                { "width": "11%","targets": 8 },
+                { "width": "11%","targets": 9 },
+                { "width": "11%","targets": 10 },
+                { "width": "10%","targets": 11 },
               ]
         });
     }if('#approvedUsers'){

@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
-
+const MixGlob = require('laravel-mix-glob');
+const mixGlob = require('laravel-mix-glob');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -10,6 +11,24 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+
+// const mixGlob= new MixGlob({
+//     'mix':mix,
+//     'mapping':{
+//         'ext':{
+//             'byFunc':{
+//                 'js':'js',
+//                 'css':'css',
+//                 'copy':'js'
+//             }
+//         }
+//     }
+// })
+
+// mixGlob.js('resources/js/**/*.js','public/js',null,{
+//     base:'resources/js/'
+// })
 
  mix.sass('resources/sass/app.scss', 'public/css')
  .js('resources/js/app.js', 'public/js')
@@ -26,7 +45,6 @@ const mix = require('laravel-mix');
  .js('resources/js/user-roles/user-roles.js', 'public/js')
  .js('resources/js/mybooks/mybooks.js', 'public/js')
  .js('resources/js/messages.js', 'public/js')
- .js('resources/js/sidebar.js', 'public/js')
  .js('resources/js/mybooks/archived.js', 'public/js')
  .js('resources/js/mybooks/favourite.js', 'public/js')
  .js('resources/js/mybooks/incomings.js', 'public/js')

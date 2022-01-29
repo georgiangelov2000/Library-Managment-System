@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Books')
 
 @section('header-navigation')
@@ -14,7 +14,7 @@
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover dataTable" id="books">
+                    <table class="table table-hover dataTable table-striped" id="books">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -27,10 +27,10 @@
                         <tbody>
                             @foreach ($allData as $key => $book)
                                 <tr>
-                                    <td>{{$book->id }}</td>
+                                    <td>{{ $book->id }}</td>
                                     <td>
                                         <img src="{{ !empty($book->image) ? url('upload/images/' . $book->image) : url('upload/images/noimage.png') }}  "
-                                          alt="...">
+                                            alt="...">
                                     </td>
                                     <td>
                                         {{ $book->name }}

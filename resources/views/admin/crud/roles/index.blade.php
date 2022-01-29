@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Roles')
 
 @section('header-navigation')
@@ -14,7 +14,7 @@
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover dataTable" id="roles">
+                    <table class="table table-hover table-striped dataTable" id="roles">
                         <thead>
                             <tr>
                                 <th>ID</th>

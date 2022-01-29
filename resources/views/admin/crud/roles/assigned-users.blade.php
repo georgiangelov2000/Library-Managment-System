@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Assigned Roles')
 
 @section('header-navigation')
@@ -13,7 +13,7 @@
         <div class="col-12 p-4">
             <div class="card">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover dataTable" id="assigned-users">
+                    <table class="table table-hover table-striped dataTable" id="assigned-users">
                         <thead>
                             <tr>
                                 <th></th>

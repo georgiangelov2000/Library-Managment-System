@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('layouts.home')
 @section('title', 'Managment System - Edit Profile')
 
 @section('header-navigation')
@@ -22,7 +22,8 @@
             <form method="POST" action="{{ route('update.admin.profile', $user->id) }}" enctype="multipart/form-data"
                 class="d-flex flex-wrap flex-column">
                 @csrf
-                <div class="form-group col-md-6">
+            <div class="row">
+                <div class="form-group col-md-7">
                     <img src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
                     class="w-25" alt="...">
                 </div>
@@ -58,10 +59,11 @@
                     </select>
                 </div>
 
-                <div class="form-group col-md-6">
-                    <button type="submit"
+                <div class="form-group col-md-6"  >
+                    <button type="submit" style="margin-top:1.8rem"
                         class="btn btn-block bg-gradient-primary btn-sm text-light col-md-12">Update</button>
                 </div>
+            </div>
             </form>
         </div>
         <div class="card-footer pt-5">
