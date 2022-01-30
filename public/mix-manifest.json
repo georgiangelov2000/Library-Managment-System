@@ -13,10 +13,7 @@
     "/js/user-roles.js": "/js/user-roles.js",
     "/js/mybooks.js": "/js/mybooks.js",
     "/js/messages.js": "/js/messages.js",
-    "/js/archived.js": "/js/archived.js",
-    "/js/favourite.js": "/js/favourite.js",
-    "/js/incomings.js": "/js/incomings.js",
-    "/js/readed.js": "/js/readed.js",
+    "/js/statusBooks.js": "/js/statusBooks.js",
     "/js/comments.js": "/js/comments.js",
     "/js/userComments.js": "/js/userComments.js",
     "/css/app.css": "/css/app.css"

@@ -22,74 +22,85 @@
             <form method="POST" multipart="true" enctype="multipart/form-data"
                 action="{{ route('user.update', $user->id) }}" class="d-flex flex-wrap flex-column">
                 @csrf
+                <div class="row">
+                    <div class="col-md-7 d-flex justify-content-left">
+                        <img src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
+                            class="mb-1 w-25" alt="...">
+                    </div>
 
-                <div class="col-md-6 d-flex justify-content-left">
-                    <img src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
-                        class="mb-1" alt="...">
-                </div>
+                    <div class="form-group col-md-6">
+                        <label for="image" class="form-label">File</label>
+                        <input class="form-control form-control-sm" name="image" type="file" id="image">
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <label for="image" class="form-label">File</label>
-                    <input class="form-control form-control-sm" name="image" type="file" id="image">
-                </div>
+                    <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input class="form-control form-control-sm" id="name" value="{{ $user->name }}" type="text"
+                            name="name" placeholder="Name">
+                        @error('name')
+                            <span class="text-danger"> </span>
+                        @enderror
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <label for="name">Name</label>
-                    <input class="form-control form-control-sm" id="name" value="{{ $user->name }}" type="text"
-                        name="name" placeholder="Name">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
-                </div>
+                    <div class="form-group col-md-6">
+                        <label for="role_id">Select Role</label>
+                        <select class="form-control form-control-sm" name="role_id" id="role_id" aria-invalid="false">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }} " {{ $user->role_id == $role->id ? 'selected' : '' }}>
+                                    {{ $role->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        </select>
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <label for="role_id">Select Role</label>
-                    <select class="form-control form-control-sm" name="role_id" id="role_id" aria-invalid="false">
-                        @foreach ($roles as $role)
-                            <option value="{{ $role->id }} "
-                                {{ $user->role_id == $role->id ? 'selected' : '' }}>
-                                {{ $role->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    </select>
-                </div>
+                    <div class="form-group col-md-6">
+                        <label for="gender_id">Select Gender</label>
+                        <select class="form-control form-control-sm" name="gender_id" id="gender_id" aria-invalid="false">
+                            @foreach ($genders as $gender)
+                                <option value="{{ $gender->id }} "
+                                    {{ $user->gender_id == $gender->id ? 'selected' : '' }}>
+                                    {{ $gender->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <label for="gender_id">Select Gender</label>
-                    <select class="form-control form-control-sm" name="gender_id" id="gender_id" aria-invalid="false">
-                        @foreach ($genders as $gender)
-                            <option value="{{ $gender->id }} "
-                                {{ $user->gender_id == $gender->id ? 'selected' : '' }}>
-                                {{ $gender->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
+                    <div class="form-group col-md-6">
+                        <label for="flag_id">Select User Flags</label>
+                        <select class="form-control form-control-sm" name="flag_id" id="flag_id" aria-invalid="false">
+                            @foreach ($flags as $flag)
+                                <option value="{{ $flag->id }} " {{ $user->flag_id == $flag->id ? 'selected' : '' }}>
+                                    {{ $flag->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <label for="email">Email</label>
-                    <input class="form-control form-control-sm" id="email" value="{{ $user->email }}"
-                        type="email" name="email" placeholder="email">
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input class="form-control form-control-sm" id="email" value="{{ $user->email }}" type="email"
+                            name="email" placeholder="email">
 
-                </div>
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <label for="dob">Date of Birth</label>
-                    <input class="form-control form-control-sm" id="dob" value="{{ $user->dob }}" type="date"
-                        name="dob" placeholder="dob">
+                    <div class="form-group col-md-6">
+                        <label for="dob">Date of Birth</label>
+                        <input class="form-control form-control-sm" id="dob" value="{{ $user->dob }}" type="date"
+                            name="dob" placeholder="dob">
 
-                </div>
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <label for="password">Password</label>
-                    <input class="form-control form-control-sm" id="password" value="" type="password" name="password"
-                        placeholder="password">
-                </div>
+                    <div class="form-group col-md-6">
+                        <label for="password">Password</label>
+                        <input class="form-control form-control-sm" id="password" value="" type="password" name="password"
+                            placeholder="password">
+                    </div>
 
-                <div class="form-group col-md-6">
-                    <button style="margin-top: 2rem;" type="submit" name="submit" value="submit"
-                        class="btn btn-primary btn-sm col-md-12">Submit</button>
+                    <div class="form-group col-md-6">
+                        <button style="margin-top: 2rem;" type="submit" name="submit" value="submit"
+                            class="btn btn-primary btn-sm col-md-12">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

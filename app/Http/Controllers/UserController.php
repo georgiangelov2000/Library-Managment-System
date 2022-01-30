@@ -19,13 +19,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $users;
+     public function __construct(User $users){
+        $this->users = $users;
+     }
 
     public function index()
     {   
-        $data['allData'] = User::whereNotNull('last_seen')
-            ->orderBy('last_seen', 'asc')
-            ->get();
-        return view('admin.crud.users.index', $data);
+        $users = $this->users->get();
+        return view('admin.crud.users.index', ['users'=>$users]);
     }
 
     /**
@@ -37,6 +39,7 @@ class UserController extends Controller
     {
         $data['roles'] = Role::all();
         $data['genders'] = Gender::all();
+        $data['flags'] = UserFlags::all();
         return view('admin.crud.users.create', $data);
     }
 
@@ -52,6 +55,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
+        $user->flag_id = $request->flag_id;
         $user->gender_id = $request->gender_id;
         $user->dob = $request->dob;
         if ($request->file('image')) {
@@ -90,9 +94,11 @@ class UserController extends Controller
     {
         $genders = Gender::all();
         $roles = Role::all();
+        $flags = UserFlags::all();
         return view('admin.crud.users.edit',compact('user'),[
             'genders'=>$genders,
-            'roles'=>$roles
+            'roles'=>$roles,
+            'flags'=>$flags
         ]);
     }
 
@@ -109,6 +115,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
+        $user->flag_id = $request->flag_id;
         $user->gender_id = $request->gender_id;
         $user->dob = $request->dob;
         if ($request->file('image')) {

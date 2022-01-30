@@ -32,7 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key => $user)
+                            @foreach ($users as $key => $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>

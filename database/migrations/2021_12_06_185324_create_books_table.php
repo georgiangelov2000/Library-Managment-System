@@ -23,15 +23,16 @@ class CreateBooksTable extends Migration
             $table->string('image')->nullable();
 
              // FOREIGN KEYS
-             $table->integer('author_id')->nullable();
-            // $table->foreign('author_id')->references('id')->on('authors');
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->foreign('author_id')->references('id')->on('authors')->cascadeOnDelete();
 
-            $table->integer('flag_id')->nullable();
-            // $table->foreign('flag_id')->references('id')->on('books_flags');
+            // FOREIGN KEYS
+            $table->unsignedBigInteger('flag_id')->nullable();
+            $table->foreign('flag_id')->references('id')->on('books_flags')->cascadeOnDelete();
 
-              // FOREIGN KEYS
-            $table->integer('genre_id')->nullable();
-            // $table->foreign('gendre_id')->references('id')->on('gendre_books');
+            // FOREIGN KEYS
+            $table->unsignedBigInteger('genre_id')->nullable();
+            $table->foreign('genre_id')->references('id')->on('gendre_books')->cascadeOnDelete();
 
             $table->timestamps();
         });

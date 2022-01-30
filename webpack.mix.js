@@ -45,10 +45,7 @@ const mixGlob = require('laravel-mix-glob');
  .js('resources/js/user-roles/user-roles.js', 'public/js')
  .js('resources/js/mybooks/mybooks.js', 'public/js')
  .js('resources/js/messages.js', 'public/js')
- .js('resources/js/mybooks/archived.js', 'public/js')
- .js('resources/js/mybooks/favourite.js', 'public/js')
- .js('resources/js/mybooks/incomings.js', 'public/js')
- .js('resources/js/mybooks/readed.js', 'public/js')
+ .js('resources/js/mybooks/statusBooks.js', 'public/js')
  .js('resources/js/comments/comments.js', 'public/js')
  .js('resources/js/comments/userComments.js', 'public/js')
  .sourceMaps();

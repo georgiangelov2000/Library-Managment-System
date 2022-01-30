@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'image',
         'role_id',
+        'gender_id',
         'flag_id',
         'last_seen',
         'created_at',

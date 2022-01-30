@@ -15,7 +15,7 @@
         <div class="col-12 m-auto pt-4">
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
-                    <table class="table table-hover table-striped dataTable" id="archived-books">
+                    <table class="table table-hover table-striped dataTable" id="statusBooks">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -68,6 +68,6 @@
 
 
     @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/archived.js') }}"></script>
+        <script type="text/javascript" src="{{ mix('js/statusBooks.js') }}"></script>
     @endpush
 @endsection

@@ -44,13 +44,22 @@
                 </div>
 
                 <div class="form-group col-md-5">
-                    <label for="role_id">Select Role</label>
+                    <label for="role_id">Select Gender</label>
                     <select class="form-control form-control-sm" name="gender_id" id="gender_id" aria-invalid="false">
                         @foreach ($genders as $gender)
                             <option value="{{ $gender->id }}">{{ $gender->name }}</option>
                         @endforeach
                     </select>
                 </div>
+
+                    <div class="form-group col-md-5">
+                        <label>Select User Flags</label>
+                        <select class="form-control form-control-sm" name="flag_id" id="flag_id">
+                            @foreach ($flags as $flag)
+                                <option value="{{ $flag->id }}">{{ $flag->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                 <div class="form-group col-md-5">
                     <label for="email">Email</label>

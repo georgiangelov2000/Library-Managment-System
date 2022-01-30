@@ -43,7 +43,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Select Gender</label>
-                                <select class="form-control form-control-sm" name="flag_id" id="flag_id">
+                                <select class="form-control form-control-sm" name="gender_id" id="gender_id">
                                     @foreach ($genders as $gender)
                                         <option value="{{ $gender->id }}">{{ $gender->name }}</option>
                                     @endforeach

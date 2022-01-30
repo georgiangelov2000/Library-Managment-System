@@ -18,12 +18,12 @@ class CreateAuthorsTable extends Migration
             $table->string('name')->nullable();
 
             // FOREIGN KEYS
-            $table->integer('genre_id');
-            // $table->foreign('gendre_id')->references('id')->on('gendre_authors');
+            $table->unsignedBigInteger('genre_id')->nullable();
+            $table->foreign('genre_id')->references('id')->on('gendre_authors')->cascadeOnDelete();
 
             // FOREIGN KEYS
-            $table->integer('gender_id');
-            // $table->foreign('role_id')->references('id')->on('roles');
+             $table->unsignedBigInteger('gender_id')->nullable();
+             $table->foreign('gender_id')->references('id')->on('genders')->cascadeOnDelete();
 
             $table->timestamps();
         });

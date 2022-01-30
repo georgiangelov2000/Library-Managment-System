@@ -15,8 +15,16 @@ class CreateAssignBooksTable extends Migration
     {
         Schema::create('assign_books', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
-            $table->integer('book_id')->nullable();
+
+            // FOREIGN KEYS
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+
+            // FOREIGN KEYS
+            $table->unsignedBigInteger('book_id')->nullable();
+            $table->foreign('book_id')->references('id')->on('books')->cascadeOnDelete();
+
+
             $table->date('date_of_receipt')->nullable();
             $table->date('date_of_return')->nullable();
             $table->timestamps();
