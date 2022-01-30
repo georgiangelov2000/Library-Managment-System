@@ -18,5 +18,6 @@
     "/js/incomings.js": "/js/incomings.js",
     "/js/readed.js": "/js/readed.js",
     "/js/comments.js": "/js/comments.js",
+    "/js/userComments.js": "/js/userComments.js",
     "/css/app.css": "/css/app.css"
 }

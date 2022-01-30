@@ -34,7 +34,7 @@ Route::prefix('users')->group(function () {
     Route::get('/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
     Route::get('/assigned/books/{id}', [UserController::class, 'visitorBook'])->name('user.assigned.book');
     Route::get('/comment/show/user/{id}', [UserController::class, 'comments'])->name('comment.show.user');
-    Route::get('/delete/comment/user/{id}', [AssignCommentController::class, 'delete'])->name('delete.user.comment');
+    Route::get('/delete/comment/user/{comment}', [AssignCommentController::class, 'delete'])->name('delete.user.comment');
 });
 
 

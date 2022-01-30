@@ -2,7 +2,8 @@
     @if (Auth::user()->role_id == '2')
         <a href="#" class="brand-link">
             <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }} "
-                alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8 height: 33px; width: 37px;">
+                alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                style="opacity: .8 height: 33px; width: 37px;">
             <span class="brand-text font-weight-light">Managment System</span>
         </a>
         <div class="sidebar">
@@ -60,7 +61,7 @@
                         <a href="#" class="nav-link">
                             <i class="fas fa-users-cog"></i>
                             <p>
-                                Users 
+                                Users
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -291,7 +292,8 @@
     @elseif (Auth::user()->role_id == '1')
         <a href="#" class="brand-link">
             <img src="{{ !empty(Auth::user()->image) ? url('upload/images/' . Auth::user()->image) : url('upload/images/noimage.png') }} "
-                alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; height: 33px; width: 37px;">
+                alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                style="opacity: .8; height: 33px; width: 37px;">
             <span class="brand-text font-weight-light">Managment System</span>
         </a>
         @if (Auth::user()->flag_id == '1')
@@ -348,7 +350,7 @@
                             <a href="#" class="nav-link ">
                                 <i class="fas fa-book"></i>
                                 <p>
-                                    Books 
+                                    Books
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -372,17 +374,18 @@
                                             Incoming Books
                                         </p>
                                     </a>
-                                    <li>
-                                        
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="{{ route('readed.page') }}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>
-                                                Readed Books
-                                            </p>
-                                        </a>
-                                    </li>
+                                <li>
+
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('readed.page') }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Readed Books
+                                        </p>
+                                    </a>
+                                </li>
+                                <li>
                                     <a class="nav-link" href="{{ route('archived.page') }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -390,27 +393,28 @@
                                         </p>
                                     </a>
                                 </li>
-                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="fas fa-comments"></i>
-                                <p>
-                                    Comments
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: none;">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('comment.create') }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Create Comment
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="fas fa-comments"></i>
+                            <p>
+                                Comments
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('comment.create') }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Create Comment
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </nav>
             </div>
         @else

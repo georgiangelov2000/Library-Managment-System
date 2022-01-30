@@ -30,9 +30,9 @@ class AssignBooksController extends Controller
      */
     public function create()
     {
-        $data['books'] = Book::all();
-        $data['users'] = User::where('role_id', '=', '1')->get();
-        return view('admin.crud.assign_book.create', $data);
+        $books = Book::all();
+        $users = User::where('role_id', '=', '1')->get();
+        return view('admin.crud.assign_book.create', ['books'=>$books, 'users'=>$users]);
     }
 
     /**

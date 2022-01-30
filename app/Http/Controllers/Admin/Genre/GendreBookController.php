@@ -16,8 +16,8 @@ class GendreBookController extends Controller
      */
     public function index()
     {
-        $data['allData'] = GendreBook::all();
-        return view('admin.crud.gendre-books.index',$data);
+        $genres = GendreBook::all();
+        return view('admin.crud.gendre-books.index',['genres'=>$genres]);
     }
 
     /**

@@ -50,6 +50,7 @@ const mixGlob = require('laravel-mix-glob');
  .js('resources/js/mybooks/incomings.js', 'public/js')
  .js('resources/js/mybooks/readed.js', 'public/js')
  .js('resources/js/comments/comments.js', 'public/js')
+ .js('resources/js/comments/userComments.js', 'public/js')
  .sourceMaps();
 
 

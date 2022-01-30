@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key => $genre)
+                            @foreach ($genres as $key => $genre)
                                 <tr>
                                     <td>{{ $genre->id }}</td>
                                     <td>{{ $genre->name }}</td>

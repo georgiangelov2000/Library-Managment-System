@@ -52,7 +52,7 @@
                                 <div class="icon">
                                     <i class="fas fa-comments"></i>
                                 </div>
-                                <a href="{{ route('comment.show', Auth::id()) }}" class="small-box-footer">More info <i
+                                <a href="{{ route('comments')}}" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

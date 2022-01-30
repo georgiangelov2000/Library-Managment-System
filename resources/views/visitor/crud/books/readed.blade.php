@@ -22,8 +22,8 @@
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Genre</th>
-                                <th>Actions</th>
                                 <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,10 @@
                                     <td>
                                         {{ $book['genres']['name'] }}
                                     </td>
-                                    <td style="width:18%">
+                                    <td> 
+                                        {{$book['flags']['name']}}
+                                    </td>
+                                    <td>
                                         <div class="d-flex align-items-center">
                                             <a href="{{ route('comment.show', $book->id) }}" id="view-comment"
                                                 type="button" class="btn btn-sm btn-dark float-left mr-1"
@@ -52,9 +55,6 @@
                                                 title="Details">
                                                 <i class="fas fa-info-circle"></i>
                                             </a>
-                                    </td>
-                                    <td> 
-                                        {{$book['flags']['name']}}
                                     </td>
                                 </div>
                             </tr>

@@ -18,8 +18,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $data['allData'] = Author::all();
-        return view('admin.crud.authors.index', $data);
+        $authors = Author::all();
+        return view('admin.crud.authors.index', ['authors'=>$authors]);
     }
 
     /**
