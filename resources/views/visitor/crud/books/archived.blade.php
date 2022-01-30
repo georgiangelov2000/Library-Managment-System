@@ -51,7 +51,7 @@
                                                 <i class="fas fa-comments"></i>
                                             </a>
 
-                                            <a href="{{ route('show.book', $book->id) }}" class="btn btn-sm btn-secondary"
+                                            <a href="{{ route('show.book', $book->id) }}" class="btn btn-sm btn-secondary" id="book-details"
                                                 title="Details">
                                                 <i class="fas fa-info-circle"></i>
                                             </a>

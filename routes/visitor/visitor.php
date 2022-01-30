@@ -22,6 +22,7 @@ Route::prefix('visitors')->group(function () {
 });
 
 // books
+
 Route::prefix('books')->group(function () {
     Route::get('/',[BookController::class,'books'])->name('visitors.books');
     Route::get('/favourites',[BookController::class,'favouriteStatusPage'])->name('favourites.page');

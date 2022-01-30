@@ -47,7 +47,7 @@
                                             id="Assigned Users" class=" float-left mr-1 btn btn-sm btn-warning"><i
                                                 class="far fa-users"></i>
                                         </a>
-                                        <a href="{{ route('show.book', $book->id) }}" class="btn btn-sm btn-secondary"
+                                        <a href="{{ route('show.book', $book->id) }}" class="btn btn-sm btn-secondary" id="book-details"
                                             title="Details">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
