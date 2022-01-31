@@ -12,6 +12,7 @@
 @section('content')
 
     <div class="row m-auto pt-2">
+        <x-header-page message="" routeLink="delete.approved.users" buttonID="delete" button="Delete All Records" heading="Approved Users" />
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">

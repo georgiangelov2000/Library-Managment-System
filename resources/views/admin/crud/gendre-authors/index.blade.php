@@ -11,6 +11,7 @@
 
 @section('content')
     <div class="row m-auto pt-2">
+        <x-header-page message="" routeLink="delete.genres" buttonID="deleteGenres" button="Delete All Records" heading="Genres" />
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">

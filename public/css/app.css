@@ -11605,3 +11605,8 @@ div.scrollable {
 .btn {
   box-shadow: none !important;
 }
+
+.card-header-page {
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  border: none;
+}

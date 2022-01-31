@@ -29,25 +29,28 @@ Route::prefix('users')->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
     Route::get('/create', [UserController::class, 'create'])->name('user.create');
     Route::post('/store', [UserController::class, 'store'])->name('user.store');
-    Route::get('/edit/{user?}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
     Route::get('/assigned/books/{id}', [UserController::class, 'visitorBook'])->name('user.assigned.book');
     Route::get('/comment/show/user/{id}', [UserController::class, 'comments'])->name('comment.show.user');
     Route::get('/delete/comment/user/{comment}', [AssignCommentController::class, 'delete'])->name('delete.user.comment');
+    Route::get('/delete',[StatusController::class, 'deleteAllUsers'])->name('delete.users');
 });
 
 
 //profile 
     Route::prefix('profiles')->group(function () {
-    Route::get('/admin/profile/', [ProfileController::class, 'show'])->name('admin.profile');
-    Route::get('/admin/edit/{user}', [ProfileController::class, 'edit'])->name('edit.admin.profile');
-    Route::post('/update/admin/profile/{id}', [ProfileController::class, 'update'])->name('update.admin.profile');
+        Route::get('/admin/profile/', [ProfileController::class, 'show'])->name('admin.profile');
+        Route::get('/admin/edit/{user}', [ProfileController::class, 'edit'])->name('edit.admin.profile');
+        Route::post('/update/admin/profile/{id}', [ProfileController::class, 'update'])->name('update.admin.profile');
     });
 
     Route::prefix('status')->group(function () {
         Route::get('/approved/users/', [StatusController::class, 'approvedUsers'])->name('status.approved.users');
         Route::get('/waiting/users/', [StatusController::class, 'waitingUsers'])->name('status.waiting.users');
+        Route::get('/delete/waiting/users',[StatusController::class, 'deleteWaitingUsers'])->name('delete.waiting.users');
+        Route::get('/delete/approved/users',[StatusController::class, 'deleteApprovedUsers'])->name('delete.approved.users');
     });
 
 
@@ -62,6 +65,7 @@ Route::prefix('users')->group(function () {
         Route::get('/assigned/users/{id}', [BookController::class, 'visitorBook'])->name('user.assigned.user');
         Route::get('/show/comments/{id}', [BookController::class, 'comments'])->name('comment.show.users');
         Route::get('/delete/assignbook/{assbook}',[BookController::class, 'deleteAssignBook'])->name('delete.assign.book');
+        Route::get('/delete',[BookController::class,'deleteAllRecords'])->name('delete.books');   
     });
 
 // Authors
@@ -72,6 +76,7 @@ Route::prefix('users')->group(function () {
         Route::get('/edit/{author}', [AuthorController::class, 'edit'])->name('author.edit');
         Route::post('/update/{author}', [AuthorController::class, 'update'])->name('author.update');
         Route::get('/delete/{author}', [AuthorController::class, 'delete'])->name('author.delete');
+        Route::get('/delete',[AuthorController::class,'deleteAllRecords'])->name('delete.authors');
     });
 
 // Genres (books)
@@ -83,6 +88,7 @@ Route::prefix('users')->group(function () {
         Route::post('/update/{genre}', [GendreBookController::class, 'update'])->name('gendre.book.update');
         Route::get('/delete/{genre}', [GendreBookController::class, 'delete'])->name('gendre.book.delete');
         Route::get('/assigned/books/{genre}', [GendreBookController::class, 'genreBooks'])->name('genre.assigned.book');
+        Route::get('/delete',[GendreBookController::class,'deleteAllRecords'])->name('delete.genres');   
     });
 
 // Genres (authors)
@@ -94,6 +100,7 @@ Route::prefix('users')->group(function () {
         Route::post('/update/{genre}', [GendreAuthorController::class, 'update'])->name('gendre.author.update');
         Route::get('/delete/{genre}', [GendreAuthorController::class, 'delete'])->name('gendre.author.delete');
         Route::get('/assigned/authors/{genre}', [GendreAuthorController::class, 'genreAuthors'])->name('genre.assigned.author');
+        Route::get('/delete',[GendreAuthorController::class,'deleteAllRecords'])->name('delete.genres');   
     });
 
 // Roles
@@ -105,6 +112,7 @@ Route::prefix('users')->group(function () {
         Route::post('/update/{role}', [RoleController::class, 'update'])->name('role.update');
         Route::get('/delete/{role}', [RoleController::class, 'delete'])->name('role.delete');
         Route::get('/assigned/users/{role}', [RoleController::class, 'userRole'])->name('roles.assigned.users');
+        Route::get('/delete', [RoleController::class, 'deleteAllRecords'])->name('delete.roles');
     });
 
 // Gendres (Genders)
@@ -117,6 +125,7 @@ Route::prefix('users')->group(function () {
         Route::get('/delete/{gender}', [GenderController::class, 'delete'])->name('gender.delete');
         Route::get('/assigned/users/{gender}', [GenderController::class, 'userGender'])->name('assigned.users');
         Route::get('/assigned/authors/{gender}', [GenderController::class, 'authorGender'])->name('assigned.authors');
+        Route::get('/delete', [GenderController::class, 'deleteAllRecords'])->name('delete.genders');
     });
 
 // AssignedBooks
@@ -129,12 +138,12 @@ Route::prefix('users')->group(function () {
 // user-roles
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::prefix('visitors')->group(function () {
-        Route::get('/', [UserController::class, 'visitorIndex'])->name('visitor.view.index');
+        Route::get('/', [StatusController::class, 'visitorIndex'])->name('visitor.view.index');
     });
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::prefix('admins')->group(function () {
-        Route::get('/', [UserController::class, 'adminIndex'])->name('admin.view.index');
+        Route::get('/', [StatusController::class, 'adminIndex'])->name('admin.view.index');
     });
 });

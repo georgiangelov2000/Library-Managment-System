@@ -7,7 +7,7 @@ use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
 use App\Models\Gender;
 use App\Models\GendreAuthor;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuthorController extends Controller
 {
@@ -89,4 +89,10 @@ class AuthorController extends Controller
         $author->delete();
         return redirect()->back();
     }
+
+    public function deleteAllRecords(){
+        DB::table('authors')->delete();
+        return redirect()->back();
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Genre;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GenreBookRequest;
 use App\Models\GendreBook;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class GendreBookController extends Controller
@@ -84,5 +85,10 @@ class GendreBookController extends Controller
     public function genreBooks (GendreBook $genre){
         $books = $genre->books()->get();
         return view('admin.crud.gendre-books.assigned-books',['books'=>$books]);
+    }
+
+    public function deleteAllRecords(){
+        DB::table('gendre_books')->delete();
+        return redirect()->back();
     }
 }

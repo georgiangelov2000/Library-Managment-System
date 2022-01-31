@@ -324,6 +324,12 @@ div.scrollable {
     border-color:#ff7900;
     box-shadow: none;
 }
+
 .btn{
     box-shadow: none !important;
+}
+
+.card-header-page{
+    background: linear-gradient(to right, rgb(33, 147, 176), rgb(109, 213, 237));
+    border: none; 
 }

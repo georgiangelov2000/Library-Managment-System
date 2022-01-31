@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin\Role;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
+use Illuminate\Support\Facades\DB;
 use App\Models\Role;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
@@ -87,5 +86,10 @@ class RoleController extends Controller
     public function userRole(Role $role){
         $users = $role->users()->get();
         return view('admin.crud.roles.assigned-users',['users'=>$users]);
+    }
+
+    public function deleteAllRecords(){
+        DB::table('roles')->delete();
+        return redirect()->back();
     }
 }

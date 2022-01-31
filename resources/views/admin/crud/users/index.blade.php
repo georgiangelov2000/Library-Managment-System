@@ -11,6 +11,7 @@
 
 @section('content')
     <div class="row m-auto pt-2">
+        <x-header-page message="You can't delete admins, only users!" routeLink="delete.users" buttonID="delete" button="Delete All Records" heading="Users" />
         <div>
             <div class="card shadow-none">
                 <div class="card-body table-responsive p-2">
@@ -71,9 +72,11 @@
                                     </td>
                                     <td>
                                         @if (Cache::has('user-is-online-' . $user->id))
-                                            <i class=" online-icon ml-4 mr-1 fa fa-circle text-success" style="font-size:.7rem;"></i>
+                                            <i class=" online-icon ml-4 mr-1 fa fa-circle text-success"
+                                                style="font-size:.7rem;"></i>
                                         @else
-                                            <i class=" offline-icon ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i>
+                                            <i class=" offline-icon ml-4 mr-1 fa fa-circle text-danger"
+                                                style="font-size:.7rem;"></i>
                                         @endif
                                     </td>
                                     <td>{{ $user->created_at }}</td>

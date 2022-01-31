@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Book;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Models\AssignBook;
 use App\Models\Author;
 use App\Models\Book;
@@ -152,4 +153,9 @@ class BookController extends Controller
         $assbook->delete();
         return redirect()->back();
      }
+
+     public function deleteAllRecords(){
+        DB::table('books')->delete();
+        return redirect()->back();
+    }
 }

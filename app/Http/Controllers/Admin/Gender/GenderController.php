@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin\Gender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GenderRequest;
 use App\Models\Gender;
-use App\Models\User;
-use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class GenderController extends Controller
 {
          /**
@@ -91,4 +89,10 @@ class GenderController extends Controller
         $authors= $gender->authors()->get();
         return view('admin.crud.genders.assinged-authors',['authors'=>$authors]);
     }
+
+    public function deleteAllRecords(){
+        DB::table('genders')->delete();
+        return redirect()->back();
+    }
+
 }

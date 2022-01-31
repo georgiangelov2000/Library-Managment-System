@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Author\AuthorController;
 use App\Http\Controllers\StatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;

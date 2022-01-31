@@ -19,7 +19,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $users;
+     public $users;
      public function __construct(User $users){
         $this->users = $users;
      }
@@ -142,27 +142,9 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function adminIndex()
-    {
-        $data['allData'] = DB::table('users')
-            ->where('role_id', '=', 2)
-            ->whereNotNull('last_seen')
-            ->orderBy('last_seen', 'DESC')
-            ->get();
-
-        return view('admin.crud.users.adminView', $data);
-    }
-
-    public function visitorIndex()
-    {
-        $users = DB::table('users')
-            ->where('role_id', '=', 1)
-            ->whereNotNull('last_seen')
-            ->orderBy('last_seen', 'DESC')
-            ->get();
-            
-        $flags = UserFlags::all();
-        return view('admin.crud.users.visitorView', ['users'=>$users, 'flags'=>$flags]);
+    public function deleteAllRecords(){
+        DB::table('users')->delete();
+        return redirect()->back();
     }
 
     public function visitorBook($id)
