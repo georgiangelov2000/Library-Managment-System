@@ -65,9 +65,9 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Select User Role</label>
-                                <select class="form-control form-control-sm" name="role_id" id="role_id">
+                                <select class="form-control form-control-sm roles" name="role_id" id="role_id">
                                     @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" dataname="{{ $role->name }}" >{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -84,6 +84,6 @@
         </div>
     </div>
     @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/messages.js') }}"> </script>
+        <script type="text/javascript" src="{{ mix('js/share.js') }}"> </script>
     @endpush
 @endsection

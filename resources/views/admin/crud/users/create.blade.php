@@ -26,31 +26,23 @@
                 class="d-flex flex-wrap flex-column">
                 @csrf
                 <div class="row">
-                <div class="form-group col-md-5">
-                    <label for="image" class="form-label">File</label>
-                    <input class="form-control form-control-sm" name="image" type="file" id="image">
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="name">Name</label>
-                    <input class="form-control form-control-sm" id="name" type="text" name="name" placeholder="Name">
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="role_id">Select Role</label>
-                    <select class="form-control form-control-sm" name="role_id" id="role_id" aria-invalid="false">
-                        @foreach ($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                    <div class="form-group col-md-5">
+                        <label for="image" class="form-label">File</label>
+                        <input class="form-control form-control-sm" name="image" type="file" id="image">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="name">Name</label>
+                        <input class="form-control form-control-sm" id="name" type="text" name="name" placeholder="Name">
+                    </div>
 
-                <div class="form-group col-md-5">
-                    <label for="role_id">Select Gender</label>
-                    <select class="form-control form-control-sm" name="gender_id" id="gender_id" aria-invalid="false">
-                        @foreach ($genders as $gender)
-                            <option value="{{ $gender->id }}">{{ $gender->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                    <div class="form-group col-md-5">
+                        <label for="role_id">Select Gender</label>
+                        <select class="form-control form-control-sm" name="gender_id" id="gender_id" aria-invalid="false">
+                            @foreach ($genders as $gender)
+                                <option value="{{ $gender->id }}">{{ $gender->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="form-group col-md-5">
                         <label>Select User Flags</label>
@@ -61,40 +53,51 @@
                         </select>
                     </div>
 
-                <div class="form-group col-md-5">
-                    <label for="email">Email</label>
-                    <input class="form-control form-control-sm" id="email" type="email" name="email" placeholder="Email">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="dob">Date of birth</label>
-                    <input class="form-control form-control-sm" id="dob" type="date" name="dob" placeholder="">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="password">Password</label>
-                    <input class="form-control form-control-sm" id="password" type="password" name="password"
-                        placeholder="Password">
-                    @error('name')
-                        <span class="text-danger"> </span>
-                    @enderror
-                </div>
+                    <div class="form-group col-md-5">
+                        <label for="role_id">Select Role</label>
+                        <select class="form-control form-control-sm roles" name="role_id" id="role_id" aria-invalid="false">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}" dataname="{{ $role->name }}">{{ $role->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                <div class="form-group col-md-5">
-                    <button style="margin-top: 1.8rem;" type="submit" name="submit" value="submit"
-                        class="btn btn-primary btn-sm col-md-12">Submit</button>
+                    <div class="form-group col-md-5">
+                        <label for="email">Email</label>
+                        <input class="form-control form-control-sm" id="email" type="email" name="email"
+                            placeholder="Email">
+                        @error('name')
+                            <span class="text-danger"> </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="dob">Date of birth</label>
+                        <input class="form-control form-control-sm" id="dob" type="date" name="dob" placeholder="">
+                        @error('name')
+                            <span class="text-danger"> </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="password">Password</label>
+                        <input class="form-control form-control-sm" id="password" type="password" name="password"
+                            placeholder="Password">
+                        @error('name')
+                            <span class="text-danger"> </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <button style="margin-top: 1.8rem;" type="submit" name="submit" value="submit"
+                            class="btn btn-primary btn-sm col-md-12">Submit</button>
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
         <div class="card-footer pt-5">
         </div>
     </div>
     @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/messages.js') }}"> </script>
+        <script type="text/javascript" src="{{ mix('js/share.js') }}"> </script>
     @endpush
 @endsection
