@@ -38,6 +38,6 @@
     </div>
     
     @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/messages.js') }}"> </script>
+        <script type="text/javascript" src="{{ mix('js/share.js') }}"> </script>
     @endpush
 @endsection
