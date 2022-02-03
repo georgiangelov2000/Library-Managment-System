@@ -11,7 +11,7 @@ $(function ($) {
                 { "width": "5%","targets": 3 },
                 { "width": "5%","targets": 4 },
                 { "width": "5%","targets": 5 },
-                { "width": "12%","targets": 6 },
+                { "width": "13%","targets": 6 },
                 { "width": "11%","targets": 7 },
                 { "width": "11%","targets": 8 },
                 { "width": "11%","targets": 9 },

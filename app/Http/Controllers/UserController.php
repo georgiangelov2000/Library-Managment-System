@@ -142,11 +142,6 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function deleteAllRecords(){
-        DB::table('users')->delete();
-        return redirect()->back();
-    }
-
     public function visitorBook($id)
     {
         $data['allData'] = AssignBook::all()->where('user_id', $id);
