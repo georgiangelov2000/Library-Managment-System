@@ -23,11 +23,13 @@
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>E-mail</th>
-                                <th>Roles</th>
                                 <th>Genders</th>
+                                <th>Roles</th>
                                 <th>Date of birth</th>
                                 <th>Last Seen</th>
                                 <th>Status</th>
+                                <th>Created</th>
+                                <th>Updated</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,6 +68,12 @@
                                         @else
                                             <i class="offline-icon ml-4 mr-1 fa fa-circle text-danger" style="font-size:.7rem;"></i>
                                         @endif
+                                    </td>
+                                    <td>
+                                        {{ $user->created_at }}
+                                    </td>
+                                    <td>
+                                        {{ $user->updated_at }}
                                     </td>
                                 </tr>
                             @endforeach

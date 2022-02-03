@@ -13,7 +13,7 @@ class AuthorGenreSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('gendre_authors')->insert(array(
+            DB::table('gendre_authors')->insert(array(
             0 =>
             array(
                 'id' => '1',
