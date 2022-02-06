@@ -42,7 +42,7 @@ Route::prefix('users')->group(function () {
 //profile 
     Route::prefix('profiles')->group(function () {
         Route::get('/admin/profile/', [ProfileController::class, 'show'])->name('admin.profile');
-        Route::get('/admin/edit/{user}', [ProfileController::class, 'edit'])->name('edit.admin.profile');
+        Route::get('/admin/edit/', [ProfileController::class, 'edit'])->name('edit.admin.profile');
         Route::post('/update/admin/profile/{id}', [ProfileController::class, 'update'])->name('update.admin.profile');
     });
 

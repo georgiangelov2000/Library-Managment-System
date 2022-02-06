@@ -16,15 +16,17 @@ class ProfileController extends Controller
         return view('admin.crud.admin-profile.profile',compact('user'));
     }
 
-    public function edit(User $user)
+    public function edit()
     {
         $genders = Gender::all();
+        $user =Auth::user();
         return view('admin.crud.admin-profile.edit-profile', compact('user'),['genders'=>$genders]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $user = User::where('id', $id)->first();
+        $user = Auth::id();
+        $user = User::where('id',$user)->first();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->dob = $request->dob;

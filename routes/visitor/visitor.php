@@ -34,6 +34,6 @@ Route::prefix('books')->group(function () {
 // profile
 Route::prefix('profile')->group(function () {
     Route::get('/myprofile',[VisitorProfileController::class,'profile'])->name('profile.index');
-    Route::get('/edit/profile/{user}',[VisitorProfileController::class,'getEditProfile'])->name('edit.profile');
-    Route::post('/update/profile/{id}',[VisitorProfileController::class,'postUpdateProfile'])->name('update.profile');
+    Route::get('/edit/profile/',[VisitorProfileController::class,'getEditProfile'])->name('edit.profile');
+    Route::post('/update/profile/',[VisitorProfileController::class,'postUpdateProfile'])->name('update.profile');
 });

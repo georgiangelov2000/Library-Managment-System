@@ -16,15 +16,17 @@ class VisitorProfileController extends Controller
         return view('visitor.crud.profile.profile', compact('user'));
     }
 
-    public function getEditProfile(User $user)
+    public function getEditProfile()
     {
         $genders = Gender::all();
+        $user = Auth::user();
         return view('visitor.crud.profile.edit-profile', compact('user'),['genders'=>$genders]);
     }
 
-    public function postUpdateProfile(Request $request, $id)
+    public function postUpdateProfile(Request $request)
     {
-        $user = User::where('id', $id)->first();
+        $user = Auth::id();
+        $user = User::where('id', $user)->first();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->dob = $request->dob;

@@ -48,7 +48,7 @@
                                         My profile
                                     </p>
                                 </a>
-                                <a class="nav-link" href="{{ route('edit.admin.profile', Auth::id()) }}">
+                                <a class="nav-link" href="{{ route('edit.admin.profile') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
                                         Edit profile
@@ -337,7 +337,7 @@
                                             My Profile
                                         </p>
                                     </a>
-                                    <a class="nav-link" href="{{ route('edit.profile', Auth::id()) }}">
+                                    <a class="nav-link" href="{{ route('edit.profile') }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Edit Profile

@@ -19,7 +19,7 @@
             <h5 class="m-0">Edit Profile</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('update.profile', $user->id) }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('update.profile') }}" enctype="multipart/form-data"
                 class="d-flex flex-wrap flex-column">
                 @csrf
                 <div class="row">
