@@ -1,14 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Roles')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
-
 @section('content')
     <div class="row m-auto pt-2">
         <x-header-page message="" routeLink="delete.roles" buttonID="delete" button="Delete All Records" heading="Roles" />

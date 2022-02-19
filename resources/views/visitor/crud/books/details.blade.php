@@ -1,14 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Details Books')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
-
 @section('content')
     <div class="container mt-3">
         <div class="row">

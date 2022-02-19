@@ -1,13 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Create Author')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
 @section('content')
 
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">

@@ -1,14 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Favoruites')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
-
 @section('content')
 
     <div class="row m-auto">

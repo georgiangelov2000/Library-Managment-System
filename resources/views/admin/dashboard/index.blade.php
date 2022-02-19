@@ -1,14 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Dashboard')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
-
 @section('content')
 
     <div class="content-header mb-2">

@@ -1,14 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Genres Authors')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
-
 @section('content')
     <div class="row m-auto pt-2">
         <x-header-page message="" routeLink="delete.genres" buttonID="deleteGenres" button="Delete All Records" heading="Genres" />

@@ -1,14 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Inbox')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
-
 @section('content')
     <div class="row m-auto pt-2">
         <div>

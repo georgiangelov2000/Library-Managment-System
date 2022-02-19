@@ -1,13 +1,6 @@
 @extends('layouts.home')
 @section('title', 'Managment System - Archived')
 
-@section('header-navigation')
-    @parent
-@endsection
-
-@section('sidebar')
-    @parent
-@endsection
 
 @section('content')
 
