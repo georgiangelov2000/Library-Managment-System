@@ -17,6 +17,7 @@ class BookController extends Controller
         $flags = BooksFlags::all();
         $id = Auth::id();
         $allBooks=User::find($id)->visitorBooks()->get();
+        
         return view('visitor.crud.books.index', ['books'=>$allBooks,'flags' => $flags]);
     }
 
@@ -53,4 +54,5 @@ class BookController extends Controller
         $book = Book::where('id', $id)->first();
         return view('visitor.crud.books.details', compact('book'));
     }
+
 }

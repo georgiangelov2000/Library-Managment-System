@@ -1,19 +1,42 @@
 <div class="login-box d-flex flex-column align-items-center m-auto">
+    <h3>{{ __('Login') }}</h3>
     <div class="card card-outline card-primary w-100 mt-3">
         <div class="card-body login-card-body rounded ">
-            <h3 class="login-box-msg">{{ __('Login') }}</h3>
-            @include('components.error-box.error-auth')
             <form method="post" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group mb-3">
                     <label>Email</label>
-                    <input id="email" type="email" placeholder="Email" class="form-control form-control-sm" name="email"
-                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <input 
+                        id="email" 
+                        type="email" 
+                        placeholder="Email" 
+                        required 
+                        class="form-control form-control-sm @error('email') is-invalid @enderror" 
+                        name="email" 
+                        value="{{ old('email') }}" 
+                        required
+                        >
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="form-group mb-3">
                     <label>Password</label>
-                    <input id="password" type="password" placeholder="Password" class="form-control form-control-sm" name="password" required
-                        autocomplete="current-password">
+                    <input 
+                        id="password" 
+                        type="password" 
+                        placeholder="Password" 
+                        class="form-control form-control-sm @error('password') is-invalid @enderror" 
+                        name="password" 
+                        required 
+                        >
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="row">
                     <div class="col-8">

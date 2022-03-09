@@ -50,31 +50,48 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:0', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
             // 'dob' => ['required'],
             'gender_id' => ['required'],
-            'flag_id' => ['required'],
-            'role_id' => ['required'],
         ]);
     }
 
-    /**
+     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\Models\User
      */
 
-    protected function create(array $data){
+    protected function createUser(array $data){
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            // 'dob' => $data['dob'],
+            'gender_id' => $data['gender_id'],
+            'flag_id' => 2,
+            'role_id' => 1,
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+     /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+
+    protected function createAdmin(array $data){
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'dob' => $data['dob'],
             'gender_id' => $data['gender_id'],
-            'flag_id' => $data['flag_id'],
-            'role_id' => $data['role_id'],
+            'flag_id' => 3,
+            'role_id' => 2,
             'password' => Hash::make($data['password']),
         ]);
     }

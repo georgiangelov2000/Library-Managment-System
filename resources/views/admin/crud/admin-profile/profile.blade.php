@@ -5,59 +5,52 @@
 
     <div class="col d-flex align-center justify-content-between col-md-8 mb-4">
     </div>
-    <div class="card card-form card-default col-md-8 ml-4 p-0">
-        <div class="card-header">
-            <h5 class="m-0">Profile</h5>
-        </div>
-        <div class="card-body profile">
-            <div class="form-group col-md-6">
-                <img class="w-25"
-                    src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
-                    alt="...">
+
+    <div class="col-md-3">
+
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle"
+                        src="{{ !empty($user->image) ? url('upload/images/' . $user->image) : url('upload/images/noimage.png') }}  "
+                        alt="...">
+                </div>
+                <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                <p class="text-muted text-center">{{ $user->email }}</p>
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                        <b>Date of birth</b> <a class="float-right">{{ $user->dob }}</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Gender</b> <a class="float-right">
+                            @if ($user['genders']['name'] == 'm')
+                                male
+                            @elseif ($user['genders']['name'] == 'f')
+                                famale
+                            @endif
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Role</b> <a class="float-right">
+                            <a class="float-right">
+                            @if ($user['roles']['name'] === 'admin')
+                                admin
+                            @endif
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Created At</b> <a class="float-right">
+                            {{ $user->created_at }}
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Updated At</b> <a class="float-right">
+                            {{ $user->updated_at }}
+                        </a>
+                    </li>
+                </ul>
+                <a href="{{ route('edit.admin.profile') }}" class="btn btn-primary btn-block"><b>Update profile</b></a>
             </div>
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="name">Name</label>
-                    <input class="form-control form-control-sm" id="name" disabled value="{{ $user->name }}" type="text"
-                        name="name">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="email">Email</label>
-                    <input class="form-control form-control-sm" id="email" disabled value="{{ $user->email }}"
-                        type="email" name="email">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="dob">Date of Birth</label>
-                    <input class="form-control form-control-sm" id="dob" disabled value="{{ $user->dob }}" type="text"
-                        name="dob">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="role">Role</label>
-                    @if ($user['roles']['name'] === 'admin')
-                        <input class="form-control form-control-sm" id="role_id" disabled value="admin" type="text">
-                    @endif
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="gender">Gender</label>
-                    @if ($user['genders']['name'] == 'm')
-                        <input class="form-control form-control-sm" id="gender_id" disabled value="m" type="text">
-                    @elseif ($user['genders']['name'] == 'f')
-                        <input class="form-control form-control-sm" id="gender_id" disabled value="f" type="text">
-                    @endif
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="created_at">Created at</label>
-                    <input class="form-control form-control-sm" id="created_at" disabled value="{{ $user->created_at }}"
-                        type="text" name="created_at">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="updated_at">Updated at</label>
-                    <input class="form-control form-control-sm" id="updated_at" disabled value="{{ $user->updated_at }}"
-                        type="text" name="updated_at">
-                </div>
-            </div>
-        </div>
-        <div class="card-footer pt-5">
         </div>
     </div>
     @push('scripts')

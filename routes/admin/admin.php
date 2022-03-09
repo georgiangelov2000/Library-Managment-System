@@ -15,10 +15,6 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\Visitor\Assigned\AssignCommentController;
 
 
-// Route::get('/dashboard/index', function () {
-//     return view('admin.dashboard.index');
-// })->middleware(['auth'])->name('dashboard.index');
-
 // dashboard
 Route::prefix('dashboard')->group(function () {
     Route::get('/index', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -62,6 +58,7 @@ Route::prefix('users')->group(function () {
         Route::get('/edit/{id}', [BookController::class, 'edit'])->name('book.edit');
         Route::post('/update/{id}', [BookController::class, 'update'])->name('book.update');
         Route::get('/delete/{id}', [BookController::class, 'delete'])->name('book.delete');
+        Route::get('/book/{id}',[BookController::class,'show'])->name('show.book');
         Route::get('/assigned/users/{id}', [BookController::class, 'visitorBook'])->name('user.assigned.user');
         Route::get('/show/comments/{id}', [BookController::class, 'comments'])->name('comment.show.users');
         Route::get('/delete/assignbook/{assbook}',[BookController::class, 'deleteAssignBook'])->name('delete.assign.book');
@@ -135,15 +132,11 @@ Route::prefix('users')->group(function () {
         Route::get('/delete/{id}', [AssignBooksController::class, 'delete'])->name('assign.book.delete');
     });
 
-// user-roles
-Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::prefix('visitors')->group(function () {
         Route::get('/', [StatusController::class, 'visitorIndex'])->name('visitor.view.index');
     });
-});
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::prefix('admins')->group(function () {
         Route::get('/', [StatusController::class, 'adminIndex'])->name('admin.view.index');
     });
-});
+

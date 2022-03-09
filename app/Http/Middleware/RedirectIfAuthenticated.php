@@ -13,21 +13,35 @@ class RedirectIfAuthenticated
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @param  string|null  ...$guards
-     * @return mixed
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+
+    protected $redirectToAdmin = RouteServiceProvider::HOME;
+    protected $redirectToUser = RouteServiceProvider::GUEST;
+
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                $role = Auth::user()->role_id;;
-                if ($role == '1') {
-                    return redirect(RouteServiceProvider::GUEST);
-                } else if ($role == '2') {
-                    return redirect(RouteServiceProvider::HOME);
+                if (Auth::guard($guard)->check()) {
+                    $role = Auth::user()->role_id;
+
+                    switch ($role) {
+                        case 1:
+                            return redirect($this->redirectToAdmin);
+                            break;
+                        case 2:
+                            return redirect($this->redirectToUser);
+                            break;
+
+                        default:
+                            return redirect('/');
+                            break;
+                    }
                 }
             }
         }

@@ -44,7 +44,6 @@ const mixGlob = require('laravel-mix-glob');
  .js('resources/js/assigned-authors/assigned-authors.js', 'public/js')
  .js('resources/js/user-roles/user-roles.js', 'public/js')
  .js('resources/js/mybooks/mybooks.js', 'public/js')
- .js('resources/js/share.js', 'public/js')
  .js('resources/js/mybooks/statusBooks.js', 'public/js')
  .js('resources/js/comments/comments.js', 'public/js')
  .js('resources/js/comments/userComments.js', 'public/js')

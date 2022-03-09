@@ -29,6 +29,7 @@ Route::prefix('books')->group(function () {
     Route::get('/incomigs',[BookController::class,'incomingsStatusPage'])->name('incomings.page');
     Route::get('/readed',[BookController::class,'readedStatusPage'])->name('readed.page');
     Route::get('/archived',[BookController::class,'archivedStatusPage'])->name('archived.page');
+    Route::get('{id}',[BookController::class,'show'])->name('show.book');
 });
 
 // profile

@@ -25,13 +25,13 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'role_id' => 'required',
-            'gender_id' => 'required',
-            'dob' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'password' => 'required',
+            'name' => ['required','min:0','max:255','string'],
+            'email' => ['required','min:0','max:255','email','unique:users'],
+            'role_id' => ['required'],
+            'gender_id' => ['required'],
+            'dob' => ['required','date'],
+            'image' => ['required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'],
+            'password' => ['required','min:0','max:255','password'],
         ];
     }
 

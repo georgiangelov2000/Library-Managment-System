@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -29,9 +30,12 @@ Route::group(['middleware' => ['auth', 'user']], function () {
     require_once __DIR__ . '/visitor/visitor.php';
 });
 
-Route::group(['middleware' => ['auth']], function () {
-    require_once __DIR__ . './share/share.php';
-});
+// Route::group(['middleware' => ['auth']], function () {
+//     require_once __DIR__ . './share/share.php';
+// });
+
+Route::post('/register/user', [RegisterController::class, 'registerUser'])->name('register.user');
+Route::post('/register/admin', [RegisterController::class, 'registerAdmin'])->name('register.admin');
 
 
 Auth::routes();

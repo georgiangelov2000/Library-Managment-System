@@ -2,88 +2,46 @@
 @section('title', '- Register')
 
 @section('content')
+<h3 class=" text-center pb-0 mb-4"> {{ __('Register') }} </h3>
 
-    <div class="register-box d-flex flex-column align-items-center m-auto col-md-6">
-        <div class="card card-outline card-primary w-100 mt-3">
-            <div class="card-body login-card-body">
-                <h3 class="login-box-msg"> {{ __('Register') }} </h3>
-                @include('components.error-box.error-auth')
-                <form method="post" action="{{ route('register') }}">
-                    @csrf
-                    <div class="row">
-                        <div class="form-group mb-3 col-6">
-                            <label>Name</label>
-                            <input id="name" type="text" class="form-control form-control-sm" name="name"
-                                value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Name">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="card card-primary card-outline card-tabs p-0 col-md-4">
+                <div class="card-header p-0 pt-1 border-bottom-0">
+
+                    <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill"
+                                href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home"
+                                aria-selected="true">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill"
+                                href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile"
+                                aria-selected="false">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="tab-content" id="custom-tabs-three-tabContent">
+                        <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel"
+                            aria-labelledby="custom-tabs-three-home-tab">
+                            <x-register-user />
+                            <blockquote>
+                                <p> Register as user, and start to apply for job
+                                </p>
+                            </blockquote>
                         </div>
-
-                        <div class="form-group mb-3 col-6">
-                            <label>Email</label>
-                            <input id="email" type="email" class="form-control form-control-sm" name="email"
-                                value="{{ old('email') }}" autocomplete="email" placeholder="Email">
-                        </div>
-
-                        <div class="form-group mb-3 col-6">
-                            <label>Password</label>
-                            <input id="password" type="password" class="form-control form-control-sm" name="password"
-                                autocomplete="new-password" placeholder="Password">
-                        </div>
-
-                        <div class="form-group mb-3 col-6">
-                            <label>Confirm Password</label>
-                            <input id="password-confirm" type="password" class="form-control form-control-sm"
-                                name="password_confirmation" autocomplete="new-password" placeholder="Confirm Password">
-                        </div>
-
-                        <div class="form-group mb-3 col-6">
-                            <label>Select Date</label>
-                            <input id="dob" type="date" class="form-control form-control-sm" name="dob">
-                        </div>
-
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Select Gender</label>
-                                <select class="form-control form-control-sm" name="gender_id" id="gender_id">
-                                    @foreach ($genders as $gender)
-                                        <option value="{{ $gender->id }}">{{ $gender->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Select User Flags</label>
-                                <select class="form-control form-control-sm" name="flag_id" id="flag_id">
-                                    @foreach ($flags as $flag)
-                                        <option value="{{ $flag->id }}">{{ $flag->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Select User Role</label>
-                                <select class="form-control form-control-sm roles" name="role_id" id="role_id">
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}" dataname="{{ $role->name }}" >{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                {{ __('Register') }}
-                            </button>
+                        <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel"
+                            aria-labelledby="custom-tabs-three-profile-tab">
+                            <x-register-admin />
+                            <blockquote>
+                                <p>Login as owner's company, and find candidates</p>
+                            </blockquote>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script type="text/javascript" src="{{ mix('js/share.js') }}"> </script>
-    @endpush
 @endsection
